@@ -1,0 +1,40 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="BackEndPage.master.cs" Inherits="Admin_BackEndPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Admin</title>
+    <link rel="stylesheet" type="text/css" href="~/Style/StyleSheet.css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+   <div id="wrapper">
+            <div id="banner">
+                <asp:ContentPlaceHolder runat="server" ID="cphHead">
+                </asp:ContentPlaceHolder>
+            </div>
+            <ul id="nav">
+                <li><a href="ProductMng.aspx">Products</a></li>
+                <li><a href="CategoryMng.aspx">Categories</a>
+                </li>
+                <li><a href="SupplMng.aspx">Suppliers</a>
+                </li>
+                <li><a href="UserMng.aspx">User</a>
+                </li>
+            </ul>
+
+            <div id="content_area">
+                <asp:ContentPlaceHolder runat="server" ID="cphMain">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div id="sidebar">
+                <asp:ContentPlaceHolder runat="server" ID="cphSide"></asp:ContentPlaceHolder>
+            </div>
+            <div id="footer">
+                Designed by TM
+            </div>
+        </div>
+    </form>
+</body>
+</html>

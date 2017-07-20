@@ -1,0 +1,52 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>My website</title>
+    <link rel="stylesheet" type="text/css" href="~/Style/StyleSheet.css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="wrapper">
+            <div id="banner">
+                <asp:ContentPlaceHolder runat="server" ID="cphHead">
+                </asp:ContentPlaceHolder>
+            </div>
+            <ul id="nav">
+                <li><a href="Default.aspx">Products</a></li>
+                <li><a href="Laptop.aspx">Laptop</a>
+                    <ul>
+                        <li><a href="#">MSI</a></li>
+                        <li><a href="#">Asus</a></li>
+                    </ul>
+                </li>
+                <li><a href="Mouse.aspx">Mouse</a>
+                    <ul>
+                        <li><a href="#">Razer</a></li>
+                        <li><a href="#">Logitech</a></li>
+                    </ul>
+                </li>
+                <li><a href="Keyboard.aspx">Keyboard</a>
+                    <ul>
+                        <li><a href="#">Razer</a></li>
+                    </ul>
+                </li>
+                <li><a href="Cart.aspx">Cart</a></li>
+            </ul>
+
+            <div id="content_area">
+                <asp:ContentPlaceHolder runat="server" ID="cphMain">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div id="sidebar">
+                <asp:ContentPlaceHolder runat="server" ID="cphSide"></asp:ContentPlaceHolder>
+            </div>
+            <div id="footer">
+                Designed by TM
+            </div>
+        </div>
+    </form>
+</body>
+</html>
