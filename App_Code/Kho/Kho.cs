@@ -45,10 +45,36 @@ public class Kho : IKho
         }
     }
 
+    public List<User> DanhSachND
+    {
+        get
+        {
+            return dc.Users.ToList();
+        }
+    }
+
+    public List<Role> DanhSachRole
+    {
+        get
+        {
+            return dc.Roles.ToList();
+        }
+    }
+
+    public List<User> DanhSachNDHienThi
+    {
+        get
+        {
+            return dc.Users.Where(x => x.Status == true).ToList();
+        }
+    }
+
     public void Dispose()
     {
         if (this.dc != null) this.dc.Dispose();
     }
+
+    
 
     public void SuaDM(Category category)
     {
@@ -125,6 +151,30 @@ public class Kho : IKho
         }
     }
 
+    public void SuaTTND(User user)
+    {
+        try
+        {
+            User u = TimND(user.UserID);
+            {
+                u.Username = user.Username;
+                u.Password = user.Password;
+                u.RoleID = user.RoleID;
+                u.FName = user.FName;
+                u.LName = user.LName;
+                u.Email = user.Email;
+                u.Phone = user.Phone;
+
+                dc.SubmitChanges();
+                return;
+            }
+        }
+        catch (Exception)
+        {
+            return;
+        }
+    }
+
     public void themDM(Category c)
     {
         try
@@ -155,6 +205,20 @@ public class Kho : IKho
         }
     }
 
+    public void ThemND(User u)
+    {
+        try
+        {
+            dc.Users.InsertOnSubmit(u);
+            dc.SubmitChanges();
+        }
+        catch (Exception)
+        {
+            return;
+        }
+
+    }
+
     public void themSP(Product p)
     {
         try
@@ -171,7 +235,6 @@ public class Kho : IKho
     }
 
     public Category TimDM(int id)
-
     {
         return dc.Categories.FirstOrDefault(x => x.CategoryID == id);
     }
@@ -189,6 +252,21 @@ public class Kho : IKho
     public Supplier TimNCCTheoTen(string name)
     {
         return dc.Suppliers.Where(x => x.SupplierName.Contains(name)).SingleOrDefault();
+    }
+
+    public User TimND(int id)
+    {
+        return dc.Users.FirstOrDefault(x => x.UserID == id);
+    }
+
+    public User TimNDTheoTenDN(string username)
+    {
+        return dc.Users.FirstOrDefault(x => x.Username == username);
+    }
+
+    public Role TimRole(int id)
+    {
+        return dc.Roles.FirstOrDefault(x => x.RoleID == id);
     }
 
     public Product TimSP(int id)
@@ -233,6 +311,27 @@ public class Kho : IKho
             else
             {
                 dc.Suppliers.DeleteOnSubmit(sp);
+                dc.SubmitChanges();
+            }
+        }
+        catch (Exception)
+        {
+            return;
+        }
+    }
+
+    public void XoaND(int id)
+    {
+        try
+        {
+            var nd = TimND(id);
+            if (nd == default(User))
+            {
+                return;
+            }
+            else
+            {
+                nd.Status = false;
                 dc.SubmitChanges();
             }
         }

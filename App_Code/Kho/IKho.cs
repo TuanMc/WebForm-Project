@@ -39,6 +39,7 @@ public interface IKho:IDisposable
 
     #region Supplier
     List<Supplier> DanhSachNCC { get; }
+
     void themNCC(Supplier s);
 
     Supplier TimNCC(int id);
@@ -52,11 +53,32 @@ public interface IKho:IDisposable
 
     #region User
 
+    List<User> DanhSachND { get; }
+
+    List<User> DanhSachNDHienThi { get; }
+
     // Add user
+
+    void ThemND(User u);
 
     // Check User
 
+    User TimNDTheoTenDN(string username);
+
+    User TimND(int id);
+
     // Modify User
+
+    void SuaTTND(User user);
+
+    void XoaND(int id);
+
+    #endregion
+
+    #region Role
+    List<Role> DanhSachRole { get; }
+
+    Role TimRole(int id);
 
     #endregion
 
