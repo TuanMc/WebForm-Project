@@ -11,8 +11,10 @@ public partial class Admin_ProductMng : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            this.LoadProducts();
-            
+            if (Session["user"] != null)
+                this.LoadProducts();
+            else
+                Response.Redirect("AdLogin.aspx");
         }
         
     }

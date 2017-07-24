@@ -16,11 +16,15 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-
-            if (id == 0)
-                this.LoadSP();
+            if (Session["user"] != null)
+            {
+                if (id == 0)
+                    this.LoadSP();
+                else
+                    this.LoadSPTheoMa(id);
+            }
             else
-                this.LoadSPTheoMa(id);
+                Response.Redirect("AdLogin.aspx");
         }
     }
 
@@ -115,6 +119,9 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
             int.TryParse(Request.QueryString["id"], out id);
             if (id != 0)
             {
+                string str = fulImg.FileName;
+                fulImg.PostedFile.SaveAs(Server.MapPath(".") + "//Upload_Img//" + str);
+                string path = "~/Image" + str.ToString();
                 k.SuaSP(new Product()
                 {
                     ProductID = id,
@@ -122,8 +129,10 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
                     Price = int.Parse(txtGia.Text),
                     CategoryID = int.Parse(ddlCategory.SelectedValue),
                     SupplierID = int.Parse(ddlSupplier.SelectedValue),
-                    Description = txtDescription.Text
+                    Description = txtDescription.Text,
+                    Picture = path
                 });
+
 
                 lblTB.Text = "Item was successfully updated";
                 this.LoadSP();
@@ -153,7 +162,7 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
 
                 }
             }
-            #endregion
+            #endregion  
 
         }
     }

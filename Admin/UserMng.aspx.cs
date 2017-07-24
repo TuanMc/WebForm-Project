@@ -10,7 +10,10 @@ public partial class Admin_UserMng : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
-            this.LoadUser();
+            if (Session["user"] != null)
+                this.LoadUser();
+            else
+                Response.Redirect("AdLogin.aspx");
     }
 
     private void LoadUser()

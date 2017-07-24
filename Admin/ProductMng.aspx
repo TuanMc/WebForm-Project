@@ -36,10 +36,6 @@
         <SortedDescendingCellStyle BackColor="#EAEAD3" />
         <SortedDescendingHeaderStyle BackColor="#575357" />
     </asp:Gridview>
-    
-    <br />
-    <br />
-    <asp:LinkButton ID="lbtnReturnHome" runat="server" PostBackUrl="~/Pages/Default.aspx" Text="Back to Home Page"></asp:LinkButton>
 </asp:Content>
 
 

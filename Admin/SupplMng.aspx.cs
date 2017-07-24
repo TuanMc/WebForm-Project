@@ -10,7 +10,10 @@ public partial class Admin_SupplMng : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
-            this.LoadNCC();
+            if (Session["user"] != null)
+                this.LoadNCC();
+            else
+                Response.Redirect("AdLogin.aspx");
     }
 
     private void LoadNCC()
@@ -26,7 +29,7 @@ public partial class Admin_SupplMng : System.Web.UI.Page
     {
         #region Them Supplier
 
-        
+
         using (var k = new Kho())
         {
 

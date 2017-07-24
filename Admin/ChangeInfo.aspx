@@ -40,6 +40,7 @@
             <td style="height: 46px">Upload Image: </td>
             <td style="height: 46px">
                 <asp:FileUpload runat="server" ID="fulImg" Width="95%" />
+                <asp:RequiredFieldValidator ID="rfvImg" runat="server" ControlToValidate="fulImg" ErrorMessage="(*)" Font-Bold="True" ForeColor="Red" ValidationGroup="Need"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>

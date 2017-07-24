@@ -7,11 +7,14 @@ using System.Web.UI.WebControls;
 
 public partial class Admin_OrderMng : System.Web.UI.Page
 {
-    
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(!IsPostBack)
-         this.LoadOrder();
+        if (!IsPostBack)
+            if (Session["user"] != null)
+                this.LoadOrder();
+            else
+                Response.Redirect("AdLogin.aspx");
     }
 
     private void LoadOrder()
@@ -37,8 +40,8 @@ public partial class Admin_OrderMng : System.Web.UI.Page
             k.GiaoHD(ma);
             this.LoadOrder();
         }
-        
+
     }
 
-   
+
 }

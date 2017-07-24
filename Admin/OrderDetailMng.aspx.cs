@@ -11,8 +11,16 @@ public partial class Admin_OrderDetailMng : System.Web.UI.Page
     {
         int ma = 0;
         int.TryParse(Request.QueryString["oid"], out ma);
-        if(ma!=0)
-            this.LoadOrderDetail(ma);
+        if (!IsPostBack)
+            if (Session["user"] != null)
+            {
+                if (ma != 0)
+                    this.LoadOrderDetail(ma);
+            }
+            else
+                Response.Redirect("AdLogin.aspx");
+
+
     }
 
     private void LoadOrderDetail(int ma)

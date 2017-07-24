@@ -9,7 +9,12 @@ public partial class Admin_CategoryMng : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        this.LoadCategory();
+        if (!IsPostBack)
+            if (Session["user"] != null)
+                this.LoadCategory();
+            else
+                Response.Redirect("AdLogin.aspx");
+        
     }
 
     private void LoadCategory()

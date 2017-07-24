@@ -8,17 +8,25 @@
     <link rel="stylesheet" type="text/css" href="~/Style/StyleSheet.css" />
     <style>
         #sidebar {
-            text-align:center;
+            text-align: center;
+            background-color:lightgrey;
         }
 
-        .Middle {
-            text-align:center;
+
+        #sidebar-wrapper ul li {
+            width: 100%;
+            background-color:lightgrey;
+            
         }
+
+            #sidebar-wrapper ul li a {
+                color:black;
+            }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-   <div id="wrapper">
+        <div id="wrapper">
             <div id="banner">
                 <asp:ContentPlaceHolder runat="server" ID="cphHead">
                 </asp:ContentPlaceHolder>
@@ -41,23 +49,32 @@
                 </asp:ContentPlaceHolder>
             </div>
             <div id="sidebar">
-                <asp:ImageButton ImageUrl="#" runat="server" ID="ImgLabel" Width="100%" Height="50px"/>
-                <br />
-                Hello, <asp:Label runat="server" ID="lblTen"/>
-                <br/>
-                <br/>
-                <asp:Image ImageUrl="#" runat="server" ID="imgAvatar" Heigth="150px" Width="150px" />
-                <br />
-                <br />
-                <asp:LinkButton Text="Log out" runat="server" ID="lbtnLogout" PostBackUrl="~/Admin/AdLogin.aspx"/>
-                <br />
-                <br />
-                <asp:LinkButton Text="Facebook" runat="server" ID="lbtnFacebook" PostBackUrl="https://facebook.com"/>
-                <br />
-                <asp:LinkButton Text="Youtube" runat="server" ID="lbtnYoutube" PostBackUrl="https://youtube.com"/>
-                <br />
-                <asp:LinkButton Text="Twitter" runat="server" ID="lbtnTwitter" PostBackUrl="https://twitter.com"/>
 
+                <p>
+                    Hello,
+                    <asp:Label runat="server" ID="lblTen" />
+                    / 
+                    <asp:LinkButton Text="Log out" runat="server" ID="lbtnLogout" PostBackUrl="~/Admin/AdLogin.aspx" />
+                </p>
+                <div id="sidebar-wrapper">
+                    <ul class="sidebar-nav">
+                        <li>
+                            <a href="#">Overview</a>
+                        </li>
+                        <li>
+                            <a href="#">Events</a>
+                        </li>
+                        <li>
+                            <a href="#">Email</a>
+                        </li>
+                        <li>
+                            <a href="#">Services</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div id="footer">
                 Designed by TM

@@ -13,12 +13,18 @@ public partial class Admin_ChangeUser : System.Web.UI.Page
         int.TryParse(Request.QueryString["uid"], out uid);
         if (!IsPostBack)
         {
-            if (uid != 0)
-                this.LoadTTND(uid);
-            else
-                Response.Redirect("~/Admin/UserMng.aspx");
+            if (!IsPostBack)
+                if (Session["user"] != null)
+                {
+                    if (uid != 0)
+                        this.LoadTTND(uid);
+                    else
+                        Response.Redirect("~/Admin/UserMng.aspx");
+                }
+                else
+                    Response.Redirect("AdLogin.aspx");
         }
-          
+
     }
 
     private void LoadTTND(int uid)

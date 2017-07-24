@@ -9,7 +9,7 @@ public partial class Log_In_AdLogin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Session["user"] = null;
     }
 
     protected void btnDN_Click(object sender, EventArgs e)
@@ -27,6 +27,7 @@ public partial class Log_In_AdLogin : System.Web.UI.Page
             #endregion
 
             // Valid:
+            Session["user"] = txtDN.Text;
 
             Response.Redirect("~/Admin/ProductMng.aspx");
         }

@@ -9,6 +9,12 @@ public partial class Admin_BackEndPage : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["user"] != null)
+            lblTen.Text = Session["user"].ToString();
+    }
+
+    protected void ImgLabel_Click(object sender, ImageClickEventArgs e)
+    {
 
     }
 }
