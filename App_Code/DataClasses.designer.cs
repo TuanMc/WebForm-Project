@@ -277,6 +277,8 @@ public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private System.Nullable<bool> _Status;
 	
+	private EntitySet<Order> _Orders;
+	
 	private EntityRef<Role> _Role;
 	
     #region Extensibility Method Definitions
@@ -305,6 +307,7 @@ public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	public User()
 	{
+		this._Orders = new EntitySet<Order>(new Action<Order>(this.attach_Orders), new Action<Order>(this.detach_Orders));
 		this._Role = default(EntityRef<Role>);
 		OnCreated();
 	}
@@ -493,6 +496,19 @@ public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Order", Storage="_Orders", ThisKey="UserID", OtherKey="UserID")]
+	public EntitySet<Order> Orders
+	{
+		get
+		{
+			return this._Orders;
+		}
+		set
+		{
+			this._Orders.Assign(value);
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Role_User", Storage="_Role", ThisKey="RoleID", OtherKey="RoleID", IsForeignKey=true)]
 	public Role Role
 	{
@@ -546,6 +562,18 @@ public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
+	
+	private void attach_Orders(Order entity)
+	{
+		this.SendPropertyChanging();
+		entity.User = this;
+	}
+	
+	private void detach_Orders(Order entity)
+	{
+		this.SendPropertyChanging();
+		entity.User = null;
+	}
 }
 
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.OrderDetails")]
@@ -554,19 +582,19 @@ public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChang
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
-	private int _ODetailID;
+	private int _OrderID;
 	
-	private System.Nullable<int> _ProductID;
+	private int _ProductID;
+	
+	private decimal _UnitPrice;
+	
+	private short _Quantity;
 	
 	private System.Nullable<System.DateTime> _OrderDate;
 	
-	private System.Nullable<System.DateTime> _ShippedDate;
+	private System.Nullable<System.DateTime> _ShipDate;
 	
-	private string _UnitPrice;
-	
-	private System.Nullable<int> _Quantity;
-	
-	private EntitySet<Order> _Orders;
+	private EntityRef<Order> _Order;
 	
 	private EntityRef<Product> _Product;
 	
@@ -574,49 +602,53 @@ public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChang
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnODetailIDChanging(int value);
-    partial void OnODetailIDChanged();
-    partial void OnProductIDChanging(System.Nullable<int> value);
+    partial void OnOrderIDChanging(int value);
+    partial void OnOrderIDChanged();
+    partial void OnProductIDChanging(int value);
     partial void OnProductIDChanged();
+    partial void OnUnitPriceChanging(decimal value);
+    partial void OnUnitPriceChanged();
+    partial void OnQuantityChanging(short value);
+    partial void OnQuantityChanged();
     partial void OnOrderDateChanging(System.Nullable<System.DateTime> value);
     partial void OnOrderDateChanged();
-    partial void OnShippedDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnShippedDateChanged();
-    partial void OnUnitPriceChanging(string value);
-    partial void OnUnitPriceChanged();
-    partial void OnQuantityChanging(System.Nullable<int> value);
-    partial void OnQuantityChanged();
+    partial void OnShipDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnShipDateChanged();
     #endregion
 	
 	public OrderDetail()
 	{
-		this._Orders = new EntitySet<Order>(new Action<Order>(this.attach_Orders), new Action<Order>(this.detach_Orders));
+		this._Order = default(EntityRef<Order>);
 		this._Product = default(EntityRef<Product>);
 		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ODetailID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int ODetailID
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+	public int OrderID
 	{
 		get
 		{
-			return this._ODetailID;
+			return this._OrderID;
 		}
 		set
 		{
-			if ((this._ODetailID != value))
+			if ((this._OrderID != value))
 			{
-				this.OnODetailIDChanging(value);
+				if (this._Order.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.OnOrderIDChanging(value);
 				this.SendPropertyChanging();
-				this._ODetailID = value;
-				this.SendPropertyChanged("ODetailID");
-				this.OnODetailIDChanged();
+				this._OrderID = value;
+				this.SendPropertyChanged("OrderID");
+				this.OnOrderIDChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductID", DbType="Int")]
-	public System.Nullable<int> ProductID
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+	public int ProductID
 	{
 		get
 		{
@@ -639,7 +671,47 @@ public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChang
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDate", DbType="Date")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitPrice", DbType="Money NOT NULL")]
+	public decimal UnitPrice
+	{
+		get
+		{
+			return this._UnitPrice;
+		}
+		set
+		{
+			if ((this._UnitPrice != value))
+			{
+				this.OnUnitPriceChanging(value);
+				this.SendPropertyChanging();
+				this._UnitPrice = value;
+				this.SendPropertyChanged("UnitPrice");
+				this.OnUnitPriceChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="SmallInt NOT NULL")]
+	public short Quantity
+	{
+		get
+		{
+			return this._Quantity;
+		}
+		set
+		{
+			if ((this._Quantity != value))
+			{
+				this.OnQuantityChanging(value);
+				this.SendPropertyChanging();
+				this._Quantity = value;
+				this.SendPropertyChanged("Quantity");
+				this.OnQuantityChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDate", DbType="DateTime")]
 	public System.Nullable<System.DateTime> OrderDate
 	{
 		get
@@ -659,76 +731,57 @@ public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChang
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShippedDate", DbType="Date")]
-	public System.Nullable<System.DateTime> ShippedDate
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShipDate", DbType="DateTime")]
+	public System.Nullable<System.DateTime> ShipDate
 	{
 		get
 		{
-			return this._ShippedDate;
+			return this._ShipDate;
 		}
 		set
 		{
-			if ((this._ShippedDate != value))
+			if ((this._ShipDate != value))
 			{
-				this.OnShippedDateChanging(value);
+				this.OnShipDateChanging(value);
 				this.SendPropertyChanging();
-				this._ShippedDate = value;
-				this.SendPropertyChanged("ShippedDate");
-				this.OnShippedDateChanged();
+				this._ShipDate = value;
+				this.SendPropertyChanged("ShipDate");
+				this.OnShipDateChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitPrice", DbType="NChar(10)")]
-	public string UnitPrice
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Order_OrderDetail", Storage="_Order", ThisKey="OrderID", OtherKey="OrderID", IsForeignKey=true)]
+	public Order Order
 	{
 		get
 		{
-			return this._UnitPrice;
+			return this._Order.Entity;
 		}
 		set
 		{
-			if ((this._UnitPrice != value))
+			Order previousValue = this._Order.Entity;
+			if (((previousValue != value) 
+						|| (this._Order.HasLoadedOrAssignedValue == false)))
 			{
-				this.OnUnitPriceChanging(value);
 				this.SendPropertyChanging();
-				this._UnitPrice = value;
-				this.SendPropertyChanged("UnitPrice");
-				this.OnUnitPriceChanged();
+				if ((previousValue != null))
+				{
+					this._Order.Entity = null;
+					previousValue.OrderDetails.Remove(this);
+				}
+				this._Order.Entity = value;
+				if ((value != null))
+				{
+					value.OrderDetails.Add(this);
+					this._OrderID = value.OrderID;
+				}
+				else
+				{
+					this._OrderID = default(int);
+				}
+				this.SendPropertyChanged("Order");
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int")]
-	public System.Nullable<int> Quantity
-	{
-		get
-		{
-			return this._Quantity;
-		}
-		set
-		{
-			if ((this._Quantity != value))
-			{
-				this.OnQuantityChanging(value);
-				this.SendPropertyChanging();
-				this._Quantity = value;
-				this.SendPropertyChanged("Quantity");
-				this.OnQuantityChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="OrderDetail_Order", Storage="_Orders", ThisKey="ODetailID", OtherKey="ODetailID")]
-	public EntitySet<Order> Orders
-	{
-		get
-		{
-			return this._Orders;
-		}
-		set
-		{
-			this._Orders.Assign(value);
 		}
 	}
 	
@@ -759,7 +812,7 @@ public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChang
 				}
 				else
 				{
-					this._ProductID = default(Nullable<int>);
+					this._ProductID = default(int);
 				}
 				this.SendPropertyChanged("Product");
 			}
@@ -785,18 +838,6 @@ public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChang
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
-	
-	private void attach_Orders(Order entity)
-	{
-		this.SendPropertyChanging();
-		entity.OrderDetail = this;
-	}
-	
-	private void detach_Orders(Order entity)
-	{
-		this.SendPropertyChanging();
-		entity.OrderDetail = null;
-	}
 }
 
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Orders")]
@@ -809,11 +850,15 @@ public partial class Order : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private System.Nullable<int> _UserID;
 	
-	private System.Nullable<int> _ODetailID;
+	private System.Nullable<System.DateTime> _OrderDate;
 	
-	private string _ShipAddress;
+	private string _Address;
 	
-	private EntityRef<OrderDetail> _OrderDetail;
+	private System.Nullable<bool> _OrderStatus;
+	
+	private EntitySet<OrderDetail> _OrderDetails;
+	
+	private EntityRef<User> _User;
 	
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -823,15 +868,18 @@ public partial class Order : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnOrderIDChanged();
     partial void OnUserIDChanging(System.Nullable<int> value);
     partial void OnUserIDChanged();
-    partial void OnODetailIDChanging(System.Nullable<int> value);
-    partial void OnODetailIDChanged();
-    partial void OnShipAddressChanging(string value);
-    partial void OnShipAddressChanged();
+    partial void OnOrderDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnOrderDateChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnOrderStatusChanging(System.Nullable<bool> value);
+    partial void OnOrderStatusChanged();
     #endregion
 	
 	public Order()
 	{
-		this._OrderDetail = default(EntityRef<OrderDetail>);
+		this._OrderDetails = new EntitySet<OrderDetail>(new Action<OrderDetail>(this.attach_OrderDetails), new Action<OrderDetail>(this.detach_OrderDetails));
+		this._User = default(EntityRef<User>);
 		OnCreated();
 	}
 	
@@ -866,6 +914,10 @@ public partial class Order : INotifyPropertyChanging, INotifyPropertyChanged
 		{
 			if ((this._UserID != value))
 			{
+				if (this._User.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
 				this.OnUserIDChanging(value);
 				this.SendPropertyChanging();
 				this._UserID = value;
@@ -875,80 +927,109 @@ public partial class Order : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ODetailID", DbType="Int")]
-	public System.Nullable<int> ODetailID
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDate", DbType="DateTime")]
+	public System.Nullable<System.DateTime> OrderDate
 	{
 		get
 		{
-			return this._ODetailID;
+			return this._OrderDate;
 		}
 		set
 		{
-			if ((this._ODetailID != value))
+			if ((this._OrderDate != value))
 			{
-				if (this._OrderDetail.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.OnODetailIDChanging(value);
+				this.OnOrderDateChanging(value);
 				this.SendPropertyChanging();
-				this._ODetailID = value;
-				this.SendPropertyChanged("ODetailID");
-				this.OnODetailIDChanged();
+				this._OrderDate = value;
+				this.SendPropertyChanged("OrderDate");
+				this.OnOrderDateChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShipAddress", DbType="VarChar(500)")]
-	public string ShipAddress
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+	public string Address
 	{
 		get
 		{
-			return this._ShipAddress;
+			return this._Address;
 		}
 		set
 		{
-			if ((this._ShipAddress != value))
+			if ((this._Address != value))
 			{
-				this.OnShipAddressChanging(value);
+				this.OnAddressChanging(value);
 				this.SendPropertyChanging();
-				this._ShipAddress = value;
-				this.SendPropertyChanged("ShipAddress");
-				this.OnShipAddressChanged();
+				this._Address = value;
+				this.SendPropertyChanged("Address");
+				this.OnAddressChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="OrderDetail_Order", Storage="_OrderDetail", ThisKey="ODetailID", OtherKey="ODetailID", IsForeignKey=true)]
-	public OrderDetail OrderDetail
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderStatus", DbType="Bit")]
+	public System.Nullable<bool> OrderStatus
 	{
 		get
 		{
-			return this._OrderDetail.Entity;
+			return this._OrderStatus;
 		}
 		set
 		{
-			OrderDetail previousValue = this._OrderDetail.Entity;
+			if ((this._OrderStatus != value))
+			{
+				this.OnOrderStatusChanging(value);
+				this.SendPropertyChanging();
+				this._OrderStatus = value;
+				this.SendPropertyChanged("OrderStatus");
+				this.OnOrderStatusChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Order_OrderDetail", Storage="_OrderDetails", ThisKey="OrderID", OtherKey="OrderID")]
+	public EntitySet<OrderDetail> OrderDetails
+	{
+		get
+		{
+			return this._OrderDetails;
+		}
+		set
+		{
+			this._OrderDetails.Assign(value);
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Order", Storage="_User", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
+	public User User
+	{
+		get
+		{
+			return this._User.Entity;
+		}
+		set
+		{
+			User previousValue = this._User.Entity;
 			if (((previousValue != value) 
-						|| (this._OrderDetail.HasLoadedOrAssignedValue == false)))
+						|| (this._User.HasLoadedOrAssignedValue == false)))
 			{
 				this.SendPropertyChanging();
 				if ((previousValue != null))
 				{
-					this._OrderDetail.Entity = null;
+					this._User.Entity = null;
 					previousValue.Orders.Remove(this);
 				}
-				this._OrderDetail.Entity = value;
+				this._User.Entity = value;
 				if ((value != null))
 				{
 					value.Orders.Add(this);
-					this._ODetailID = value.ODetailID;
+					this._UserID = value.UserID;
 				}
 				else
 				{
-					this._ODetailID = default(Nullable<int>);
+					this._UserID = default(Nullable<int>);
 				}
-				this.SendPropertyChanged("OrderDetail");
+				this.SendPropertyChanged("User");
 			}
 		}
 	}
@@ -971,6 +1052,18 @@ public partial class Order : INotifyPropertyChanging, INotifyPropertyChanged
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
+	}
+	
+	private void attach_OrderDetails(OrderDetail entity)
+	{
+		this.SendPropertyChanging();
+		entity.Order = this;
+	}
+	
+	private void detach_OrderDetails(OrderDetail entity)
+	{
+		this.SendPropertyChanging();
+		entity.Order = null;
 	}
 }
 

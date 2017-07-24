@@ -3,11 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
-    <h3>Product's Info</h3>
+    <h3>Products' Info</h3>
     <asp:LinkButton runat="server" ID="lbtnThemSP" PostBackUrl="~/Admin/ChangeInfo.aspx" Text="Add New Product"></asp:LinkButton>
     <br />
     <br />
-    <asp:Gridview runat="server" ID="grvSP" AutoGenerateColumns="False" Height="216px" Width="100%" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Vertical" ForeColor="Black">
+    <asp:Gridview runat="server" ID="grvSP" AutoGenerateColumns="False" Width="100%" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Vertical" ForeColor="Black" CssClass="Middle">
         <AlternatingRowStyle BackColor="White" />
     <Columns>
         <asp:BoundField DataField="ProductID" HeaderText="Product ID" />
@@ -41,7 +41,5 @@
     <br />
     <asp:LinkButton ID="lbtnReturnHome" runat="server" PostBackUrl="~/Pages/Default.aspx" Text="Back to Home Page"></asp:LinkButton>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="cphSide" runat="Server">
-<asp:LinkButton runat="server" ID="lbtnDX" Text="Log out" PostBackUrl="~/Log In/LogIn.aspx"></asp:LinkButton>
-</asp:Content>
+
 

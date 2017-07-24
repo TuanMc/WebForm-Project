@@ -6,7 +6,7 @@
     <h3>Users' Info</h3>
     <br />
     <br />
-    <asp:GridView runat="server" ID="grvND" AutoGenerateColumns="False" Width="100%" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
+    <asp:GridView runat="server" ID="grvND" AutoGenerateColumns="False" Width="100%" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" CssClass="Middle">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField HeaderText="ID" Datafield="UserID" />
@@ -36,7 +36,5 @@
         <SortedDescendingHeaderStyle BackColor="#575357" />
     </asp:GridView>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="cphSide" Runat="Server">
-    <asp:LinkButton runat="server" ID="lbtnDX" Text="Log out" PostBackUrl="~/Log In/LogIn.aspx"></asp:LinkButton>
-</asp:Content>
+
 

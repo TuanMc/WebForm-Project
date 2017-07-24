@@ -16,7 +16,7 @@
     </asp:Panel>
 
     <h3>Categories' Info</h3>
-    <asp:GridView runat="server" ID="grvLoai" AutoGenerateColumns="False" Width="259px" Height="160px" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Vertical" ForeColor="Black">
+    <asp:GridView runat="server" ID="grvLoai" AutoGenerateColumns="False" Width="259px" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Vertical" ForeColor="Black" CssClass="Middle">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField HeaderText="ID" DataField="CategoryID" />
@@ -36,7 +36,5 @@
     
 
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="cphSide" Runat="Server">
-    <asp:LinkButton runat="server" ID="lbtnDX" Text="Log out" PostBackUrl="~/Log In/LogIn.aspx"></asp:LinkButton>
-</asp:Content>
+
 

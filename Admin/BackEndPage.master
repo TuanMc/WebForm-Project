@@ -6,6 +6,15 @@
 <head runat="server">
     <title>Admin</title>
     <link rel="stylesheet" type="text/css" href="~/Style/StyleSheet.css" />
+    <style>
+        #sidebar {
+            text-align:center;
+        }
+
+        .Middle {
+            text-align:center;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -15,10 +24,13 @@
                 </asp:ContentPlaceHolder>
             </div>
             <ul id="nav">
-                <li><a href="ProductMng.aspx">Products</a></li>
+                <li><a href="ProductMng.aspx">Products</a>
+                </li>
                 <li><a href="CategoryMng.aspx">Categories</a>
                 </li>
                 <li><a href="SupplMng.aspx">Suppliers</a>
+                </li>
+                <li><a href="OrderMng.aspx">Order</a>
                 </li>
                 <li><a href="UserMng.aspx">User</a>
                 </li>
@@ -29,7 +41,23 @@
                 </asp:ContentPlaceHolder>
             </div>
             <div id="sidebar">
-                <asp:ContentPlaceHolder runat="server" ID="cphSide"></asp:ContentPlaceHolder>
+                <asp:ImageButton ImageUrl="#" runat="server" ID="ImgLabel" Width="100%" Height="50px"/>
+                <br />
+                Hello, <asp:Label runat="server" ID="lblTen"/>
+                <br/>
+                <br/>
+                <asp:Image ImageUrl="#" runat="server" ID="imgAvatar" Heigth="150px" Width="150px" />
+                <br />
+                <br />
+                <asp:LinkButton Text="Log out" runat="server" ID="lbtnLogout" PostBackUrl="~/Admin/AdLogin.aspx"/>
+                <br />
+                <br />
+                <asp:LinkButton Text="Facebook" runat="server" ID="lbtnFacebook" PostBackUrl="https://facebook.com"/>
+                <br />
+                <asp:LinkButton Text="Youtube" runat="server" ID="lbtnYoutube" PostBackUrl="https://youtube.com"/>
+                <br />
+                <asp:LinkButton Text="Twitter" runat="server" ID="lbtnTwitter" PostBackUrl="https://twitter.com"/>
+
             </div>
             <div id="footer">
                 Designed by TM

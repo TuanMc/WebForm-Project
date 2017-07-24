@@ -69,12 +69,47 @@ public class Kho : IKho
         }
     }
 
+    public List<Order> DanhSachHD
+    {
+        get
+        {
+            return dc.Orders.ToList();
+        }
+    }
+
+    public List<OrderDetail> DanhSachCTHD
+    {
+        get
+        {
+            return dc.OrderDetails.ToList();
+        }
+    }
+
     public void Dispose()
     {
         if (this.dc != null) this.dc.Dispose();
     }
 
-    
+    public void GiaoHD(int id)
+    {
+        try
+        {
+            var hd = TimHD(id);
+            if (hd == default(Order))
+            {
+                return;
+            }
+            else
+            {
+                hd.OrderStatus = true;
+                dc.SubmitChanges();
+            }
+        }
+        catch (Exception)
+        {
+            return;
+        }
+    }
 
     public void SuaDM(Category category)
     {
@@ -190,6 +225,11 @@ public class Kho : IKho
 
     }
 
+    public void themHD(Order p)
+    {
+        throw new NotImplementedException();
+    }
+
     public void themNCC(Supplier s)
     {
         try
@@ -234,6 +274,11 @@ public class Kho : IKho
        
     }
 
+    public List<OrderDetail> TimCTHD(int id)
+    {
+        return dc.OrderDetails.Where(x => x.OrderID == id).ToList();
+    }
+
     public Category TimDM(int id)
     {
         return dc.Categories.FirstOrDefault(x => x.CategoryID == id);
@@ -242,6 +287,16 @@ public class Kho : IKho
     public Category TimDMTheoTen(string name)
     {
         return dc.Categories.Where(x => x.CategoryName.Contains(name)).SingleOrDefault();
+    }
+
+    public Order TimHD(int id)
+    {
+        return dc.Orders.FirstOrDefault(x => x.OrderID == id);
+    }
+
+    public Order TimHDTheoTen(string name)
+    {
+        throw new NotImplementedException();
     }
 
     public Supplier TimNCC(int id)

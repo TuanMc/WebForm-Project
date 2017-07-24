@@ -1,7 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/BackEndPage.master" AutoEventWireup="true" CodeFile="SupplMng.aspx.cs" Inherits="Admin_SupplMng" %>
-
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
@@ -18,8 +15,8 @@
     </asp:Panel>
 
     <h3>Suppliers' Info</h3>
-    <asp:GridView runat="server" ID="grvNCC" AutoGenerateColumns="False" Width="259px" Height="160px" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Vertical" ForeColor="Black">
-        <AlternatingRowStyle BackColor="White" />
+    <asp:GridView runat="server" ID="grvNCC" AutoGenerateColumns="False" Width="259px" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Vertical" ForeColor="Black" Font-Overline="False" CssClass="Middle">
+        <AlternatingRowStyle BackColor="White" CssClass="Middle"/>
         <Columns>
             <asp:BoundField HeaderText="ID" DataField="SupplierID" />
             <asp:BoundField HeaderText="Supplier Name" DataField="SupplierName" />
@@ -34,10 +31,8 @@
         <SortedDescendingCellStyle BackColor="#EAEAD3" />
         <SortedDescendingHeaderStyle BackColor="#575357" />
     </asp:GridView>
-    <br />
+   
     
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="cphSide" runat="Server">
-    <asp:LinkButton runat="server" ID="lbtnDX" Text="Log out" PostBackUrl="~/Log In/LogIn.aspx"></asp:LinkButton>
-</asp:Content>
+
 

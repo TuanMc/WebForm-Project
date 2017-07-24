@@ -57,7 +57,5 @@
         </tr>
     </table>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="cphSide" runat="Server">
-    <asp:LinkButton runat="server" ID="lbtnDX" Text="Log out" PostBackUrl="~/Log In/LogIn.aspx"></asp:LinkButton>
-</asp:Content>
+
 
