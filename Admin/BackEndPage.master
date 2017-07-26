@@ -5,7 +5,7 @@
 <html>
 <head runat="server">
     <title>Admin</title>
-    <link rel="stylesheet" type="text/css" href="~/Style/StyleSheet.css" />
+    <link href="../Style/StyleSheet.css" rel="stylesheet" />
     <style>
         #sidebar {
             text-align: center;
@@ -22,16 +22,19 @@
             #sidebar-wrapper ul li a {
                 color:black;
             }
+        .auto-style1 {
+            height: 40px;
+        }
     </style>
 </head>
-<body>
+<body style="width: 100%">
     <form id="form1" runat="server">
         <div id="wrapper">
             <div id="banner">
                 <asp:ContentPlaceHolder runat="server" ID="cphHead">
                 </asp:ContentPlaceHolder>
             </div>
-            <ul id="nav">
+            <ul id="nav" class="auto-style1">
                 <li><a href="ProductMng.aspx">Products</a>
                 </li>
                 <li><a href="CategoryMng.aspx">Categories</a>
@@ -49,7 +52,6 @@
                 </asp:ContentPlaceHolder>
             </div>
             <div id="sidebar">
-
                 <p>
                     Hello,
                     <asp:Label runat="server" ID="lblTen" />

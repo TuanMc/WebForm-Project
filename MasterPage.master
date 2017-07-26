@@ -5,48 +5,112 @@
 <html>
 <head runat="server">
     <title>My website</title>
-    <link rel="stylesheet" type="text/css" href="~/Style/StyleSheet.css" />
+    <link href="Style/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+        .main {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            margin-left: 90px;
+            margin-right: 90px;
+        }
+
+        .footer {
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #banner {
+            height:300px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="wrapper">
-            <div id="banner">
-                <asp:ContentPlaceHolder runat="server" ID="cphHead">
-                </asp:ContentPlaceHolder>
-            </div>
-            <ul id="nav">
-                <li><a href="Default.aspx">Products</a></li>
-                <li><a href="Laptop.aspx">Laptop</a>
-                    <ul>
-                        <li><a href="#">MSI</a></li>
-                        <li><a href="#">Asus</a></li>
-                    </ul>
-                </li>
-                <li><a href="Mouse.aspx">Mouse</a>
-                    <ul>
-                        <li><a href="#">Razer</a></li>
-                        <li><a href="#">Logitech</a></li>
-                    </ul>
-                </li>
-                <li><a href="Keyboard.aspx">Keyboard</a>
-                    <ul>
-                        <li><a href="#">Razer</a></li>
-                    </ul>
-                </li>
-                <li><a href="Cart.aspx">Cart</a></li>
-            </ul>
+        <nav class="navbar navbar-default" role="navigation">
 
-            <div id="content_area">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <a class="navbar-brand" href="#">Home</a>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Product<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Laptop</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Mouse</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Keyboard</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Suppliers<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Razer</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Logitech</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Asus</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">MSI</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="col-sm-3 col-md-3">
+                    <form class="navbar-form" role="search">
+                        <div class="input-group">
+                            <asp:TextBox runat="server" CssClass="form-control" Placeholder="Search" ID="txtSearch" />
+                            <div class="input-group-btn">
+                                <button runat="server" class="btn btefault" id="btnSeach" onserverclick="Page_Load">
+                                    <i class="glyphicon glyphicon-search" style="left: 0px; top: 1px; width: 20px"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello, <%#Eval("Username") %><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="Cart.aspx"><i class="fa fa-shopping-cart fa-2x icon" aria-hidden="true" style="padding-right: 15px; padding-left: 0px;"></i>Cart</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"><i class="fa fa-user fa-2x icon" aria-hidden="true" style="padding-right: 15px; padding-left: 0px;"></i>Account</a></li>
+                            <li class="divider"></li>
+                            <li><a href="LogIn.aspx"><i class="fa fa-sign-out fa-2x icon" aria-hidden="true" style="padding-right: 15px; padding-left: 0px;"></i>Log out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="wrapper">
+
+             <div id="banner">
+                    <asp:ContentPlaceHolder runat="server" ID="cphHead">
+                    </asp:ContentPlaceHolder>
+                </div>
+            <div class="main">
                 <asp:ContentPlaceHolder runat="server" ID="cphMain">
                 </asp:ContentPlaceHolder>
             </div>
-            <div id="sidebar">
-                <asp:ContentPlaceHolder runat="server" ID="cphSide"></asp:ContentPlaceHolder>
-            </div>
-            <div id="footer">
+            <div class="footer">
                 Designed by TM
             </div>
         </div>
     </form>
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
+    <script src="Style/js/bootstrap.min.js"></script>
 </body>
 </html>
