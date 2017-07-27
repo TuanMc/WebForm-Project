@@ -120,8 +120,8 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
             if (id != 0)
             {
                 string str = fulImg.FileName;
-                fulImg.PostedFile.SaveAs(Server.MapPath(".") + "//Upload_Img//" + str);
-                string path = "~/Image" + str.ToString();
+                fulImg.PostedFile.SaveAs(Server.MapPath(".") + "//Uploads//" + str);
+                string path = "~/Admin/Uploads/" + str.ToString();
                 k.SuaSP(new Product()
                 {
                     ProductID = id,
