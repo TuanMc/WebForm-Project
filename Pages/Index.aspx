@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Pages_Index" EnableEventValidation="false" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Pages_Index" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="Server">
-    <div class="container" style="height:500px">
-        <div id="myCarousel" class="carousel slide " data-ride="carousel">
+    <div class="container">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -10,14 +10,14 @@
             </ol>
             <div class="carousel-inner">
                 <div class="item active" style="left: 0; top: 0px; height: 400px">
-                    <img src="Image/parts-banner2-1.png" style="width: 100%" />
+                    <img src="Pages/Image/parts-banner2-1.png" style="width: 100%" />
                 </div>
                 <div class="item" style="left: 0; top: 0px; height: 400px">
-                    <img src="Image/parts-banner2-1.png" style="width: 100%" />
+                    <img src="Pages/Image/parts-banner2-1.png" style="width: 100%" />
 
                 </div>
                 <div class="item" style="left: 0; top: 0px; height: 400px">
-                    <img src="Image/parts-banner2-1.png" style="width: 100%" />
+                    <img src="Pages/Image/parts-banner2-1.png" style="width: 100%" />
 
                 </div>
             </div>
