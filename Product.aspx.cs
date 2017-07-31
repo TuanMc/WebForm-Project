@@ -34,7 +34,8 @@ public partial class Product : System.Web.UI.Page
 
     protected void lbtnTenSP_Click(object sender, EventArgs e)
     {
-
+        var ma = int.Parse((sender as LinkButton).CommandArgument);
+        Response.Redirect("ProductDetail.aspx?ma=" + ma);
     }
 
     protected void btnMua_Click(object sender, EventArgs e)
