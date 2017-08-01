@@ -29,6 +29,7 @@ public partial class Page_ProductDetail : System.Web.UI.Page
                 lblNCC.Text = ncc.SupplierName;
                 lblGia.Text = sp.Price.ToString();
                 lblTT.Text = sp.Description;
+                img.ImageUrl = sp.Picture;
             }
         }
         

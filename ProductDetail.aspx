@@ -8,10 +8,10 @@
     <ol class="breadcrumb">
         <li><a href="Index.aspx">Home</a></li>
         <li><a href="#">
-            <asp:label id="lblTenDM" runat="server"></asp:label>
+            <asp:Label ID="lblTenDM" runat="server"></asp:Label>
         </a></li>
         <li><a href="#">
-            <asp:label id="lblTenSP" runat="server"></asp:label>
+            <asp:Label ID="lblTenSP" runat="server"></asp:Label>
         </a></li>
     </ol>
     <!-- End Breadcrumb -->
@@ -20,36 +20,40 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="col-md-3 col-lg-3 " align="center">
-                    <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-rounded">
+                    <asp:Image ID="img" runat="server" Height="200px" Width="300px" /><br />
                 </div>
 
             </div>
             <div class="col-md-8">
-                <h2><asp:Label runat="server" ID="lblTen"></asp:Label></h2>
+                <h2>
+                    <asp:Label runat="server" ID="lblTen"></asp:Label></h2>
                 <div class=" col-md-9 col-lg-9 ">
                     <table class="table table-user-information">
                         <tbody>
                             <tr>
                                 <td>Supplier:</td>
-                                <td><asp:Label runat="server" ID="lblNCC"></asp:Label></td>
+                                <td>
+                                    <asp:Label runat="server" ID="lblNCC"></asp:Label></td>
                             </tr>
                             <tr>
                                 <td>Status:</td>
-                                <td><asp:Label runat="server" ID="lblTT"></asp:Label></td>
+                                <td>
+                                    <asp:Label runat="server" ID="lblTT"></asp:Label></td>
                             </tr>
                             <tr>
                                 <td>Price:</td>
-                                <td><asp:Label runat="server" ID="lblGia"></asp:Label></td>
+                                <td>
+                                    <asp:Label runat="server" ID="lblGia"></asp:Label></td>
                             </tr>
                             <tr>
                                 <td>Quantity:</td>
                                 <td>
-                                    <asp:textbox runat="server" cssclass="form-control" style="width: 50px" id="txtSL">1</asp:textbox>
+                                    <asp:TextBox runat="server" CssClass="form-control" Style="width: 50px" ID="txtSL">1</asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <asp:button cssclass="btn btn-default" style="width: 150px" text="Add to cart" id="btnAdd" runat="server" />
+                                    <asp:Button CssClass="btn btn-default" Style="width: 150px" Text="Add to cart" ID="btnAdd" runat="server" />
                                 </td>
                             </tr>
                         </tbody>

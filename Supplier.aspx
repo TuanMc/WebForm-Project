@@ -12,7 +12,7 @@
         <ItemStyle HorizontalAlign="Center" />
         <ItemTemplate>
             <div class="item">
-                <asp:ImageButton ID="img" ImageUrl='<%#Eval("Picture") %>' runat="server" Height="180px" Width="320px" /><br />
+                <asp:ImageButton ID="img" ImageUrl='<%#Eval("Picture") %>' PostBackUrl='<%# string.Format("~/ProductDetail.aspx?ma={0}", Eval("ProductID")) %>' runat="server" Height="180px" Width="320px" /><br />
                 <br />
                 <asp:LinkButton ForeColor="Red" Font-Bold="true" OnClick="lbtnTenSP_Click" CommandArgument='<%#Eval("ProductID") %>' runat="server"><%#Eval("ProductName") %></asp:LinkButton><br />
                 <br />
