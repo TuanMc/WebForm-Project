@@ -43,5 +43,7 @@ public partial class Pages_Index : System.Web.UI.Page
     protected void btnMua_Click(object sender, EventArgs e)
     {
 
+        var ma = int.Parse((sender as Button).CommandArgument);
+        Response.Redirect("ProductDetail.aspx?ma=" + ma);
     }
 }

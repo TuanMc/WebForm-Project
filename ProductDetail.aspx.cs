@@ -34,4 +34,9 @@ public partial class Page_ProductDetail : System.Web.UI.Page
         }
         
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Cart.aspx");
+    }
 }

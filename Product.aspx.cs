@@ -40,6 +40,7 @@ public partial class Product : System.Web.UI.Page
 
     protected void btnMua_Click(object sender, EventArgs e)
     {
-
+        var ma = int.Parse((sender as Button).CommandArgument);
+        Response.Redirect("ProductDetail.aspx?ma=" + ma);
     }
 }

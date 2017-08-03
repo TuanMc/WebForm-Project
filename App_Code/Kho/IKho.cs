@@ -8,7 +8,7 @@ using System.Web;
 /// </summary>
 public interface IKho:IDisposable
 {
-   #region Products
+    #region Products
     List<Product> DanhSachSP { get; }
 
     List<Product> DanhSachSPHienThi { get; }
@@ -94,7 +94,6 @@ public interface IKho:IDisposable
     void GiaoHD(int id);
 
     #endregion
-
 
     #region Order Detail
     List<OrderDetail> DanhSachCTHD { get; }
