@@ -27,9 +27,6 @@ public partial class Search : System.Web.UI.Page
         Response.Redirect("ProductDetail.aspx?ma=" + ma);
     }
 
-    protected void btnMua_Click(object sender, EventArgs e)
-    {
-
-    }
+   
     
 }

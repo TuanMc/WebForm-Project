@@ -36,19 +36,24 @@ public class Gio : List<Product>, IGio
         if (this.dc != null) this.dc.Dispose();
     }
 
-    public void SuaSL(int id, int quantity)
+    public void SuaSL(int uid, int pid, int quantity)
     {
-        var c = TimMH(id);
-        c.Quantity = (short)quantity;
-
+        var list = TimMH(uid);
+        if (list != null)
+        {
+            var c = TimSPTrongGio(pid);
+            if (c != null)
+                if (quantity != c.Quantity && quantity > 0)
+                    c.Quantity = (short)quantity;
+        }
         dc.SubmitChanges();
     }
 
-    public void themMH(Cart p)
+    public void themMH(Cart c)
     {
         try
         {
-            dc.Carts.InsertOnSubmit(p);
+            dc.Carts.InsertOnSubmit(c);
             dc.SubmitChanges();
         }
         catch (Exception)
@@ -64,30 +69,25 @@ public class Gio : List<Product>, IGio
 
     public void XoaMH(int id)
     {
-        //    try
-        //    {
-        //        var MH = TimMH(id);
-        //        if (MH == default(Cart))
-        //        {
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            dc.Carts.DeleteOnSubmit(TimMH(id));
-        //            dc.SubmitChanges();
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return;
-        //    }
-        //}
-
-        throw new NotImplementedException();
+        try
+        {
+            var MH = TimSPTrongGio(id);
+            if (MH != null)
+            {
+                dc.Carts.DeleteOnSubmit(MH);
+                dc.SubmitChanges();
+            }
+            else
+                return;
+        }
+        catch (Exception)
+        {
+            return;
+        }
     }
 
-    public Product TimSP(int id)
+    public Cart TimSPTrongGio(int id)
     {
-        return dc.Products.FirstOrDefault(x => x.ProductID == id);
+       return dc.Carts.FirstOrDefault(x => x.ProductID == id);
     }
 }

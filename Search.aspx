@@ -18,7 +18,7 @@
                     <br />
                     <asp:Label runat="server" Font-Bold="true"><%#Eval("Price") %></asp:Label><br />
                     <br />
-                    <asp:Button runat="server" Height="30px" Text="Add to Cart" Width="200px" CommandArgument='<%#Eval("ProductID") %>' OnClick="btnMua_Click" />
+                    <asp:LinkButton CssClass="btn btn-default" runat="server" Height="30px" Text="Add to Cart" Width="200px" CommandArgument='<%#Eval("ProductID") %>' OnClick="lbtnTenSP_Click"  />
                     <br />
                 </div>
             </ItemTemplate>

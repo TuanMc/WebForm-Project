@@ -29,7 +29,8 @@
                                 <h4 class="media-heading">
                                     <asp:label id="lblName" runat="server" />
                                 </h4>
-                                <span>Status: </span><span class="text-success"><strong><%#Eval("IsInCart") %></strong></span>
+                                <span>Status: </span><span class="text-success"><strong>
+                                    <asp:Label ID="lblTT" runat="server" /></strong></span>
                             </div>
                         </div>
                     </td>
@@ -41,10 +42,7 @@
                     </strong></td>
                     <td class="col-sm-1 col-md-1 text-center"><strong>$<asp:label id="lblSubPrice" runat="server" /></strong></td>
                     <td class="col-sm-1 col-md-1">
-                        <button type="button" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove"></span>Remove
-                       
-                        </button>
+                        <asp:Button Text="Remove" class="btn btn-danger" runat="server" ID="btnRemove" CommandArgument='<%#Eval("ProductID") %>' OnClick="btnRemove_ServerClick" />
                     </td>
                 </tr>
             </tbody>

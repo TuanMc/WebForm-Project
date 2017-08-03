@@ -8,15 +8,15 @@ public interface IGio: IDisposable
 {
     List<Cart> DanhSachMHTrongGio(int uid);
 
-    void themMH(Cart p);
+    void themMH(Cart c);
 
     Cart TimMH(int id);
 
-    void SuaSL(int id, int quantity);
+    void SuaSL(int uid, int pid, int quantity);
 
     void XoaMH(int id);
 
     void DaMua(List<Cart> cart);
 
-    Product TimSP(int id);
+    Cart TimSPTrongGio(int id);
 }
