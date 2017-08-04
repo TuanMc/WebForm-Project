@@ -35,7 +35,7 @@
                         </div>
                     </td>
                     <td class="col-sm-1 col-md-1" style="text-align: center">
-                        <input class="form-control" id="txtSL" value='<%#Eval("Quantity") %>'>
+                        <asp:TextBox CssClass="form-control" runat="server" ID="txtSL" />
                     </td>
                     <td class="col-sm-1 col-md-1 text-center"><strong>$
                                     <asp:label id="lblPrice" runat="server" />
@@ -98,13 +98,15 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td></td>
                     <td>
                         <button type="button" class="btn btn-default" runat="server" id="btnShop" onserverclick="btnShop_click">
                             <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping</button>
                     </td>
+                    <td class="col-sm-1 col-md-1">
+                        <asp:Button Text="Update" class="btn btn-danger" runat="server" ID="btnUpdate" CommandArgument='<%#Eval("ProductID") %>' OnClick="btnUpdate_Click" />
+                    </td>
                     <td>
-                        <button type="button" class="btn btn-success">
+                        <button type="button" class="btn btn-success" id="btnMua" runat="server" onserverclick="btnMua_ServerClick">
                             Checkout <span class="glyphicon glyphicon-play"></span>
                         </button>
                     </td>
@@ -117,3 +119,4 @@
 </asp:Content>
 
 
+ 

@@ -17,6 +17,7 @@ public partial class Log_In_LogIn : System.Web.UI.Page
     {
         txtDN.Text = string.Empty;
         txtMK.Text = string.Empty;
+        Session["dn"] = null;
     }
 
     protected void btnDN_Click(object sender, EventArgs e)
@@ -34,7 +35,8 @@ public partial class Log_In_LogIn : System.Web.UI.Page
 
             // Valid:
 
-            Response.Redirect("~/Log In/LogInSuccess.aspx");
+            Session["dn"] = txtDN.Text;
+            Response.Redirect("~/Index.aspx");
         }
     }
 

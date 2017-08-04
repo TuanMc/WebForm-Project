@@ -20,6 +20,8 @@ public partial class Log_In_NewAccount : System.Web.UI.Page
 
             k.ThemND(new User()
             {
+                FName = txtFN.Text,
+                LName = txtLN.Text,
                 Username = txtDN.Text,
                 Password = txtMK.Text,
                 Email = txtEmail.Text,
@@ -27,6 +29,6 @@ public partial class Log_In_NewAccount : System.Web.UI.Page
                 RoleID = 2
             });
         }
-        Response.Redirect("~/Log In/LogInSuccess.aspx");
+        Response.Redirect("~/Log In/LogIn.aspx");
     }
 }

@@ -6,7 +6,7 @@ using System.Web;
 /// <summary>
 /// Summary description for IKho
 /// </summary>
-public interface IKho:IDisposable
+public interface IKho : IDisposable
 {
     #region Products
     List<Product> DanhSachSP { get; }
@@ -55,6 +55,8 @@ public interface IKho:IDisposable
 
     List<User> DanhSachND { get; }
 
+    List<User> DanhSachNDTheoMa(int uid);
+
     List<User> DanhSachNDHienThi { get; }
 
     // Add user
@@ -99,7 +101,7 @@ public interface IKho:IDisposable
     List<OrderDetail> DanhSachCTHD { get; }
 
     List<OrderDetail> TimCTHD(int id);
-    
+
     #endregion
 
     /*

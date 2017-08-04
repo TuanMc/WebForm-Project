@@ -5,14 +5,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class MasterPage : System.Web.UI.MasterPage
+public partial class Requirement : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["dn"] == null)
-            lblTenDN.Text = "Visitor";
-        else
-            lblTenDN.Text = Session["dn"].ToString();
+
     }
-    
 }

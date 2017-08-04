@@ -11,15 +11,16 @@ public partial class Interface_Pages_Cart : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            this.LoadMH(1);
+            this.LoadMH();
         }
     }
 
-    private void LoadMH(int uid)
+
+    private void LoadMH()
     {
         using (var g = new Gio())
         {
-            var mh = g.DanhSachMHTrongGio(uid);
+            var mh = g.DanhSachMH();
             var tong = 0;
             var index = 0;
 
@@ -36,27 +37,28 @@ public partial class Interface_Pages_Cart : System.Web.UI.Page
                     var sp = k.TimSP((int)mh[index].ProductID);
 
                     var img = item.FindControl("imgMH") as Image;
-                    img.ImageUrl = sp.Picture;
-
+                    var txtSL = item.FindControl("txtSL") as TextBox;
                     var lblTen = item.FindControl("lblName") as Label;
-                    lblTen.Text = sp.ProductName;
-
                     var lblPrice = item.FindControl("lblPrice") as Label;
-                    lblPrice.Text = sp.Price.ToString();
-
                     var lblSubPrice = item.FindControl("lblSubPrice") as Label;
-                    tong += (int)(sp.Price * mh[index].Quantity);
-                    lblSubPrice.Text = (sp.Price * mh[index].Quantity).ToString();
-
                     var lblTT = item.FindControl("lblTT") as Label;
-                    var t = mh[index].IsInCart.ToString();
 
+                    // Chinh Status
+                    var t = mh[index].IsInCart.ToString();
                     if (t == "True")
                         lblTT.Text = "In stock";
                     else
                     {
                         lblTT.Text = "Out of stock";
                     }
+
+                    // Gan gia tri cho tung item
+                    img.ImageUrl = sp.Picture;
+                    lblTen.Text = sp.ProductName;
+                    tong += (int)(sp.Price * mh[index].Quantity);
+                    lblPrice.Text = sp.Price.ToString();
+                    lblSubPrice.Text = (sp.Price * mh[index].Quantity).ToString();
+                    txtSL.Text = mh[index].Quantity.ToString();
 
                     index++;
                 }
@@ -72,6 +74,7 @@ public partial class Interface_Pages_Cart : System.Web.UI.Page
     protected void btnShop_click(object sender, EventArgs e)
     {
         Response.Redirect("Index.aspx");
+
     }
 
     protected void btnRemove_ServerClick(object sender, EventArgs e)
@@ -80,7 +83,48 @@ public partial class Interface_Pages_Cart : System.Web.UI.Page
         using (var g = new Gio())
         {
             g.XoaMH(ma);
-            this.LoadMH(1);
+            this.LoadMH();
+        }
+    }
+
+    protected void btnUpdate_Click(object sender, EventArgs e)
+    {
+
+        using (var k = new Kho())
+        {
+            using (var g = new Gio())
+            {
+                var mh = g.DanhSachMH();
+                var index = 0;
+
+                foreach (RepeaterItem item in rptMH.Items)
+                {
+                    var txtSL = item.FindControl("txtSL") as TextBox;
+                    var sl = int.Parse(txtSL.Text);
+
+                    if (sl != mh[index].Quantity)
+                    {
+                        g.SuaSL(1, (int)mh[index].ProductID, sl);
+                    }
+
+                    index++;
+                }
+            }
+            this.LoadMH();
+        }
+    }
+
+    protected void btnMua_ServerClick(object sender, EventArgs e)
+    {
+        if (Session["dn"] == null)
+            Response.Redirect("~/Requirement.aspx");
+        else
+        {
+            using (var g = new Gio())
+            {
+                g.XoaGio();
+                Response.Redirect("~/Index.aspx");
+            }
         }
     }
 }

@@ -72,13 +72,13 @@
                 <uc1:WebUserControl runat="server" ID="WebUserControl" />
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown">Hello, <%#Eval("Username") %><b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown">Hello, <asp:Label ID="lblTenDN" runat="server" /><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="Cart.aspx"><i class="fa fa-shopping-cart fa-2x icon" aria-hidden="true" style="padding-right: 15px; padding-left: 0px;"></i>Cart</a></li>
                             <li class="divider"></li>
                             <li><a href="Account.aspx"><i class="fa fa-user fa-2x icon" aria-hidden="true" style="padding-right: 15px; padding-left: 0px;"></i>Account</a></li>
                             <li class="divider"></li>
-                            <li><a href="Log%20In/LogIn.aspx"><i class="fa fa-sign-out fa-2x icon" aria-hidden="true" style="padding-right: 15px; padding-left: 0px;"></i>Log out</a></li>
+                            <li><a href="Log%20In/LogIn.aspx"><i class="fa fa-sign-out fa-2x icon" aria-hidden="true" style="padding-right: 15px; padding-left: 0px;"></i>Log in/out</a></li>
                         </ul>
                     </li>
                 </ul>

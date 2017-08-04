@@ -26,9 +26,9 @@ public class Gio : List<Product>, IGio
         }
     }
 
-    public List<Cart> DanhSachMHTrongGio(int uid)
+    public List<Cart> DanhSachMH()
     {
-        return dc.Carts.Where(x => x.UserID == uid && x.IsInCart == true).ToList();
+        return dc.Carts.Where(x => x.IsInCart == true).ToList();
     }
 
     public void Dispose()
@@ -74,11 +74,25 @@ public class Gio : List<Product>, IGio
             var MH = TimSPTrongGio(id);
             if (MH != null)
             {
+                dc.Carts.DeleteAllOnSubmit(dc.Carts);
                 dc.Carts.DeleteOnSubmit(MH);
                 dc.SubmitChanges();
             }
             else
                 return;
+        }
+        catch (Exception)
+        {
+            return;
+        }
+    }
+
+    public void XoaGio()
+    {
+        try
+        {
+            dc.Carts.DeleteAllOnSubmit(dc.Carts);
+            dc.SubmitChanges();
         }
         catch (Exception)
         {

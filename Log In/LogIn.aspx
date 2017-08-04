@@ -27,6 +27,8 @@
         <br />
         <br/>
         <asp:Button Text="Create new account" ID="btnNew" runat="server" Onclick="btnNew_Click"/>
+        <br />
+        <asp:LinkButton Text="Back to Shop" runat="server" PostBackUrl="~/Index.aspx"/>
     </asp:Panel>
     </div>
     </form>

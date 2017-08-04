@@ -53,6 +53,11 @@ public class Kho : IKho
         }
     }
 
+    public List<User> DanhSachNDTheoMa(int uid)
+    {
+        return dc.Users.Where(x=>x.UserID==uid).ToList();
+    }
+
     public List<Role> DanhSachRole
     {
         get
@@ -191,6 +196,7 @@ public class Kho : IKho
         try
         {
             User u = TimND(user.UserID);
+            if(u != default(User))
             {
                 u.Username = user.Username;
                 u.Password = user.Password;
