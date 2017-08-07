@@ -416,6 +416,8 @@ public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private EntitySet<Cart> _Carts;
 	
+	private EntitySet<OrderDetail> _OrderDetails;
+	
 	private EntitySet<Order> _Orders;
 	
 	private EntityRef<Role> _Role;
@@ -447,6 +449,7 @@ public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 	public User()
 	{
 		this._Carts = new EntitySet<Cart>(new Action<Cart>(this.attach_Carts), new Action<Cart>(this.detach_Carts));
+		this._OrderDetails = new EntitySet<OrderDetail>(new Action<OrderDetail>(this.attach_OrderDetails), new Action<OrderDetail>(this.detach_OrderDetails));
 		this._Orders = new EntitySet<Order>(new Action<Order>(this.attach_Orders), new Action<Order>(this.detach_Orders));
 		this._Role = default(EntityRef<Role>);
 		OnCreated();
@@ -649,6 +652,19 @@ public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_OrderDetail", Storage="_OrderDetails", ThisKey="UserID", OtherKey="UserID")]
+	public EntitySet<OrderDetail> OrderDetails
+	{
+		get
+		{
+			return this._OrderDetails;
+		}
+		set
+		{
+			this._OrderDetails.Assign(value);
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Order", Storage="_Orders", ThisKey="UserID", OtherKey="UserID")]
 	public EntitySet<Order> Orders
 	{
@@ -723,6 +739,18 @@ public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 	
 	private void detach_Carts(Cart entity)
+	{
+		this.SendPropertyChanging();
+		entity.User = null;
+	}
+	
+	private void attach_OrderDetails(OrderDetail entity)
+	{
+		this.SendPropertyChanging();
+		entity.User = this;
+	}
+	
+	private void detach_OrderDetails(OrderDetail entity)
 	{
 		this.SendPropertyChanging();
 		entity.User = null;
@@ -863,15 +891,19 @@ public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChang
 	
 	private int _OrderID;
 	
+	private int _UserID;
+	
 	private int _ProductID;
 	
-	private decimal _UnitPrice;
+	private System.Nullable<double> _UnitPrice;
 	
-	private short _Quantity;
+	private System.Nullable<short> _Quantity;
+	
+	private System.Nullable<System.DateTime> _ShippedDate;
 	
 	private System.Nullable<System.DateTime> _OrderDate;
 	
-	private System.Nullable<System.DateTime> _ShipDate;
+	private EntityRef<User> _User;
 	
 	private EntityRef<Order> _Order;
 	
@@ -883,20 +915,23 @@ public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChang
     partial void OnCreated();
     partial void OnOrderIDChanging(int value);
     partial void OnOrderIDChanged();
+    partial void OnUserIDChanging(int value);
+    partial void OnUserIDChanged();
     partial void OnProductIDChanging(int value);
     partial void OnProductIDChanged();
-    partial void OnUnitPriceChanging(decimal value);
+    partial void OnUnitPriceChanging(System.Nullable<double> value);
     partial void OnUnitPriceChanged();
-    partial void OnQuantityChanging(short value);
+    partial void OnQuantityChanging(System.Nullable<short> value);
     partial void OnQuantityChanged();
+    partial void OnShippedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnShippedDateChanged();
     partial void OnOrderDateChanging(System.Nullable<System.DateTime> value);
     partial void OnOrderDateChanged();
-    partial void OnShipDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnShipDateChanged();
     #endregion
 	
 	public OrderDetail()
 	{
+		this._User = default(EntityRef<User>);
 		this._Order = default(EntityRef<Order>);
 		this._Product = default(EntityRef<Product>);
 		OnCreated();
@@ -926,6 +961,30 @@ public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChang
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+	public int UserID
+	{
+		get
+		{
+			return this._UserID;
+		}
+		set
+		{
+			if ((this._UserID != value))
+			{
+				if (this._User.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.OnUserIDChanging(value);
+				this.SendPropertyChanging();
+				this._UserID = value;
+				this.SendPropertyChanged("UserID");
+				this.OnUserIDChanged();
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductID", DbType="Int NOT NULL", IsPrimaryKey=true)]
 	public int ProductID
 	{
@@ -950,8 +1009,8 @@ public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChang
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitPrice", DbType="Money NOT NULL")]
-	public decimal UnitPrice
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitPrice", DbType="Float")]
+	public System.Nullable<double> UnitPrice
 	{
 		get
 		{
@@ -970,8 +1029,8 @@ public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChang
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="SmallInt NOT NULL")]
-	public short Quantity
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="SmallInt")]
+	public System.Nullable<short> Quantity
 	{
 		get
 		{
@@ -986,6 +1045,26 @@ public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChang
 				this._Quantity = value;
 				this.SendPropertyChanged("Quantity");
 				this.OnQuantityChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShippedDate", DbType="DateTime")]
+	public System.Nullable<System.DateTime> ShippedDate
+	{
+		get
+		{
+			return this._ShippedDate;
+		}
+		set
+		{
+			if ((this._ShippedDate != value))
+			{
+				this.OnShippedDateChanging(value);
+				this.SendPropertyChanging();
+				this._ShippedDate = value;
+				this.SendPropertyChanged("ShippedDate");
+				this.OnShippedDateChanged();
 			}
 		}
 	}
@@ -1010,22 +1089,36 @@ public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChang
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShipDate", DbType="DateTime")]
-	public System.Nullable<System.DateTime> ShipDate
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_OrderDetail", Storage="_User", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
+	public User User
 	{
 		get
 		{
-			return this._ShipDate;
+			return this._User.Entity;
 		}
 		set
 		{
-			if ((this._ShipDate != value))
+			User previousValue = this._User.Entity;
+			if (((previousValue != value) 
+						|| (this._User.HasLoadedOrAssignedValue == false)))
 			{
-				this.OnShipDateChanging(value);
 				this.SendPropertyChanging();
-				this._ShipDate = value;
-				this.SendPropertyChanged("ShipDate");
-				this.OnShipDateChanged();
+				if ((previousValue != null))
+				{
+					this._User.Entity = null;
+					previousValue.OrderDetails.Remove(this);
+				}
+				this._User.Entity = value;
+				if ((value != null))
+				{
+					value.OrderDetails.Add(this);
+					this._UserID = value.UserID;
+				}
+				else
+				{
+					this._UserID = default(int);
+				}
+				this.SendPropertyChanged("User");
 			}
 		}
 	}

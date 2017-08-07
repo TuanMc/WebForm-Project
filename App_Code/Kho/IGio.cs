@@ -6,7 +6,7 @@ using System.Web;
 
 public interface IGio: IDisposable
 {
-    List<Cart> DanhSachMH();
+    List<Cart> DanhSachMH { get; }
 
     void themMH(Cart c);
 

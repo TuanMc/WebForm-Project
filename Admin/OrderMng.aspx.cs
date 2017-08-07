@@ -21,8 +21,25 @@ public partial class Admin_OrderMng : System.Web.UI.Page
     {
         using (var k = new Kho())
         {
-            grvHD.DataSource = k.DanhSachHD;
+            var list = k.DanhSachHD;
+            var index = 0;
+
+
+            grvHD.DataSource = list;
             grvHD.DataBind();
+
+
+            foreach (GridViewRow item in grvHD.Rows)
+            {
+                var btn = item.FindControl("btnShipped") as Button;
+                if (list[index].OrderStatus == false)
+                { 
+                    btn.Visible = false;
+                    btn.Enabled = false;
+                }
+
+                index++;
+            }
         }
     }
 
@@ -37,6 +54,7 @@ public partial class Admin_OrderMng : System.Web.UI.Page
         using (var k = new Kho())
         {
             var ma = int.Parse((sender as Button).CommandArgument);
+
             k.GiaoHD(ma);
             this.LoadOrder();
         }

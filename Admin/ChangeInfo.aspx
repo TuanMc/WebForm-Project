@@ -1,62 +1,72 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/BackEndPage.master" AutoEventWireup="true" CodeFile="ChangeInfo.aspx.cs" Inherits="Admin_ChangeInfo" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="Server">
-</asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
-    <asp:LinkButton runat="server" ID="lbtnBack" Text="Go Back" OnClick="lbtnBack_Click"></asp:LinkButton>
     <br />
-    <asp:Label runat="server" ID="lblTB" Font-Bold="true" ForeColor="Red"></asp:Label>
-    <br />
-    <table style="height: 364px">
-        <tr>
-            <td>Name: </td>
-            <td>
-                <asp:TextBox runat="server" ID="txtName" placeholder="Product's Name" Width="63%"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="rfvName" runat="server" ControlToValidate="txtName" ErrorMessage="(*)" Font-Bold="True" ForeColor="Red" ValidationGroup="Need"></asp:RequiredFieldValidator>
-            </td>
-        </tr>
-        <tr>
-            <td>Price: </td>
-            <td>
-                <asp:TextBox runat="server" ID="txtGia" placeholder="Product's Price" Width="63%"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="rfvPrice" runat="server" ControlToValidate="txtGia" ErrorMessage="(*)" Font-Bold="True" ForeColor="Red" ValidationGroup="Need"></asp:RequiredFieldValidator>
-            </td>
-        </tr>
-        <tr>
-            <td>Supplier Name: </td>
-            <td>
-                <asp:DropDownList runat="server" ID="ddlSupplier" Width="65%"></asp:DropDownList>
-                <asp:RequiredFieldValidator ID="rfvSupplier" runat="server" ControlToValidate="ddlSupplier" ErrorMessage="(*)" Font-Bold="True" ForeColor="Red" ValidationGroup="Need" InitialValue="-1"></asp:RequiredFieldValidator>
-            </td>
-        </tr>
-        <tr>
-            <td>Category Name:</td>
-            <td>
-                <asp:DropDownList runat="server" ID="ddlCategory" Width="65%"></asp:DropDownList>
-                <asp:RequiredFieldValidator ID="rfvCategory" runat="server" ControlToValidate="ddlCategory" ErrorMessage="(*)" Font-Bold="True" ForeColor="Red" ValidationGroup="Need" InitialValue="-1"></asp:RequiredFieldValidator>
-            </td>
-        </tr>
-        <tr>
-            <td style="height: 46px">Upload Image: </td>
-            <td style="height: 46px">
-                <asp:FileUpload runat="server" ID="fulImg" Width="95%" />
-                <asp:RequiredFieldValidator ID="rfvImg" runat="server" ControlToValidate="fulImg" ErrorMessage="(*)" Font-Bold="True" ForeColor="Red" ValidationGroup="Need"></asp:RequiredFieldValidator>
-            </td>
-        </tr>
-        <tr>
-            <td style="height: 79px">Description: </td>
-            <td style="height: 79px">
-                <asp:TextBox ID="txtDescription" runat="server" Rows="3" TextMode="MultiLine"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-            </td>
-            <td>
-                <asp:Button runat="server" ID="btnSubmit" Text="Add" OnClick="btnSubmit_Click" Width="87px" ValidationGroup="Need"/>
-            </td>
-        </tr>
-    </table>
+    <div class="form-horizontal">
+        <fieldset>
+            <!-- Form Name -->
+            <legend>Product's Infomation</legend>
+
+            <asp:LinkButton runat="server" ID="lbtnBack" CssClass="btn btn-default" OnClick="lbtnBack_Click">
+                <span class="glyphicon glyphicon-backward"></span> Go Back</asp:LinkButton>
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="name">Name</label>
+                <div class="col-md-4">
+                    <asp:TextBox ID="txtName" runat="server" placeholder="Enter product's name" CssClass="form-control input-md" />
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Price</label>
+                <div class="col-md-4">
+                    <asp:TextBox ID="txtGia" runat="server" placeholder="Enter price" class="form-control input-md" />
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Supplier's name: </label>
+                <div class="col-md-4">
+                    <asp:DropDownList runat="server" ID="ddlSupplier" CssClass="form-control"></asp:DropDownList>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Category's type: </label>
+                <div class="col-md-4">
+                    <asp:DropDownList runat="server" ID="ddlCategory" CssClass="form-control"></asp:DropDownList>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Description</label>
+                <div class="col-md-4">
+                    <asp:TextBox ID="txtDescription" runat="server" class="form-control input-group-sm" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Uploads: </label>
+                <div class="col-md-4">
+                    <asp:FileUpload runat="server" ID="fulImg" />
+                    <br />
+                    <asp:Image ID="imgSP" ImageUrl="~/Image/5ef0001c44a797976cdb56ffa161aaf6.jpg" runat="server" BorderColor="LightGray" BorderWidth="1px" Style="height: 100px; width: 100px" />
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="signup"></label>
+                <div class="col-md-4">
+                    <asp:Button runat="server" ID="btnSubmit" CssClass="btn btn-success" Text="Submit" OnClick="btnSubmit_Click"/> 
+                    <asp:Label ID="lblTB" runat="server" />
+                </div>
+            </div>
+        </fieldset>
+    </div>
 </asp:Content>
 
 

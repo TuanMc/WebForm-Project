@@ -20,7 +20,7 @@ public partial class Interface_Pages_Cart : System.Web.UI.Page
     {
         using (var g = new Gio())
         {
-            var mh = g.DanhSachMH();
+            var mh = g.DanhSachMH;
             var tong = 0;
             var index = 0;
 
@@ -94,7 +94,7 @@ public partial class Interface_Pages_Cart : System.Web.UI.Page
         {
             using (var g = new Gio())
             {
-                var mh = g.DanhSachMH();
+                var mh = g.DanhSachMH;
                 var index = 0;
 
                 foreach (RepeaterItem item in rptMH.Items)
@@ -122,6 +122,20 @@ public partial class Interface_Pages_Cart : System.Web.UI.Page
         {
             using (var g = new Gio())
             {
+                using (var k = new Kho())
+                {
+                    var nd = k.TimNDTheoTenDN(Session["dn"].ToString());
+
+                    var order = new Order()
+                    {
+                        UserID = nd.UserID,
+                        OrderDate = DateTime.Now,
+                        OrderStatus = true,
+                    };
+
+                    k.themHD(order);
+                    k.ThemCTHD(g.DanhSachMH, order);
+                }
                 g.XoaGio();
                 Response.Redirect("~/Index.aspx");
             }

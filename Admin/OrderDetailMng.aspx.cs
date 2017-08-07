@@ -14,8 +14,7 @@ public partial class Admin_OrderDetailMng : System.Web.UI.Page
         if (!IsPostBack)
             if (Session["user"] != null)
             {
-                if (ma != 0)
-                    this.LoadOrderDetail(ma);
+                this.LoadOrderDetail(ma);
             }
             else
                 Response.Redirect("AdLogin.aspx");
@@ -27,7 +26,11 @@ public partial class Admin_OrderDetailMng : System.Web.UI.Page
     {
         using (var k = new Kho())
         {
-            var order = k.TimCTHD(ma);
+            var order = k.DanhSachCTHD;
+
+            if (ma != 0)
+                order = k.TimCTHD(ma);
+                
             grvCTHD.DataSource = order;
             grvCTHD.DataBind();
         }

@@ -55,7 +55,7 @@ public class Kho : IKho
 
     public List<User> DanhSachNDTheoMa(int uid)
     {
-        return dc.Users.Where(x=>x.UserID==uid).ToList();
+        return dc.Users.Where(x => x.UserID == uid).ToList();
     }
 
     public List<Role> DanhSachRole
@@ -100,13 +100,17 @@ public class Kho : IKho
         try
         {
             var hd = TimHD(id);
-            if (hd == default(Order))
-            {
-                return;
-            }
+            if (hd == default(Order)) return;
             else
             {
-                hd.OrderStatus = true;
+                var cthd = TimCTHD(id);
+
+                foreach (var item in cthd)
+                {
+                    item.ShippedDate = DateTime.Now;
+                }
+
+                hd.OrderStatus = false;
                 dc.SubmitChanges();
             }
         }
@@ -196,7 +200,7 @@ public class Kho : IKho
         try
         {
             User u = TimND(user.UserID);
-            if(u != default(User))
+            if (u != default(User))
             {
                 u.Username = user.Username;
                 u.Password = user.Password;
@@ -233,7 +237,46 @@ public class Kho : IKho
 
     public void themHD(Order p)
     {
-        throw new NotImplementedException();
+        try
+        {
+            dc.Orders.InsertOnSubmit(p);
+            dc.SubmitChanges();
+
+            return;
+        }
+        catch (Exception)
+        {
+            return;
+        }
+    }
+
+    public void ThemCTHD(List<Cart> c, Order o)
+    {
+        List<OrderDetail> od = new List<OrderDetail>();
+
+        // Add items from Cart to List<OrderDetail>
+        foreach (var item in c)
+        {
+            od.Add(new OrderDetail()
+            {
+                OrderID = o.OrderID,
+                UserID = (int)o.UserID,
+                ProductID = (int)item.ProductID,
+                Quantity = item.Quantity,
+                UnitPrice = TimSP((int)item.ProductID).Price * item.Quantity,
+                OrderDate = o.OrderDate,
+            });
+        }
+
+        // Add changes to DB
+        foreach (var item in od)
+        {
+            dc.OrderDetails.InsertOnSubmit(item);
+        }
+
+        dc.SubmitChanges();
+        return;
+
     }
 
     public void themNCC(Supplier s)
@@ -277,7 +320,7 @@ public class Kho : IKho
             return;
         }
 
-       
+
     }
 
     public List<OrderDetail> TimCTHD(int id)
@@ -409,7 +452,7 @@ public class Kho : IKho
             var sp = TimSP(id);
             if (sp == default(Product))
             {
-                return ;
+                return;
             }
             else
             {

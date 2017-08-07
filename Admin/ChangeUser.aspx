@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/BackEndPage.master" AutoEventWireup="true" CodeFile="ChangeUser.aspx.cs" Inherits="Admin_ChangeUser" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="Server">
-</asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
     <asp:LinkButton runat="server" ID="lbtnBack" Text="Go Back" PostBackUrl="~/Admin/UserMng.aspx"></asp:LinkButton>
     <br />

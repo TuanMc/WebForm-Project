@@ -23,8 +23,28 @@ public partial class Admin_ProductMng : System.Web.UI.Page
     {
         using (var k = new Kho())
         {
-            grvSP.DataSource = k.DanhSachSPHienThi;
+            var sp = k.DanhSachSPHienThi;
+            var index = 0;
+
+            grvSP.DataSource = sp;
             grvSP.DataBind();
+
+            foreach (GridViewRow item in grvSP.Rows)
+            {
+                var sid = sp[index].SupplierID;
+                var cid = sp[index].CategoryID;
+
+                var ncc = k.TimNCC((int)sid);
+                var loai = k.TimDM((int)cid);
+
+                var lblTen = item.FindControl("lblSP") as Label;
+                var lblLoai = item.FindControl("lblLoai") as Label;
+
+                lblTen.Text = ncc.SupplierName;
+                lblLoai.Text = loai.CategoryName;
+
+                index++;
+            }
         }
         
     }

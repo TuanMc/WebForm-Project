@@ -100,20 +100,10 @@ public interface IKho : IDisposable
     #region Order Detail
     List<OrderDetail> DanhSachCTHD { get; }
 
+    void ThemCTHD(List<Cart> c, Order o);
+
     List<OrderDetail> TimCTHD(int id);
 
     #endregion
 
-    /*
-    #region User
-    List<User> DanhSachUser { get; }
-    string themUser(Product p);
-
-    Product TimUser(int id);
-
-    string SuaUser(Product product);
-
-    string XoaUser(int id);
-    #endregion
-    */
 }
