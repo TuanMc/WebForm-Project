@@ -61,7 +61,7 @@ public interface IKho : IDisposable
 
     // Add user
 
-    void ThemND(User u);
+    bool ThemND(User u);
 
     // Check User
 

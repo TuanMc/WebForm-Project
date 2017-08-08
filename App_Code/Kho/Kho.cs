@@ -294,18 +294,17 @@ public class Kho : IKho
         }
     }
 
-    public void ThemND(User u)
+    public bool ThemND(User u)
     {
         try
         {
             dc.Users.InsertOnSubmit(u);
             dc.SubmitChanges();
+            return true;
         }
-        catch (Exception)
-        {
-            return;
+        catch {
+            return false;
         }
-
     }
 
     public void themSP(Product p)

@@ -5,47 +5,58 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="../Style/css/bootstrap.css" />
-    <style>
-        .middle {
-            text-align:center;
-        }
-    </style>
+    <script src="../Scripts/jquery-3.1.1.min.js"></script>
+    <script src="../Style/js/bootstrap.min.js"></script>
+    <link href="../Style/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Style/Login_Design.css" rel="stylesheet" />
 </head>
-<body>
-    <h1 class="middle">Welcome to my website</h1>
-    <br />
-        <div class="row vertical-offset-100" style="margin-top: 100px;">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Please sign in</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form accept-charset="UTF-8" role="form" runat="server">
-                            <fieldset>
+<body class="main">
+
+    <div class="adlogin-screen"></div>
+    <div class="login-center">
+        <div class="container min-height" style="margin-top: 20px;">
+            <div class="row">
+                <div class="col-xs-4 col-md-offset-8">
+                    <div class="login" id="card">
+                        <div class="front signin_form">
+                            <p>Login Your Account</p>
+                            <form class="login-form" runat="server">
                                 <div class="form-group">
-                                    <asp:TextBox Placeholder="Username" ID="txtDN" runat="server" />
+                                    <div class="input-group">
+
+                                        <asp:TextBox CssClass="form-control" placeholder="Type your username" runat="server" ID="txtDN">
+                                        </asp:TextBox>
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-user"></i>
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <asp:TextBox Placeholder="Password" ID="txtMK" runat="server" TextMode="Password"/>
+                                    <div class="input-group">
+                                        <asp:TextBox type="password" class="form-control" runat="server" placeholder="Type your password" ID="txtMK">
+                                        </asp:TextBox>
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-lock"></i>
+                                        </span>
+                                    </div>
                                 </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <asp:CheckBox runat="server" ID="cbRemeber"/>
-                                        Remember Me
-			    	    
-                                    </label>
+                                <div class="form-group">
+                                    <div class="label-danger" style="text-align:center;">
+                                        <asp:Label ID="lblTB" runat="server" />
+                                    </div>
                                 </div>
-                                <asp:Button Text="Login" ID="btnDN" runat="server" OnClick="btnDN_Click"/>
-                                <br />
-                                <asp:Label ID="lblTB" runat="server"/>
-                            </fieldset>
-                        </form>
+                                <div class="checkbox-inline">
+                                    <asp:CheckBox Text="Remember me next time" ID="cbDN" runat="server" />
+                                </div>
+                                <div class="form-group sign-btn">
+                                    <asp:Button Text="Login" ID="btnDN" runat="server" CssClass="btn" OnClick="btnDN_Click" />
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    <script src="../Style/js/bootstrap.min.js" type="text/javascript"></script>"
+    </div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/BackEndPage.master" AutoEventWireup="true" CodeFile="ProductMng.aspx.cs" Inherits="Admin_ProductMng" %>
 
 
+
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
     <br />
     <fieldset>
@@ -27,7 +28,7 @@
                 <asp:BoundField DataField="Price" HeaderText="Unit Price" />
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:LinkButton ID="lbtnEdit" runat="server" OnClick="lbtnEdit_Click" CommandArgument='<%#Eval("ProductID") %>'>Edit</asp:LinkButton>
+                        <asp:LinkButton ID="lbtnEdit" runat="server" CommandArgument='<%#Eval("ProductID") %>' OnClick="lbtnEdit_Click">Edit</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField>
@@ -47,6 +48,10 @@
             <SortedDescendingHeaderStyle BackColor="#575357" />
         </asp:GridView>
     </fieldset>
+    
+    <div id="divKQ">
+    </div>
+
 </asp:Content>
 
 
