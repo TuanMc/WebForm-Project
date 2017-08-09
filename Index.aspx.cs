@@ -17,17 +17,21 @@ public partial class Pages_Index : System.Web.UI.Page
     {
         using (var k = new Kho())
         {
-            var sploai1 = k.DanhSachSPHienThi.Where(x=>x.CategoryID == 1).ToList();
-            dtlSPLoai1.DataSource = sploai1;
-            dtlSPLoai1.DataBind();
+            var index = 1;
 
-            var sploai2 = k.DanhSachSPHienThi.Where(x => x.CategoryID == 2).ToList();
-            dtlSPLoai2.DataSource = sploai2;
-            dtlSPLoai2.DataBind();
+            rptSP.DataSource = k.DanhSachDM;
+            rptSP.DataBind();
 
-            var sploai3 = k.DanhSachSPHienThi.Where(x => x.CategoryID == 3).ToList();
-            dtlSPLoai3.DataSource = sploai3;
-            dtlSPLoai3.DataBind();
+            foreach (RepeaterItem item in rptSP.Items)
+            {
+                var dtl = item.FindControl("dtlSP") as DataList;
+
+                dtl.DataSource = k.DanhSachSPHienThi.Where(x=>x.CategoryID == index).Take(4);
+                dtl.DataBind();
+
+                index++;
+            }
+
         }
     }
 
@@ -45,4 +49,6 @@ public partial class Pages_Index : System.Web.UI.Page
         var ma = int.Parse((sender as Button).CommandArgument);
         Response.Redirect("ProductDetail.aspx?ma=" + ma);
     }
+
+  
 }

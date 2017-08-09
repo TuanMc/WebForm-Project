@@ -26,8 +26,9 @@
 
                     <!-- FName -->
                     <div class="form-group">
-                        <label for="name" class="cols-sm-2 control-label">First Name</label>
-                        <div class="cols-sm-10">
+                        <label for="name" class="cols-sm-2 control-label">First Name&nbsp; </label>
+                        <asp:RequiredFieldValidator ID="rqfFN" runat="server" ControlToValidate="txtFN" ErrorMessage="*" Font-Bold="True" ForeColor="Red" ValidationGroup="DN"></asp:RequiredFieldValidator>
+                        &nbsp;<div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                 <asp:TextBox CssClass="form-control" runat="server" ID="txtFN" placeholder="Enter first Name" />
@@ -37,8 +38,11 @@
 
                     <!-- LName -->
                     <div class="form-group">
-                        <label for="name" class="cols-sm-2 control-label">Last Name</label>
-                        <div class="cols-sm-10">
+                        <label for="name" class="cols-sm-2 control-label">
+                            Last Name
+                        <asp:RequiredFieldValidator ID="rqfLN" runat="server" ControlToValidate="txtLN" ErrorMessage="*" Font-Bold="True" ForeColor="Red" ValidationGroup="DN"></asp:RequiredFieldValidator>
+                        </label>
+                        &nbsp;<div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                 <asp:TextBox CssClass="form-control" runat="server" ID="txtLN" placeholder="Enter last Name" />
@@ -48,8 +52,11 @@
 
                     <!-- Email -->
                     <div class="form-group">
-                        <label for="email" class="cols-sm-2 control-label">Your Email</label>
-                        <div class="cols-sm-10">
+                        <label for="email" class="cols-sm-2 control-label">
+                            Your Email
+                        <asp:RequiredFieldValidator ID="rqfEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="*" Font-Bold="True" ForeColor="Red" ValidationGroup="DN"></asp:RequiredFieldValidator>
+                        </label>
+                        &nbsp;<div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
                                 <asp:TextBox CssClass="form-control" runat="server" ID="txtEmail" placeholder="Enter Email" />
@@ -59,8 +66,11 @@
 
                     <!-- Username -->
                     <div class="form-group">
-                        <label for="username" class="cols-sm-2 control-label">Username</label>
-                        <div class="cols-sm-10">
+                        <label for="username" class="cols-sm-2 control-label">
+                            Username
+                        <asp:RequiredFieldValidator ID="rqfUser" runat="server" ControlToValidate="txtDN" ErrorMessage="*" Font-Bold="True" ForeColor="Red" ValidationGroup="DN"></asp:RequiredFieldValidator>
+                        </label>
+                        &nbsp;<div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
                                 <asp:TextBox CssClass="form-control" runat="server" ID="txtDN" placeholder="Enter Username" />
@@ -69,8 +79,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="password" class="cols-sm-2 control-label">Password</label>
-                        <div class="cols-sm-10">
+                        <label for="password" class="cols-sm-2 control-label">
+                            Password
+                        <asp:RequiredFieldValidator ID="rqfPass" runat="server" ControlToValidate="txtMK" ErrorMessage="*" Font-Bold="True" ForeColor="Red" ValidationGroup="DN"></asp:RequiredFieldValidator>
+                        </label>
+                        &nbsp;<div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                                 <asp:TextBox CssClass="form-control" type="Password" runat="server" ID="txtMK" placeholder="Enter your password" />
@@ -79,8 +92,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
-                        <div class="cols-sm-10">
+                        <label for="confirm" class="cols-sm-2 control-label">
+                            Confirm Password
+                        <asp:RequiredFieldValidator ID="rqfXN" runat="server" ControlToValidate="txtXN" ErrorMessage="*" Font-Bold="True" ForeColor="Red" ValidationGroup="DN"></asp:RequiredFieldValidator>
+                        </label>
+                        &nbsp;<div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                                 <asp:TextBox CssClass="form-control" type="Password" runat="server" ID="txtXN" placeholder="Confirm your password" />
@@ -89,14 +105,16 @@
                     </div>
 
                     <div class="form-group">
-                        <asp:Button ID="btnTao" OnClick="btnTao_Click" class="btn btn-primary btn-lg btn-block login-button" runat="server" Text="Register" />
+                        <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtMK" ControlToValidate="txtXN" ErrorMessage="Both passwords are not identical" ForeColor="Red" ValidationGroup="DN"></asp:CompareValidator>
+                        <asp:Button ID="btnTao" OnClick="btnTao_Click" class="btn btn-primary btn-lg btn-block login-button" runat="server" Text="Register" ValidationGroup="DN" />
                     </div>
+
                     <div class="login-register">
                         <a href="LogIn.aspx">Back</a>
                     </div>
                 </form>
             </div>
-        </div>
+    </div>
     </div>
     <script type="text/javascript" src="assets/js/bootstrap.js"></script>
 </body>

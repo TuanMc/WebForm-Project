@@ -10,7 +10,6 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
         var id = 0;
         int.TryParse(Request.QueryString["id"], out id);
 
@@ -80,7 +79,7 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
             var categoryList = k.DanhSachDM;
             categoryList.Insert(0, new Category()
             {
-                CategoryID = -1,
+                CategoryID = 0,
                 CategoryName = "----------Select----------"
             });
 
@@ -95,7 +94,7 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
             var supplierList = k.DanhSachNCC;
             supplierList.Insert(0, new Supplier()
             {
-                SupplierID = -1,
+                SupplierID = 0,
                 SupplierName = "----------Select----------"
             });
 
@@ -114,14 +113,15 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
        
         using (var k = new Kho())
         {
+            string str = fulImg.FileName;
+            fulImg.PostedFile.SaveAs(Server.MapPath(".") + "//Uploads//" + str);
+            string path = "~/Admin/Uploads/" + str.ToString();
+
             #region Sua Product
             var id = 0;
             int.TryParse(Request.QueryString["id"], out id);
             if (id != 0)
             {
-                string str = fulImg.FileName;
-                fulImg.PostedFile.SaveAs(Server.MapPath(".") + "//Uploads//" + str);
-                string path = "~/Admin/Uploads/" + str.ToString();
                 k.SuaSP(new Product()
                 {
                     ProductID = id,
@@ -154,6 +154,7 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
                         Price = int.Parse(txtGia.Text),
                         CategoryID = int.Parse(ddlCategory.SelectedValue),
                         SupplierID = int.Parse(ddlSupplier.SelectedValue),
+                        Picture = path,
                         Description = txtDescription.Text,
                         ProductStatus = true
                     });

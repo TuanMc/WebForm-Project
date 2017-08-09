@@ -13,6 +13,7 @@
             <!-- Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="name">Name</label>
+                <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="txtName" ForeColor="Red" runat="server" ValidationGroup="Upload"/>
                 <div class="col-md-4">
                     <asp:TextBox ID="txtName" runat="server" placeholder="Enter product's name" CssClass="form-control input-md" />
                 </div>
@@ -21,6 +22,7 @@
             <!-- Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label">Price</label>
+                <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="txtGia" ForeColor="Red" runat="server" ValidationGroup="Upload"/>
                 <div class="col-md-4">
                     <asp:TextBox ID="txtGia" runat="server" placeholder="Enter price" class="form-control input-md" />
                 </div>
@@ -29,6 +31,7 @@
             <!-- Select Basic -->
             <div class="form-group">
                 <label class="col-md-4 control-label">Supplier's name: </label>
+                <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="ddlSupplier" ForeColor="Red" runat="server" ValidationGroup="Upload" InitialValue="0"/>
                 <div class="col-md-4">
                     <asp:DropDownList runat="server" ID="ddlSupplier" CssClass="form-control"></asp:DropDownList>
                 </div>
@@ -36,6 +39,7 @@
 
             <div class="form-group">
                 <label class="col-md-4 control-label">Category's type: </label>
+                <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="ddlCategory" ForeColor="Red" runat="server" ValidationGroup="Upload" InitialValue="0"/>
                 <div class="col-md-4">
                     <asp:DropDownList runat="server" ID="ddlCategory" CssClass="form-control"></asp:DropDownList>
                 </div>
@@ -43,6 +47,7 @@
 
             <div class="form-group">
                 <label class="col-md-4 control-label">Description</label>
+                <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="txtDescription" ForeColor="Red" runat="server" ValidationGroup="Upload"/>
                 <div class="col-md-4">
                     <asp:TextBox ID="txtDescription" runat="server" class="form-control input-group-sm" />
                 </div>
@@ -50,6 +55,7 @@
 
             <div class="form-group">
                 <label class="col-md-4 control-label">Uploads: </label>
+                <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="fulImg" ForeColor="Red" runat="server" ValidationGroup="Upload"/>
                 <div class="col-md-4">
                     <asp:FileUpload runat="server" ID="fulImg" />
                     <br />
@@ -61,7 +67,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="signup"></label>
                 <div class="col-md-4">
-                    <asp:Button runat="server" ID="btnSubmit" CssClass="btn btn-success" Text="Submit" OnClick="btnSubmit_Click"/> 
+                    <asp:Button runat="server" ID="btnSubmit" CssClass="btn btn-success" Text="Submit" OnClick="btnSubmit_Click" ValidationGroup="Upload"/> 
                     <asp:Label ID="lblTB" runat="server" />
                 </div>
             </div>

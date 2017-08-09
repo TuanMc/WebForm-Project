@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Pages_Index" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="Server">
-    <div class="container" style="height:500px">
+    <div class="container" style="height: 500px">
         <div id="myCarousel" class="carousel slide " data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -37,53 +37,28 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
-    <h3 class="tieude">Laptop</h3>
-    <asp:datalist id="dtlSPLoai1" runat="server" repeatcolumns="4" width="100%" repeatdirection="Horizontal">
-        <ItemStyle HorizontalAlign="Center" />
+    <asp:Repeater ID="rptSP" runat="server">
         <ItemTemplate>
-            <div class="item">
-                <asp:ImageButton ID="img" ImageUrl='<%#Eval("Picture") %>' PostBackUrl='<%# string.Format("~/ProductDetail.aspx?ma={0}", Eval("ProductID")) %>' runat="server" Height="180px" Width="270px"/><br />
-                <br />
-                <asp:LinkButton ForeColor="Red" Font-Bold="true" OnClick="lbtnTenSP_Click" runat="server" CommandArgument='<%#Eval("ProductID") %>' ><%#Eval("ProductName") %></asp:LinkButton><br />
-                <br />
-                <asp:Label runat="server" Font-Bold="true"><%#Eval("Price") %></asp:Label><br />
-                <br />
-                <asp:Button runat="server" Height="30px" Text="Add to Cart" Width="200px" CommandArgument='<%#Eval("ProductID") %>' OnClick="btnMua_Click" />
-                <br />
-            </div>
+            <br />
+            <fieldset>
+                <legend><%#Eval("CategoryName") %></legend>
+
+                <asp:DataList ID="dtlSP" runat="server" RepeatColumns="4" Width="100%" RepeatDirection="Horizontal">
+                    <ItemStyle HorizontalAlign="Center"/>
+                    <ItemTemplate>
+                        <div style="margin-top: 50px; margin-bottom: 50px">
+                            <asp:ImageButton ID="img" ImageUrl='<%#Eval("Picture") %>' PostBackUrl='<%# string.Format("~/ProductDetail.aspx?ma={0}", Eval("ProductID")) %>' runat="server" Height="120px" Width="220px" /><br />
+                            <br />
+                            <asp:LinkButton ForeColor="Red" Font-Bold="true" runat="server"><%#Eval("ProductName") %></asp:LinkButton><br />
+                            <br />
+                            <asp:Label runat="server" Font-Bold="true">$ <%#Eval("Price") %></asp:Label><br />
+                            <br />
+                            <asp:Button runat="server" Height="30px" CssClass="btn btn-default" Text="Add to Cart" Width="200px" />
+                            <br />
+                        </div>
+                    </ItemTemplate>
+                </asp:DataList>
         </ItemTemplate>
-    </asp:datalist>
-    <h3 class="tieude">Gaming Mouse</h3>
-    <asp:datalist runat="server" id="dtlSPLoai2" repeatcolumns="4" width="100%" repeatdirection="Horizontal">
-        <ItemStyle HorizontalAlign="Center" />
-        <ItemTemplate>
-            <div class="item">
-                <asp:ImageButton runat="server" Height="210px" Width="210px" ImageUrl='<%#Eval("Picture") %>'/><br />
-                <br />
-                <asp:LinkButton ForeColor="Red" Font-Bold="true" OnClick="lbtnTenSP_Click" CommandArgument='<%#Eval("ProductID") %>' runat="server"><%#Eval("ProductName") %></asp:LinkButton><br />
-                <br />
-                <asp:Label runat="server" Font-Bold="true"><%#Eval("Price") %></asp:Label><br />
-                <br />
-                <asp:Button runat="server" Height="30px" Text="Add to Cart" Width="200px" CommandArgument='<%#Eval("ProductID") %>' OnClick="btnMua_Click" />
-                <br />
-            </div>
-        </ItemTemplate>
-    </asp:datalist>
-    <h3 class="tieude">Gaming KeyBoard</h3>
-    <asp:datalist runat="server" id="dtlSPLoai3" repeatcolumns="4" width="100%" repeatdirection="Horizontal">
-        <ItemStyle HorizontalAlign="Center" />
-        <ItemTemplate>
-            <div class="item">
-                <asp:ImageButton runat="server" Height="130px" Width="270px" ImageUrl='<%#Eval("Picture") %>'/><br />
-                <br />
-                <asp:LinkButton ForeColor="Red" Font-Bold="true" OnClick="lbtnTenSP_Click" CommandArgument='<%#Eval("ProductID") %>' runat="server"><%#Eval("ProductName") %></asp:LinkButton><br />
-                <br />
-                <asp:Label runat="server" Font-Bold="true"><%#Eval("Price") %></asp:Label><br />
-                <br />
-                <asp:Button runat="server" Height="30px" Text="Add to Cart" Width="200px" CommandArgument='<%#Eval("ProductID") %>' OnClick="btnMua_Click" />
-                <br />
-            </div>
-        </ItemTemplate>
-    </asp:datalist>
+    </asp:Repeater>
 </asp:Content>
 

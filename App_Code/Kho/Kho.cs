@@ -302,24 +302,16 @@ public class Kho : IKho
             dc.SubmitChanges();
             return true;
         }
-        catch {
+        catch
+        {
             return false;
         }
     }
 
     public void themSP(Product p)
     {
-        try
-        {
-            dc.Products.InsertOnSubmit(p);
-            dc.SubmitChanges();
-        }
-        catch (Exception)
-        {
-            return;
-        }
-
-
+        dc.Products.InsertOnSubmit(p);
+        dc.SubmitChanges();
     }
 
     public List<OrderDetail> TimCTHD(int id)
