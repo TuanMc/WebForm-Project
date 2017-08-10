@@ -3,7 +3,6 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
-    <br />
     <fieldset>
         <legend>Products</legend>
 

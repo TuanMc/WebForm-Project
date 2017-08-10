@@ -2,7 +2,6 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
-    <br />
     <fieldset>
         <legend>Order Details</legend>
         <asp:LinkButton runat="server" ID="lbtnBack" CssClass="btn btn-default" PostBackUrl="~/Admin/OrderMng.aspx">

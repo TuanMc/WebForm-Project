@@ -70,14 +70,16 @@
                 <uc1:WebUserControl runat="server" ID="WebUserControl" />
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown">Hello, <asp:Label ID="lblTenDN" runat="server" /><b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown">Hello,
+                            <asp:Label ID="lblTenDN" runat="server" /><b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="Cart.aspx"><i class="fa fa-shopping-cart fa-2x icon" aria-hidden="true" style="padding-right: 15px; padding-left: 0px;"></i>Cart</a></li>
+                            <li style="padding-left: 20px"><a href="Cart.aspx"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp; Cart</a></li>
                             <li class="divider"></li>
-                            <li><a href="Account.aspx"><i class="fa fa-user fa-2x icon" aria-hidden="true" style="padding-right: 15px; padding-left: 0px;"></i>Account</a></li>
+                            <li style="padding-left: 20px"><a href="Account.aspx"><span class="glyphicon glyphicon-user"></span>&nbsp; Account</a></li>
                             <li class="divider"></li>
-                            <li><a href="Log%20In/LogIn.aspx"><i class="fa fa-sign-out fa-2x icon" aria-hidden="true" style="padding-right: 15px; padding-left: 0px;"></i>Log in/out</a></li>
+                            <li style="padding-left: 20px"><a href="Log%20In/LogIn.aspx"><span class="glyphicon glyphicon-lock "></span>&nbsp; Login/out</a></li>
                         </ul>
+
                     </li>
                 </ul>
             </div>
@@ -89,13 +91,36 @@
                 <asp:ContentPlaceHolder runat="server" ID="cphHead">
                 </asp:ContentPlaceHolder>
             </div>
-            <div class="main">
+            <div class="main" style="min-height: 100%">
                 <asp:ContentPlaceHolder runat="server" ID="cphMain">
                 </asp:ContentPlaceHolder>
             </div>
-            <div class="footer">
-                Designed by TM
+            <div>
+                <table class="table table-responsive" style="background-color:lightgrey">
+                    <tbody>
+                        <tr>
+                            <td style="padding-left:150px">
+                                <h2>Snail mail</h2>
+                                <address>
+                                    <strong>Hythe Window Cleaning</strong><br>
+                                    15 Springfield Way<br>
+                                    Hythe<br>
+                                    Kent<br>
+                                    United Kingdon<br>
+                                    CT21 5SH<br>
+                                    <abbr title="Phone">P:</abbr>
+                                    01234 567 890
+                           
+                                </address>
+                            </td>
+                            <td>
+                                <iframe width="80%" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=15+Springfield+Way,+Hythe,+CT21+5SH&aq=t&sll=52.8382,-2.327815&sspn=8.047465,13.666992&ie=UTF8&hq=&hnear=15+Springfield+Way,+Hythe+CT21+5SH,+United+Kingdom&t=m&z=14&ll=51.077429,1.121722&output=embed"></iframe>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+
         </div>
     </form>
     <script src="Scripts/jquery-3.1.1.min.js"></script>

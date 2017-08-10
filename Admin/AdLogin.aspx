@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Login</title>
     <script src="../Scripts/jquery-3.1.1.min.js"></script>
     <script src="../Style/js/bootstrap.min.js"></script>
     <link href="../Style/css/bootstrap.min.css" rel="stylesheet" />

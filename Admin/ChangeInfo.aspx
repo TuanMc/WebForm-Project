@@ -2,7 +2,6 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
-    <br />
     <div class="form-horizontal">
         <fieldset>
             <!-- Form Name -->
@@ -57,9 +56,9 @@
                 <label class="col-md-4 control-label">Uploads: </label>
                 <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="fulImg" ForeColor="Red" runat="server" ValidationGroup="Upload"/>
                 <div class="col-md-4">
-                    <asp:FileUpload runat="server" ID="fulImg" />
+                    <asp:FileUpload runat="server" ID="fulImg"/>
                     <br />
-                    <asp:Image ID="imgSP" ImageUrl="~/Image/5ef0001c44a797976cdb56ffa161aaf6.jpg" runat="server" BorderColor="LightGray" BorderWidth="1px" Style="height: 100px; width: 100px" />
+                    <asp:Image ID="imgSP" ImageUrl="~/Image/5ef0001c44a797976cdb56ffa161aaf6.jpg" runat="server" BorderColor="LightGray" BorderWidth="1px" Style="height: 100px; width: 150px" />
                 </div>
             </div>
 

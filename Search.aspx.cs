@@ -10,11 +10,11 @@ public partial class Search : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         var tk = Request.QueryString["q"].ToString();
-        lblTK.Text = tk;
+        lblTK.Text = tk.Trim();
         if (!String.IsNullOrEmpty(tk))
             using (var k = new Kho())
             {
-                dtlSP.DataSource = k.DanhSachSPHienThi.Where(x => x.ProductName.Contains(tk));
+                dtlSP.DataSource = k.DanhSachSPHienThi.Where(x => x.ProductName.Trim().ToLower().Contains(tk.Trim().ToLower()));
                 dtlSP.DataBind();
             }
         else

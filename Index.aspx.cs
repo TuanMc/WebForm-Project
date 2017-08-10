@@ -26,7 +26,7 @@ public partial class Pages_Index : System.Web.UI.Page
             {
                 var dtl = item.FindControl("dtlSP") as DataList;
 
-                dtl.DataSource = k.DanhSachSPHienThi.Where(x=>x.CategoryID == index).Take(4);
+                dtl.DataSource = k.DanhSachSPHienThi.Where(x=>x.CategoryID == index).OrderByDescending(x=>x.Price).Take(4);
                 dtl.DataBind();
 
                 index++;
@@ -39,15 +39,32 @@ public partial class Pages_Index : System.Web.UI.Page
 
     protected void lbtnTenSP_Click(object sender, EventArgs e)
     {
-        var ma = int.Parse((sender as LinkButton).CommandArgument);
-        Response.Redirect("ProductDetail.aspx?ma=" + ma);
-        
+        foreach (RepeaterItem item in rptSP.Items)
+        {
+            var dtl = item.FindControl("dtlSP") as DataList;
+
+            foreach (DataListItem list in dtl.Items)
+            {
+                var lbtn = list.FindControl("lbtnTen") as LinkButton;
+                var ma = int.Parse(lbtn.CommandArgument);
+                Response.Redirect("ProductDetail.aspx?ma=" + ma);
+            }
+        }
     }
 
     protected void btnMua_Click(object sender, EventArgs e)
     {
-        var ma = int.Parse((sender as Button).CommandArgument);
-        Response.Redirect("ProductDetail.aspx?ma=" + ma);
+        foreach (RepeaterItem item in rptSP.Items)
+        {
+            var dtl = item.FindControl("dtlSP") as DataList;
+
+            foreach (DataListItem list in dtl.Items)
+            {
+                var btn = list.FindControl("btnMua") as Button;
+                var ma = int.Parse(btn.CommandArgument);
+                Response.Redirect("ProductDetail.aspx?ma=" + ma);
+            }
+        }
     }
 
   

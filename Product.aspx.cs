@@ -9,21 +9,24 @@ public partial class Product : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        var ma = 0;
+        int.TryParse(Request.QueryString["cid"].ToString(), out ma);
+
         if (!IsPostBack)
         {
-            this.LoadSP();
+            this.LoadSP(ma);
         }
     }
 
-    private void LoadSP()
+    private void LoadSP(int ma)
     {
-        using (var k = new Kho())
+        if (ma != 0)
         {
-            var ma = 0;
-            int.TryParse(Request.QueryString["cid"].ToString(),out ma);
-            if (ma != 0)
+            using (var k = new Kho())
             {
-                dtlSP.DataSource = k.DanhSachSPHienThi.Where(x => x.CategoryID == ma).ToList();
+                var spTheoMa = k.DanhSachSPHienThi.Where(x => x.CategoryID == ma).ToList();
+
+                dtlSP.DataSource = spTheoMa.OrderByDescending(x => x.Price);
                 dtlSP.DataBind();
 
                 var dm = k.TimDM(ma);
@@ -31,16 +34,24 @@ public partial class Product : System.Web.UI.Page
             }
         }
     }
-
     protected void lbtnTenSP_Click(object sender, EventArgs e)
     {
-        var ma = int.Parse((sender as LinkButton).CommandArgument);
-        Response.Redirect("ProductDetail.aspx?ma=" + ma);
+        foreach (DataListItem item in dtlSP.Items)
+        {
+            var lbtnTenSP = item.FindControl("lbtnTenSP") as LinkButton;
+            var ma = int.Parse(lbtnTenSP.CommandArgument);
+            Response.Redirect("ProductDetail.aspx?ma=" + ma);
+        }
+
     }
 
     protected void btnMua_Click(object sender, EventArgs e)
     {
-        var ma = int.Parse((sender as Button).CommandArgument);
-        Response.Redirect("ProductDetail.aspx?ma=" + ma);
+        foreach (DataListItem list in dtlSP.Items)
+        {
+            var btn = list.FindControl("btnMua") as Button;
+            var ma = int.Parse(btn.CommandArgument);
+            Response.Redirect("ProductDetail.aspx?ma=" + ma);
+        }
     }
 }

@@ -49,11 +49,11 @@
                         <div style="margin-top: 50px; margin-bottom: 50px">
                             <asp:ImageButton ID="img" ImageUrl='<%#Eval("Picture") %>' PostBackUrl='<%# string.Format("~/ProductDetail.aspx?ma={0}", Eval("ProductID")) %>' runat="server" Height="120px" Width="220px" /><br />
                             <br />
-                            <asp:LinkButton ForeColor="Red" Font-Bold="true" runat="server"><%#Eval("ProductName") %></asp:LinkButton><br />
+                            <asp:LinkButton ForeColor="Red" Font-Bold="true" ID="lbtnTen" runat="server" OnClick="lbtnTenSP_Click" CommandArgument='<%#Eval("ProductID") %>'><%#Eval("ProductName") %></asp:LinkButton><br />
                             <br />
-                            <asp:Label runat="server" Font-Bold="true">$ <%#Eval("Price") %></asp:Label><br />
+                            <asp:Label runat="server" Font-Bold="true">$<%#Eval("Price") %></asp:Label><br />
                             <br />
-                            <asp:Button runat="server" Height="30px" CssClass="btn btn-default" Text="Add to Cart" Width="200px" />
+                            <asp:Button runat="server" ID="btnMua" Height="30px" CssClass="btn btn-warning" Text="Add to Cart" Width="200px" CommandArgument='<%#Eval("ProductID") %>' OnClick="btnMua_Click"/>
                             <br />
                         </div>
                     </ItemTemplate>

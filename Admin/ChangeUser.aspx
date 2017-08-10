@@ -2,65 +2,76 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
-    <asp:LinkButton runat="server" ID="lbtnBack" Text="Go Back" PostBackUrl="~/Admin/UserMng.aspx"></asp:LinkButton>
-    <br />
-    <asp:Label runat="server" ID="lblTB" Font-Bold="true" ForeColor="Red"></asp:Label>
-    <br />
-    <table style="height: 364px">
-        <tr>
-            <td>Username: </td>
-            <td>
-                <asp:TextBox runat="server" ID="txtName" Width="63%"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>Password: </td>
-            <td>
-                <asp:TextBox runat="server" ID="txtMK" Width="63%"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>First Name: </td>
-            <td>
-                <asp:TextBox runat="server" ID="txtFName" Width="63%"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>Last Name:</td>
-            <td>
-                <asp:TextBox runat="server" ID="txtLName" Width="63%"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>Email:</td>
-            <td>
-                <asp:TextBox runat="server" ID="txtEmail" Width="63%"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>Phone:</td>
-            <td>
-                <asp:TextBox runat="server" ID="txtPhone" Width="63%"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td style="height: 46px">Upload Avatar: </td>
-            <td style="height: 46px">
-                <asp:FileUpload runat="server" ID="fulImg" Width="95%" />
-            </td>
-        </tr>
-        <tr>
-            <td>Role:</td>
-            <td>
-                <asp:DropDownList runat="server" ID="ddlRole"></asp:DropDownList></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <asp:Button runat="server" ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click" Width="87px" />
-            </td>
-        </tr>
-    </table>
+    <div class="form-horizontal">
+        <fieldset>
+            <legend>User's Infomation</legend>
+
+            <asp:LinkButton runat="server" ID="lbtnBack" CssClass="btn btn-default" PostBackUrl="UserMng.aspx">
+                <span class="glyphicon glyphicon-backward"></span> Go Back</asp:LinkButton>
+            
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="name">Username: </label>
+                <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="txtName" ForeColor="Red" runat="server" ValidationGroup="Change"/>
+                <div class="col-md-4">
+                    <asp:TextBox ID="txtName" runat="server" CssClass="form-control input-md" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Password: </label>
+                <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="txtMK" ForeColor="Red" runat="server" ValidationGroup="Change"/>
+                <div class="col-md-4">
+                    <asp:TextBox ID="txtMK" runat="server" CssClass="form-control input-md" />
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label">First name: </label>
+                <div class="col-md-4">
+                    <asp:TextBox runat="server" ID="txtFName" CssClass="form-control input-md"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Last Name: </label>
+                <div class="col-md-4">
+                    <asp:TextBox runat="server" ID="txtLName" CssClass="form-control input-md"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Email: </label>
+                <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="txtEmail" ForeColor="Red" runat="server" ValidationGroup="Change"/>
+                <div class="col-md-4">
+                    <asp:TextBox ID="txtEmail" runat="server" class="form-control input-sm" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Phone: </label>
+                <div class="col-md-4">
+                    <asp:TextBox ID="txtPhone" runat="server" class="form-control input-sm" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Role: </label>
+                <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="ddlRole" ForeColor="Red" runat="server" ValidationGroup="Change" />
+                <div class="col-md-4">
+                    <asp:DropDownList runat="server" ID="ddlRole" CssClass="form-control"></asp:DropDownList>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="signup"></label>
+                <div class="col-md-4">
+                    <asp:Button runat="server" ID="btnSubmit" CssClass="btn btn-success" Text="Submit" OnClick="btnSubmit_Click" ValidationGroup="Change"/> 
+                    <asp:Label ID="lblTB" runat="server" />
+                </div>
+            </div>
+        </fieldset>
+    </div>
 </asp:Content>
 
 

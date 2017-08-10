@@ -20,8 +20,18 @@ public partial class Admin_UserMng : System.Web.UI.Page
     {
         using (var k = new Kho())
         {
-            grvND.DataSource = k.DanhSachNDHienThi;
+            grvND.DataSource = k.DanhSachNDHienThi.OrderBy(x=>x.RoleID);
             grvND.DataBind();
+
+            foreach (GridViewRow item in grvND.Rows)
+            {
+                var hdfMa = item.FindControl("hdfMa") as HiddenField;
+                var lblRole = item.FindControl("lblRole") as Label;
+                var maDM = int.Parse(hdfMa.Value);
+                var role = k.TimRole(maDM);
+
+                lblRole.Text = role.RoleName;
+            }
         }
     }
 

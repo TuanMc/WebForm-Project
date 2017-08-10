@@ -53,7 +53,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <asp:Button CssClass="btn btn-default" Style="width: 150px" Text="Add to cart" ID="btnAdd" runat="server" OnClick="btnAdd_Click" />
+                                    <asp:Button CssClass="btn btn-warning" Style="width: 150px" Text="Add to cart" ID="btnAdd" runat="server" OnClick="btnAdd_Click" />
                                 </td>
                             </tr>
                         </tbody>

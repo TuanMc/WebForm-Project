@@ -25,7 +25,7 @@ public partial class Admin_ProductMng : System.Web.UI.Page
         {
             var sp = k.DanhSachSPHienThi;
             var index = 0;
-
+            
             grvSP.DataSource = sp;
             grvSP.DataBind();
 

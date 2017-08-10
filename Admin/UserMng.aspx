@@ -2,16 +2,24 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
-    <br />
     <fieldset>
         <legend>User's Information</legend>
        
         <asp:GridView runat="server" ID="grvND" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-list" Width="85%" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                <asp:BoundField HeaderText="ID" DataField="UserID" />
+                <asp:TemplateField Visible="false">
+                    <ItemTemplate>
+                        <asp:HiddenField ID="hdfMa" runat="server" Value='<%#Eval("RoleID") %>'/>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField HeaderText="Username" DataField="Username" />
                 <asp:BoundField HeaderText="Password" DataField="Password" />
+                <asp:TemplateField HeaderText="Role">
+                    <ItemTemplate>
+                        <asp:Label ID="lblRole" runat="server" />
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField HeaderText="Email" DataField="Email" />
                 <asp:BoundField HeaderText="Phone" DataField="Phone" />
                 <asp:TemplateField>

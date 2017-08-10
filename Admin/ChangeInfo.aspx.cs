@@ -36,6 +36,7 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
             txtName.Text = sp.ProductName;
             txtGia.Text = sp.Price.ToString();
             txtDescription.Text = sp.Description;
+            imgSP.ImageUrl = sp.Picture;
 
             #endregion
 
@@ -70,24 +71,27 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
         txtName.Text = string.Empty;
         txtDescription.Text = string.Empty;
         txtGia.Text = string.Empty;
-
         #endregion
 
         using (var k = new Kho())
         {
+            imgSP.Visible = false;
+
             #region Binding Category
+
             var categoryList = k.DanhSachDM;
+
+
             categoryList.Insert(0, new Category()
             {
                 CategoryID = 0,
-                CategoryName = "----------Select----------"
+                CategoryName = ""
             });
 
             ddlCategory.DataSource = categoryList;
             ddlCategory.DataValueField = "CategoryID";
             ddlCategory.DataTextField = "CategoryName";
             ddlCategory.DataBind();
-
             #endregion
 
             #region Binding Supplier
@@ -95,7 +99,7 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
             supplierList.Insert(0, new Supplier()
             {
                 SupplierID = 0,
-                SupplierName = "----------Select----------"
+                SupplierName = ""
             });
 
             ddlSupplier.DataSource = supplierList;
