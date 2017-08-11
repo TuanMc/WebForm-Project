@@ -5,6 +5,11 @@
     <fieldset>
         <legend>User's Information</legend>
        
+        <asp:Panel ID="pnlXoa" runat="server" CssClass="alert alert-danger alert-dismissable fade in" Visible="false">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>User was blocked!</strong> 
+        </asp:Panel>
+
         <asp:GridView runat="server" ID="grvND" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-list" Width="85%" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
             <AlternatingRowStyle BackColor="White" />
             <Columns>

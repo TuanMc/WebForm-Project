@@ -117,7 +117,7 @@ public partial class Interface_Pages_Cart : System.Web.UI.Page
     protected void btnMua_ServerClick(object sender, EventArgs e)
     {
         if (Session["dn"] == null)
-            Response.Redirect("~/Requirement.aspx");
+            pnlDN.Visible = true;
         else
         {
             using (var g = new Gio())
@@ -137,7 +137,7 @@ public partial class Interface_Pages_Cart : System.Web.UI.Page
                     k.ThemCTHD(g.DanhSachMH, order);
                 }
                 g.XoaGio();
-                Response.Redirect("~/Index.aspx");
+                pnlMua.Visible = true;
             }
         }
     }

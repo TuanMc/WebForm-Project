@@ -11,7 +11,6 @@
                 <asp:BoundField DataField="OrderID" HeaderText="Order ID" />
                 <asp:BoundField DataField="UserID" HeaderText="User ID" />
                 <asp:BoundField DataField="OrderDate" HeaderText="Order Date" />
-                <asp:BoundField DataField="Address" HeaderText="Address" />
                 <asp:TemplateField HeaderText="Shipped">
                     <ItemTemplate>
                         <asp:Button ID="btnShipped" runat="server" Text="Shipped" OnClick="btnShipped_Click" CommandArgument='<%#Eval("OrderID") %>'></asp:Button>

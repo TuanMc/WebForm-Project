@@ -16,8 +16,8 @@
                 <asp:BoundField DataField="ProductID" HeaderText="Product ID" />
                 <asp:BoundField DataField="OrderDate" HeaderText="Order Date" />
                 <asp:BoundField DataField="ShippedDate" HeaderText="Shipped Date" />
-                <asp:BoundField DataField="UnitPrice" HeaderText="Unit Price" />
                 <asp:BoundField DataField="Quantity" HeaderText="Quantity" />
+                <asp:BoundField DataField="UnitPrice" HeaderText="Unit Price" />
             </Columns>
             <FooterStyle BackColor="#CCCC99" />
             <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />

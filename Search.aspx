@@ -7,18 +7,22 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
-    <asp:label id="lblTB" runat="server" font-bold="true" forecolor="Red"></asp:label>
-    <asp:datalist id="dtlSP" runat="server" repeatcolumns="4" width="100%" repeatdirection="Horizontal">
-            <ItemStyle HorizontalAlign="Center" />
+    
+    <asp:Panel ID="pnlTB" runat="server" CSSClass="alert alert-danger alert-dismissable fade in" Visible="false">
+        <strong>No item found!</strong> 
+    </asp:Panel>
+
+    <asp:DataList ID="dtlSP" runat="server" RepeatColumns="4" Width="100%" RepeatDirection="Horizontal">
+        <ItemStyle HorizontalAlign="Left" />
             <ItemTemplate>
-                <div class="item">
-                    <asp:ImageButton ID="img" ImageUrl='<%#Eval("Picture") %>' PostBackUrl='<%# string.Format("~/ProductDetail.aspx?ma={0}", Eval("ProductID")) %>' runat="server" Height="150px" Width="250px" /><br />
+                <div style="margin-top: 50px; margin-bottom: 50px;" class="text-center">
+                    <asp:ImageButton ID="img" ImageUrl='<%#Eval("Picture") %>' PostBackUrl='<%# string.Format("~/ProductDetail.aspx?ma={0}", Eval("ProductID")) %>' runat="server" Height="120px" Width="220px" /><br />
                     <br />
                     <asp:LinkButton ForeColor="Red" Font-Bold="true" OnClick="lbtnTenSP_Click" CommandArgument='<%#Eval("ProductID") %>' runat="server"><%#Eval("ProductName") %></asp:LinkButton><br />
                     <br />
                     <asp:Label runat="server" Font-Bold="true"><%#Eval("Price") %></asp:Label><br />
                     <br />
-                    <asp:LinkButton CssClass="btn btn-default" runat="server" Height="30px" Text="Add to Cart" Width="200px" CommandArgument='<%#Eval("ProductID") %>' OnClick="lbtnTenSP_Click"  />
+                    <asp:LinkButton CssClass="btn btn-warning" runat="server" Height="30px" Text="Add to Cart" Width="200px" CommandArgument='<%#Eval("ProductID") %>' OnClick="lbtnTenSP_Click"  />
                     <br />
                 </div>
             </ItemTemplate>

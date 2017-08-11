@@ -91,7 +91,7 @@
                 <asp:ContentPlaceHolder runat="server" ID="cphHead">
                 </asp:ContentPlaceHolder>
             </div>
-            <div class="main" style="min-height: 100%">
+            <div class="main" style="min-height: 600px">
                 <asp:ContentPlaceHolder runat="server" ID="cphMain">
                 </asp:ContentPlaceHolder>
             </div>

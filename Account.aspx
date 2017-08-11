@@ -10,7 +10,15 @@
     </ol>
     <!-- End Breadcrumb -->
 
-    <asp:Label ID="lblTB" Font-Bold="true" ForeColor="Red" runat="server" />
+    <asp:Panel ID="pnlDN" runat="server" CSSClass="alert alert-danger alert-dismissable fade in" Visible="false">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Danger!</strong> You must log-in to continue this performance.
+    </asp:Panel>
+
+    <asp:Panel ID="pnlUpdate" runat="server" CSSClass="alert alert-success alert-dismissable fade in" Visible="false">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Your information is successfully updated!</strong>
+    </asp:Panel>
 
     <div class="container">
         <div class="form-horizontal">

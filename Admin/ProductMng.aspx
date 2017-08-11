@@ -6,6 +6,11 @@
     <fieldset>
         <legend>Products</legend>
 
+        <asp:Panel ID="pnlXoa" runat="server" CssClass="alert alert-danger alert-dismissable fade in" Visible="false">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Item was deleted!</strong> 
+        </asp:Panel>
+
         <asp:LinkButton runat="server" ID="lbtnThemSP" PostBackUrl="~/Admin/ChangeInfo.aspx" CssClass="btn btn-success">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Product</asp:LinkButton>
 
@@ -47,7 +52,7 @@
             <SortedDescendingHeaderStyle BackColor="#575357" />
         </asp:GridView>
     </fieldset>
-    
+
     <div id="divKQ">
     </div>
 

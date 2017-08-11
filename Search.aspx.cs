@@ -9,24 +9,32 @@ public partial class Search : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        // Gan tu khoa tu query vao label de tim kiem:
         var tk = Request.QueryString["q"].ToString();
         lblTK.Text = tk.Trim();
-        if (!String.IsNullOrEmpty(tk))
-            using (var k = new Kho())
+
+        using (var k = new Kho())
+        {
+            var sp = k.DanhSachSPHienThi.Where(x => x.ProductName.Trim().ToLower().Contains(tk.Trim().ToLower())).ToList();
+
+            // Loc thong tin:
+            if (!String.IsNullOrEmpty(tk) && sp.Count == 0)
+                pnlTB.Visible = true;
+
+            // Sau khi loc thong tin thanh cong, gan gia tri vao DataList:
+            else
             {
-                dtlSP.DataSource = k.DanhSachSPHienThi.Where(x => x.ProductName.Trim().ToLower().Contains(tk.Trim().ToLower()));
+                dtlSP.DataSource = sp.OrderByDescending(x => x.Price);
                 dtlSP.DataBind();
             }
-        else
-            lblTB.Text = "No Item Found";
+        }
     }
 
-    protected void lbtnTenSP_Click(object sender, EventArgs e)
-    {
-        var ma = int.Parse((sender as LinkButton).CommandArgument);
-        Response.Redirect("ProductDetail.aspx?ma=" + ma);
-    }
+        protected void lbtnTenSP_Click(object sender, EventArgs e)
+        {
 
-   
-    
-}
+            // Chuyen sang trang CTSP theo ma tu LinkButton:
+            var ma = int.Parse((sender as LinkButton).CommandArgument);
+            Response.Redirect("ProductDetail.aspx?ma=" + ma);
+        }
+    }

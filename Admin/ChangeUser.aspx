@@ -5,7 +5,12 @@
     <div class="form-horizontal">
         <fieldset>
             <legend>User's Infomation</legend>
-
+            
+            <asp:Panel ID="pnlUpdate" runat="server" CssClass="alert alert-success alert-dismissable fade in" Visible="false">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>The information is successfully updated!</strong>
+            </asp:Panel>
+            
             <asp:LinkButton runat="server" ID="lbtnBack" CssClass="btn btn-default" PostBackUrl="UserMng.aspx">
                 <span class="glyphicon glyphicon-backward"></span> Go Back</asp:LinkButton>
             
@@ -66,8 +71,8 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="signup"></label>
                 <div class="col-md-4">
-                    <asp:Button runat="server" ID="btnSubmit" CssClass="btn btn-success" Text="Submit" OnClick="btnSubmit_Click" ValidationGroup="Change"/> 
-                    <asp:Label ID="lblTB" runat="server" />
+                    <asp:Button runat="server" ID="btnSubmit" CssClass="btn btn-success" Text="Submit" OnClick="btnSubmit_Click" ValidationGroup="Change"/><br />
+                    <asp:Label ID="lblTB" ForeColor="Red" runat="server" />
                 </div>
             </div>
         </fieldset>

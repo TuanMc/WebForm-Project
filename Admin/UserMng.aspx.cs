@@ -43,6 +43,7 @@ public partial class Admin_UserMng : System.Web.UI.Page
             k.XoaND(ma);
             this.LoadUser();
         }
+        pnlXoa.Visible = true;
     }
 
     protected void lbtnEdit_Click(object sender, EventArgs e)

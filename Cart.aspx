@@ -3,6 +3,18 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
+    
+    <asp:Panel ID="pnlDN" runat="server" CSSClass="alert alert-danger alert-dismissable fade in" Visible="false">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Danger!</strong> You must log-in to continue this performance.
+    </asp:Panel>
+    
+    <asp:Panel ID="pnlMua" runat="server" CSSClass="alert alert-success alert-dismissable fade in" Visible="false">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Purchase completed!</strong>
+    </asp:Panel>
+
+    <!-- Header -->
     <h2>Shopping Cart</h2>
 
     <div class="container">

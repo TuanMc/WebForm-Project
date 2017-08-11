@@ -117,15 +117,13 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
        
         using (var k = new Kho())
         {
-            string str = fulImg.FileName;
-            fulImg.PostedFile.SaveAs(Server.MapPath(".") + "//Uploads//" + str);
-            string path = "~/Admin/Uploads/" + str.ToString();
-
             #region Sua Product
             var id = 0;
             int.TryParse(Request.QueryString["id"], out id);
             if (id != 0)
             {
+                var sp = k.TimSP(id);
+                var path = sp.Picture;
                 k.SuaSP(new Product()
                 {
                     ProductID = id,
@@ -137,19 +135,20 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
                     Picture = path
                 });
 
-
-                lblTB.Text = "Item was successfully updated";
-                this.LoadSP();
+                pnlUpdate.Visible = true;
             }
-
             #endregion
             
             #region Them Product
             else
             {
+                string str = fulImg.FileName;
+                fulImg.PostedFile.SaveAs(Server.MapPath(".") + "//Uploads//" + str);
+                string path = "~/Admin/Uploads/" + str.ToString();
+
                 var sp = k.TimSPTheoTen(txtName.Text);
                 if (!(sp == default(Product)))
-                    lblTB.Text = "Item already exists";
+                    pnlTB.Visible = true;
                 else
                 {
                     k.themSP(new Product()
@@ -162,13 +161,14 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
                         Description = txtDescription.Text,
                         ProductStatus = true
                     });
-                    lblTB.Text = "Item was successfully added";
-                    this.LoadSP();
 
+                    pnlUpdate.Visible = true;
                 }
             }
             #endregion  
 
+            
+            this.LoadSP();
         }
     }
 

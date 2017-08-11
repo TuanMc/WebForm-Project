@@ -39,12 +39,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
     <asp:Repeater ID="rptSP" runat="server">
         <ItemTemplate>
+            <asp:HiddenField runat="server" ID="hdfMa" Value='<%#Eval("CategoryID") %>' />
             <br />
             <fieldset>
                 <legend><%#Eval("CategoryName") %></legend>
 
                 <asp:DataList ID="dtlSP" runat="server" RepeatColumns="4" Width="100%" RepeatDirection="Horizontal">
-                    <ItemStyle HorizontalAlign="Center"/>
+                    <ItemStyle HorizontalAlign="Center" />
                     <ItemTemplate>
                         <div style="margin-top: 50px; margin-bottom: 50px">
                             <asp:ImageButton ID="img" ImageUrl='<%#Eval("Picture") %>' PostBackUrl='<%# string.Format("~/ProductDetail.aspx?ma={0}", Eval("ProductID")) %>' runat="server" Height="120px" Width="220px" /><br />
@@ -53,7 +54,7 @@
                             <br />
                             <asp:Label runat="server" Font-Bold="true">$<%#Eval("Price") %></asp:Label><br />
                             <br />
-                            <asp:Button runat="server" ID="btnMua" Height="30px" CssClass="btn btn-warning" Text="Add to Cart" Width="200px" CommandArgument='<%#Eval("ProductID") %>' OnClick="btnMua_Click"/>
+                            <asp:Button runat="server" ID="btnMua" Height="30px" CssClass="btn btn-warning" Text="Add to Cart" Width="200px" CommandArgument='<%#Eval("ProductID") %>' OnClick="btnMua_Click" />
                             <br />
                         </div>
                     </ItemTemplate>

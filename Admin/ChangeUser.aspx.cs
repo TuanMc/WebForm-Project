@@ -77,7 +77,7 @@ public partial class Admin_ChangeUser : System.Web.UI.Page
                     Phone = txtPhone.Text
                 });
 
-                lblTB.Text = "User was successfully updated";
+                pnlUpdate.Visible = true;
                 this.LoadTTND(uid);
             }
         }

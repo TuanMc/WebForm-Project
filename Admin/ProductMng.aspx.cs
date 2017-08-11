@@ -59,6 +59,8 @@ public partial class Admin_ProductMng : System.Web.UI.Page
             this.LoadProducts();
         }
 
+        pnlXoa.Visible = true;
+
     }
 
     protected void lbtnEdit_Click(object sender, EventArgs e)

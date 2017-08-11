@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-    <title>Create new account</title>
+    <title>Admin</title>
     <script src="../Style/js/bootstrap.min.js"></script>
     <link href="../Style/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../Style/StyleSheet.css" rel="stylesheet" />

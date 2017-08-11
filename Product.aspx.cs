@@ -9,6 +9,9 @@ public partial class Product : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        // Gan gia tri CategoryID vao ma
+        //load trang theo ma duoc gan:
         var ma = 0;
         int.TryParse(Request.QueryString["cid"].ToString(), out ma);
 
@@ -20,38 +23,37 @@ public partial class Product : System.Web.UI.Page
 
     private void LoadSP(int ma)
     {
+        // Loc dieu khien khi ma == 0:
         if (ma != 0)
         {
             using (var k = new Kho())
             {
+                // Tim list san pham theo ma duoc gan:
+                // Gan ten label theo CategoryName:
                 var spTheoMa = k.DanhSachSPHienThi.Where(x => x.CategoryID == ma).ToList();
+                var dm = k.TimDM(ma);
+                lblTenDM.Text = dm.CategoryName;
 
+                //  Gan list vua tim duoc vao datalist:
                 dtlSP.DataSource = spTheoMa.OrderByDescending(x => x.Price);
                 dtlSP.DataBind();
 
-                var dm = k.TimDM(ma);
-                lblTenDM.Text = dm.CategoryName;
+
             }
         }
     }
+
     protected void lbtnTenSP_Click(object sender, EventArgs e)
     {
-        foreach (DataListItem item in dtlSP.Items)
-        {
-            var lbtnTenSP = item.FindControl("lbtnTenSP") as LinkButton;
-            var ma = int.Parse(lbtnTenSP.CommandArgument);
-            Response.Redirect("ProductDetail.aspx?ma=" + ma);
-        }
-
+        // Chuyen sang trang CTSP theo ma duoc gan:
+        var ma = int.Parse((sender as LinkButton).CommandArgument);
+        Response.Redirect("ProductDetail.aspx?ma=" + ma);
     }
 
     protected void btnMua_Click(object sender, EventArgs e)
     {
-        foreach (DataListItem list in dtlSP.Items)
-        {
-            var btn = list.FindControl("btnMua") as Button;
-            var ma = int.Parse(btn.CommandArgument);
-            Response.Redirect("ProductDetail.aspx?ma=" + ma);
-        }
+        // Chuyen sang trang CTSP theo ma duoc gan:
+        var ma = int.Parse((sender as Button).CommandArgument);
+        Response.Redirect("ProductDetail.aspx?ma=" + ma);
     }
 }
