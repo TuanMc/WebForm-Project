@@ -38,7 +38,7 @@ public partial class Log_In_NewAccount : System.Web.UI.Page
                     FName = txtFN.Text,
                     LName = txtLN.Text,
                     Username = txtDN.Text,
-                    Password = txtMK.Text,
+                    Password = txtXN.Text,
                     Email = txtEmail.Text,
                     Status = true,
                     RoleID = 2
@@ -46,8 +46,7 @@ public partial class Log_In_NewAccount : System.Web.UI.Page
 
                 if (kq)
                 {
-                    Session["dn"] = txtDN.Text;
-                    Response.Redirect("~/Index.aspx");
+                    Response.Redirect("LogIn.aspx");
                 }
                 else
                     this.LoadForm();

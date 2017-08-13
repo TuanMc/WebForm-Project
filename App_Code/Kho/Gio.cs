@@ -12,20 +12,6 @@ public class Gio : List<Product>, IGio
         this.dc = new DataClassesDataContext();
     }
 
-    public void DaMua(List<Cart> cart)
-    {
-        if (cart != null)
-        {
-            foreach (Cart c in cart)
-            {
-                Cart oldCart = TimMH(c.CartID);
-                oldCart.IsInCart = false;
-            }
-
-            dc.SubmitChanges();
-        }
-    }
-
     public List<Cart> DanhSachMH
     {
         get
@@ -39,16 +25,12 @@ public class Gio : List<Product>, IGio
         if (this.dc != null) this.dc.Dispose();
     }
 
-    public void SuaSL(int uid, int pid, int quantity)
+    public void SuaSL(int pid, int quantity)
     {
-        var list = TimMH(uid);
-        if (list != null)
-        {
-            var c = TimSPTrongGio(pid);
-            if (c != null)
-                if (quantity != c.Quantity && quantity > 0)
-                    c.Quantity = (short)quantity;
-        }
+        var c = TimSPTrongGio(pid);
+        if (c != null)
+            if (quantity != c.Quantity && quantity > 0)
+                c.Quantity = (short)quantity;
         dc.SubmitChanges();
     }
 
@@ -63,11 +45,6 @@ public class Gio : List<Product>, IGio
         {
             return;
         }
-    }
-
-    public Cart TimMH(int uid)
-    {
-        return dc.Carts.FirstOrDefault(x => x.UserID == uid);
     }
 
     public void XoaMH(int id)

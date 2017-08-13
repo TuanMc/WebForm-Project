@@ -47,7 +47,7 @@
 
                                 <div class="form-group sign-btn">
                                     <asp:Button CssClass="btn" runat="server" Text="Log in" ID="btnDN" OnClick="btnDN_Click" />
-                                    <p><a href="#" class="forgot">Can't access your account?</a></p>
+                                    <p><a href="ResetPassword.aspx" class="forgot">Can't access your account?</a></p>
                                     <p>
                                         <strong>New to TimeInfo?</strong><br>
                                         <a href="NewAccount.aspx" id="flip-btn" class="signup signup_link">Sign up for a new account</a>

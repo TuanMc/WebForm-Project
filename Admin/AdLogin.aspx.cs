@@ -53,7 +53,7 @@ public partial class Log_In_AdLogin : System.Web.UI.Page
         {
             #region Kiem Tra Validation
             var nd = k.TimNDTheoTenDN(txtDN.Text);
-            if (nd == default(User) || nd.Password != txtMK.Text || nd.RoleID != 1)
+            if (nd == default(User) || nd.Password.ToMD5() != txtMK.Text.ToMD5() || nd.RoleID != 1)
             {
                 lblTB.Text = "Incorrect username or password";
                 return;

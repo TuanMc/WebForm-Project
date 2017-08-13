@@ -15,6 +15,8 @@ public partial class Page_ProductDetail : System.Web.UI.Page
 
     private void LoadCTSP()
     {
+        // Gan gia tri ma tu querystring:
+        // Kiem tra dieu kien => Load san pham theo ma duoc gan:
         var ma = 0;
         int.TryParse(Request.QueryString["ma"], out ma);
 
@@ -35,7 +37,6 @@ public partial class Page_ProductDetail : System.Web.UI.Page
                 btnAdd.CommandArgument = (sp.ProductID).ToString();
             }
         }
-
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -43,28 +44,23 @@ public partial class Page_ProductDetail : System.Web.UI.Page
         var sl = int.Parse(txtSL.Text);
         var ma = int.Parse((sender as Button).CommandArgument);
 
-        var uid = 1; // uid tam
-
-
         using (var g = new Gio())
         {
-            var mh = g.TimMH(uid);
-
-            // cap nhat sl:
+            // Kiem tra sp theo ma:
+            // Cap nhat so luong:
             if (g.TimSPTrongGio(ma) != null)
-                g.SuaSL(uid, ma, sl);
+                g.SuaSL(ma, sl);
 
-            //Them moi
+            // Them moi:
             else
             {
                 g.themMH(new Cart()
                 {
-                    UserID = uid,
+                    UserID = null,
                     ProductID = ma,
                     IsInCart = true,
                     Quantity = (short)sl,
                 });
-
             }
         }
 
