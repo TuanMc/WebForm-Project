@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
     <ol class="breadcrumb">
-        <li><a href="Index.aspx">Home</a></li>
+        <li><a href="Home">Home</a></li>
         <li><a href="#">
             <asp:Label ID="lblTenDM" runat="server"></asp:Label></a></li>
     </ol>

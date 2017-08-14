@@ -3,17 +3,22 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
     <div class="form-horizontal">
+
+        <!-- Header -->
         <fieldset>
             <legend>User's Infomation</legend>
             
+            <!-- Update success -->
             <asp:Panel ID="pnlUpdate" runat="server" CssClass="alert alert-success alert-dismissable fade in" Visible="false">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>The information is successfully updated!</strong>
             </asp:Panel>
             
+            <!-- Back Button -->
             <asp:LinkButton runat="server" ID="lbtnBack" CssClass="btn btn-default" PostBackUrl="UserMng.aspx">
                 <span class="glyphicon glyphicon-backward"></span> Go Back</asp:LinkButton>
             
+            <!-- User Name -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="name">Username: </label>
                 <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="txtName" ForeColor="Red" runat="server" ValidationGroup="Change"/>
@@ -22,6 +27,7 @@
                 </div>
             </div>
 
+            <!-- Password -->
             <div class="form-group">
                 <label class="col-md-4 control-label">Password: </label>
                 <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="txtMK" ForeColor="Red" runat="server" ValidationGroup="Change"/>
@@ -30,7 +36,7 @@
                 </div>
             </div>
 
-            <!-- Select Basic -->
+            <!-- First Name -->
             <div class="form-group">
                 <label class="col-md-4 control-label">First name: </label>
                 <div class="col-md-4">
@@ -38,6 +44,7 @@
                 </div>
             </div>
 
+            <!-- Last Name -->
             <div class="form-group">
                 <label class="col-md-4 control-label">Last Name: </label>
                 <div class="col-md-4">
@@ -45,6 +52,7 @@
                 </div>
             </div>
 
+            <!-- Email -->
             <div class="form-group">
                 <label class="col-md-4 control-label">Email: </label>
                 <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="txtEmail" ForeColor="Red" runat="server" ValidationGroup="Change"/>
@@ -53,6 +61,7 @@
                 </div>
             </div>
 
+            <!-- Phone -->
             <div class="form-group">
                 <label class="col-md-4 control-label">Phone: </label>
                 <div class="col-md-4">
@@ -60,6 +69,15 @@
                 </div>
             </div>
 
+            <!-- Address -->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Address: </label>
+                <div class="col-md-4">
+                    <asp:TextBox runat="server" ID="txtAddr" CssClass="form-control input-md"/>
+                </div>
+            </div>
+
+            <!-- Role -->
             <div class="form-group">
                 <label class="col-md-4 control-label">Role: </label>
                 <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="ddlRole" ForeColor="Red" runat="server" ValidationGroup="Change" />
@@ -68,6 +86,7 @@
                 </div>
             </div>
 
+            <!-- Submit Button -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="signup"></label>
                 <div class="col-md-4">

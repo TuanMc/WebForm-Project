@@ -23,48 +23,13 @@
         <div class="row main" style="margin-top: 15px;">
             <div class="main-login main-center">
                 <form class="form-horizontal" runat="server">
+                    <fieldset>
+                        <legend>
+                            New Account
+                        </legend>
+                    </fieldset>
 
-                    <!-- FName -->
-                    <div class="form-group">
-                        <label for="name" class="cols-sm-2 control-label">First Name&nbsp; </label>
-                        <asp:RequiredFieldValidator ID="rqfFN" runat="server" ControlToValidate="txtFN" ErrorMessage="*" Font-Bold="True" ForeColor="Red" ValidationGroup="DN"></asp:RequiredFieldValidator>
-                        &nbsp;<div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <asp:TextBox CssClass="form-control" runat="server" ID="txtFN" placeholder="Enter first Name" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- LName -->
-                    <div class="form-group">
-                        <label for="name" class="cols-sm-2 control-label">
-                            Last Name
-                        <asp:RequiredFieldValidator ID="rqfLN" runat="server" ControlToValidate="txtLN" ErrorMessage="*" Font-Bold="True" ForeColor="Red" ValidationGroup="DN"></asp:RequiredFieldValidator>
-                        </label>
-                        &nbsp;<div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <asp:TextBox CssClass="form-control" runat="server" ID="txtLN" placeholder="Enter last Name" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Email -->
-                    <div class="form-group">
-                        <label for="email" class="cols-sm-2 control-label">
-                            Your Email
-                        <asp:RequiredFieldValidator ID="rqfEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="*" Font-Bold="True" ForeColor="Red" ValidationGroup="DN"></asp:RequiredFieldValidator>
-                        </label>
-                        &nbsp;<div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                <asp:TextBox CssClass="form-control" runat="server" ID="txtEmail" placeholder="Enter Email" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Username -->
+                   <!-- Username -->
                     <div class="form-group">
                         <label for="username" class="cols-sm-2 control-label">
                             Username
@@ -78,6 +43,23 @@
                         </div>
                     </div>
 
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email" class="cols-sm-2 control-label">
+                            Your Email
+                        <asp:RequiredFieldValidator ID="rqfEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="*" Font-Bold="True" ForeColor="Red" ValidationGroup="DN"></asp:RequiredFieldValidator>
+                        </label>
+                        &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail" ErrorMessage="Incorrect format" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="DN"></asp:RegularExpressionValidator>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <asp:TextBox CssClass="form-control" runat="server" ID="txtEmail" placeholder="Enter Email" />
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <!-- Password -->
                     <div class="form-group">
                         <label for="password" class="cols-sm-2 control-label">
                             Password
@@ -91,6 +73,7 @@
                         </div>
                     </div>
 
+                    <!-- Check Password -->
                     <div class="form-group">
                         <label for="confirm" class="cols-sm-2 control-label">
                             Confirm Password
@@ -106,7 +89,7 @@
 
                     <div class="form-group">
                         <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtMK" ControlToValidate="txtXN" ErrorMessage="Both passwords are not identical" ForeColor="Red" ValidationGroup="DN"></asp:CompareValidator>
-                        <asp:Button ID="btnTao" OnClick="btnTao_Click" class="btn btn-primary btn-lg btn-block login-button" runat="server" Text="Register" ValidationGroup="DN" />
+                        <asp:Button ID="btnTao" OnClick="btnTao_Click" class="btn btn-primary btn-lg btn-block login-button" runat="server" Text="Next" ValidationGroup="DN" />
                     </div>
 
                     <div class="login-register">

@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Log-in</title>
     <script src="../Scripts/jquery-3.1.1.min.js"></script>
     <script src="../Style/js/bootstrap.min.js"></script>
     <link href="../Style/css/bootstrap.min.css" rel="stylesheet" />
@@ -49,8 +49,8 @@
                                     <asp:Button CssClass="btn" runat="server" Text="Log in" ID="btnDN" OnClick="btnDN_Click" />
                                     <p><a href="ResetPassword.aspx" class="forgot">Can't access your account?</a></p>
                                     <p>
-                                        <strong>New to TimeInfo?</strong><br>
-                                        <a href="NewAccount.aspx" id="flip-btn" class="signup signup_link">Sign up for a new account</a>
+                                        <strong>New to TimeInfo?</strong><br />
+                                        <a href="Login/NewAccount" id="flip-btn" class="signup signup_link">Sign up for a new account</a>
                                     </p>
                                 </div>
                             </form>

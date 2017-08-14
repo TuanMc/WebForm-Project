@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Reset Password</title>
+
     <script src="../Scripts/jquery-3.1.1.min.js"></script>
     <script src="../Style/js/bootstrap.min.js"></script>
     <link href="../Style/css/bootstrap.min.css" rel="stylesheet" />
@@ -50,6 +51,10 @@
                                     </div>
                                     <div class="form-group">
                                         <asp:Button ID="btnReset" CssClass="btn btn-lg btn-primary btn-block" Text="Reset Password" runat="server" OnClick="btnReset_Click" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <a href="LogIn.aspx">Back</a>
                                     </div>
                                 </form>
 

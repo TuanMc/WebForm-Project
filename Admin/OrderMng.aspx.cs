@@ -22,23 +22,20 @@ public partial class Admin_OrderMng : System.Web.UI.Page
         using (var k = new Kho())
         {
             var list = k.DanhSachHD;
-            var index = 0;
-
-
             grvHD.DataSource = list;
             grvHD.DataBind();
 
 
             foreach (GridViewRow item in grvHD.Rows)
             {
+                var hdfMa = item.FindControl("hdfMa") as HiddenField;
                 var btn = item.FindControl("btnShipped") as Button;
-                if (list[index].OrderStatus == false)
-                { 
+                var hd = k.TimHD(int.Parse(hdfMa.Value));
+                if (hd.OrderStatus == false)
+                {
                     btn.Visible = false;
                     btn.Enabled = false;
                 }
-
-                index++;
             }
         }
     }
@@ -62,4 +59,10 @@ public partial class Admin_OrderMng : System.Web.UI.Page
     }
 
 
+
+    protected void grvHD_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        grvHD.PageIndex = e.NewPageIndex;
+        LoadOrder();
+    }
 }

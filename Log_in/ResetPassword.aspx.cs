@@ -27,7 +27,7 @@ public partial class Log_In_ResetPassword : System.Web.UI.Page
                     UserName = "tranvanteo1111",
                     Password = "@ManhDuc",
                     Subject = "Reset Password",
-                    Body = "Mat Khau: " + nd.Password,
+                    Body = "Password: " + nd.Password,
                     From = "tranvanteo1111@gmail.com",
                     To = nd.Email
                 };

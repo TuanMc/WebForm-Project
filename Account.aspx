@@ -5,16 +5,18 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
     <!-- Breadcrumb -->
     <ol class="breadcrumb">
-        <li><a href="Index.aspx">Home</a></li>
+        <li><a href="Home">Home</a></li>
         <li><a href="#">User Account</a></li>
     </ol>
     <!-- End Breadcrumb -->
 
+    <!-- Login warning -->
     <asp:Panel ID="pnlDN" runat="server" CSSClass="alert alert-danger alert-dismissable fade in" Visible="false">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <strong>Danger!</strong> You must log-in to continue this performance.
     </asp:Panel>
 
+    <!-- Update complete -->
     <asp:Panel ID="pnlUpdate" runat="server" CSSClass="alert alert-success alert-dismissable fade in" Visible="false">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <strong>Your information is successfully updated!</strong>
@@ -22,6 +24,8 @@
 
     <div class="container">
         <div class="form-horizontal">
+
+            <!-- First Name -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="textinput">First Name</label>
                 <div class="col-md-4">
@@ -29,7 +33,7 @@
                 </div>
             </div>
 
-            <!-- Text input-->
+            <!-- Last Name -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="textinput">Last Name</label>
                 <div class="col-md-4">
@@ -37,6 +41,7 @@
                 </div>
             </div>
 
+            <!-- Username -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="textinput">Username</label>
                 <div class="col-md-4">
@@ -44,6 +49,7 @@
                 </div>
             </div>
 
+            <!-- Password -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="textinput">
                     Password
@@ -55,6 +61,7 @@
                     </div>
             </div>
 
+            <!-- Check Password -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="textinput">
                     Re-Password
@@ -67,26 +74,41 @@
                     </div>
             </div>
 
+            <!-- Email -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="textinput">
                     Email 
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtEmail" ErrorMessage="*" Font-Bold="True" ForeColor="Red" ValidationGroup="Sua"></asp:RequiredFieldValidator>
                 </label>
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail" ErrorMessage="Wrong format (ie: user@gmail.com)" Font-Bold="False" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="Sua"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail" ErrorMessage="Incorrect format (ie: user@gmail.com)" Font-Bold="False" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="Sua"></asp:RegularExpressionValidator>
                 &nbsp;
                     <div class="col-md-4">
                         <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" CssClass="form-control input-md" Text='<%#Eval("Email") %>' />
                     </div>
             </div>
 
+            <!-- Phone -->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="textinput">Phone</label>
+                <label class="col-md-4 control-label" for="textinput">Phone
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPhone" ErrorMessage="*" Font-Bold="True" ForeColor="Red" ValidationGroup="Sua"></asp:RequiredFieldValidator>
+                </label>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtPhone" ErrorMessage="Incorrect format (ie: 555 444 6789)" ForeColor="Red" ValidationExpression="\(?\d+\)?[-.\s]?\d+[-.\s]?\d+" ValidationGroup="Sua"></asp:RegularExpressionValidator>
                 <div class="col-md-4">
                     <asp:TextBox ID="txtPhone" runat="server" placeholder="Phone" CssClass="form-control input-md" Text='<%#Eval("Phone") %>' />
                 </div>
             </div>
 
-            <!-- Button -->
+            <!-- Address -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Address
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtAddr" ErrorMessage="*" Font-Bold="True" ForeColor="Red" ValidationGroup="Sua"></asp:RequiredFieldValidator>
+                </label>
+                <div class="col-md-4">
+                    <asp:TextBox ID="txtAddr" runat="server" placeholder="Address" CssClass="form-control input-md" Text='<%#Eval("Address") %>' />
+                </div>
+            </div>
+
+            <!-- Submit Button -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="singlebutton"></label>
                 <div class="col-md-4">

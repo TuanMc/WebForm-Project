@@ -103,13 +103,7 @@ public class Kho : IKho
             if (hd == default(Order)) return;
             else
             {
-                var cthd = TimCTHD(id);
-
-                foreach (var item in cthd)
-                {
-                    item.ShippedDate = DateTime.Now;
-                }
-
+                hd.ShippedDate = DateTime.Now;
                 hd.OrderStatus = false;
                 dc.SubmitChanges();
             }
@@ -197,8 +191,7 @@ public class Kho : IKho
 
     public void SuaTTND(User user)
     {
-        try
-        {
+        
             User u = TimND(user.UserID);
             if (u != default(User))
             {
@@ -209,15 +202,12 @@ public class Kho : IKho
                 u.LName = user.LName;
                 u.Email = user.Email;
                 u.Phone = user.Phone;
+                u.Address = user.Address;
 
                 dc.SubmitChanges();
                 return;
             }
-        }
-        catch (Exception)
-        {
-            return;
-        }
+        
     }
 
     public void themDM(Category c)
@@ -264,7 +254,6 @@ public class Kho : IKho
                 ProductID = (int)item.ProductID,
                 Quantity = item.Quantity,
                 UnitPrice = TimSP((int)item.ProductID).Price * item.Quantity,
-                OrderDate = o.OrderDate,
             });
         }
 

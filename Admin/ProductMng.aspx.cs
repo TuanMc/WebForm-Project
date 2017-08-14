@@ -68,4 +68,10 @@ public partial class Admin_ProductMng : System.Web.UI.Page
         var ma = int.Parse((sender as LinkButton).CommandArgument);
         Response.Redirect("~/Admin/ChangeInfo.aspx?id="+ma);
     }
+
+    protected void grvSP_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        grvSP.PageIndex = e.NewPageIndex;
+        LoadProducts();
+    }
 }

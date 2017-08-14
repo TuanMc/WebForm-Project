@@ -36,6 +36,7 @@ public partial class Pages_Account : System.Web.UI.Page
             txtUN.Text = nd.Username;
             txtEmail.Text = nd.Email;
             txtPhone.Text = nd.Phone;
+            txtAddr.Text = nd.Address;
         }
     }
 
@@ -61,6 +62,7 @@ public partial class Pages_Account : System.Web.UI.Page
                     Password = txtRePass.Text,
                     Email = txtEmail.Text,
                     Phone = txtPhone.Text,
+                    Address = txtAddr.Text,
                     RoleID = 2,
                 };
                 k.SuaTTND(user);

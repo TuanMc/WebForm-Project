@@ -38,7 +38,7 @@
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            <a class="navbar-brand" href="Index.aspx">Home</a>
+            <a class="navbar-brand" href="Home">Home</a>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -77,7 +77,7 @@
                             <li class="divider"></li>
                             <li style="padding-left: 20px"><a href="Account.aspx"><span class="glyphicon glyphicon-user"></span>&nbsp; Account</a></li>
                             <li class="divider"></li>
-                            <li style="padding-left: 20px"><a href="Log%20In/LogIn.aspx"><span class="glyphicon glyphicon-lock "></span>&nbsp; Login/out</a></li>
+                            <li style="padding-left: 20px"><a href="Log_in"><span class="glyphicon glyphicon-lock "></span>&nbsp; Login/out</a></li>
                         </ul>
 
                     </li>

@@ -19,8 +19,6 @@ public partial class Log_In_NewAccount : System.Web.UI.Page
     {
         txtDN.Text = string.Empty;
         txtEmail.Text = string.Empty;
-        txtFN.Text = string.Empty;
-        txtLN.Text = string.Empty;
         txtMK.Text = string.Empty;
         txtXN.Text = string.Empty;
     }
@@ -35,8 +33,6 @@ public partial class Log_In_NewAccount : System.Web.UI.Page
             {
                 var kq = k.ThemND(new User()
                 {
-                    FName = txtFN.Text,
-                    LName = txtLN.Text,
                     Username = txtDN.Text,
                     Password = txtXN.Text,
                     Email = txtEmail.Text,
@@ -46,7 +42,8 @@ public partial class Log_In_NewAccount : System.Web.UI.Page
 
                 if (kq)
                 {
-                    Response.Redirect("LogIn.aspx");
+                    var ndMoi = k.TimNDTheoTenDN(txtDN.Text);
+                    Response.Redirect("Personal_Info.aspx?newUID=" + ndMoi.UserID);
                 }
                 else
                     this.LoadForm();

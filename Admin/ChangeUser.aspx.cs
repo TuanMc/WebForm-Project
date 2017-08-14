@@ -39,6 +39,7 @@ public partial class Admin_ChangeUser : System.Web.UI.Page
             txtLName.Text = nd.LName;
             txtEmail.Text = nd.Email;
             txtPhone.Text = nd.Phone;
+            txtAddr.Text = nd.Address;
 
             #endregion
 
@@ -74,7 +75,8 @@ public partial class Admin_ChangeUser : System.Web.UI.Page
                     FName = txtFName.Text,
                     LName = txtLName.Text,
                     Email = txtEmail.Text,
-                    Phone = txtPhone.Text
+                    Phone = txtPhone.Text,
+                    Address = txtAddr.Text,
                 });
 
                 pnlUpdate.Visible = true;
@@ -82,6 +84,5 @@ public partial class Admin_ChangeUser : System.Web.UI.Page
             }
         }
         #endregion
-
     }
 }

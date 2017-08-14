@@ -56,7 +56,7 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
   #endregion
 	
 	public DataClassesDataContext() : 
-			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ShopCongNgheConnectionString2"].ConnectionString, mappingSource)
+			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ShopCongNgheConnectionString1"].ConnectionString, mappingSource)
 	{
 		OnCreated();
 	}
@@ -150,7 +150,7 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Carts")]
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Cart")]
 public partial class Cart : INotifyPropertyChanging, INotifyPropertyChanged
 {
 	
@@ -162,7 +162,7 @@ public partial class Cart : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private System.Nullable<int> _ProductID;
 	
-	private System.Nullable<int> _Quantity;
+	private System.Nullable<short> _Quantity;
 	
 	private System.Nullable<bool> _IsInCart;
 	
@@ -180,7 +180,7 @@ public partial class Cart : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnUserIDChanged();
     partial void OnProductIDChanging(System.Nullable<int> value);
     partial void OnProductIDChanged();
-    partial void OnQuantityChanging(System.Nullable<int> value);
+    partial void OnQuantityChanging(System.Nullable<short> value);
     partial void OnQuantityChanged();
     partial void OnIsInCartChanging(System.Nullable<bool> value);
     partial void OnIsInCartChanged();
@@ -261,8 +261,8 @@ public partial class Cart : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int")]
-	public System.Nullable<int> Quantity
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="SmallInt")]
+	public System.Nullable<short> Quantity
 	{
 		get
 		{
@@ -414,6 +414,8 @@ public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private System.Nullable<bool> _Status;
 	
+	private string _Address;
+	
 	private EntitySet<Cart> _Carts;
 	
 	private EntitySet<OrderDetail> _OrderDetails;
@@ -444,6 +446,8 @@ public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnPasswordChanged();
     partial void OnStatusChanging(System.Nullable<bool> value);
     partial void OnStatusChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
     #endregion
 	
 	public User()
@@ -499,7 +503,7 @@ public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FName", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FName", DbType="VarChar(10)")]
 	public string FName
 	{
 		get
@@ -519,7 +523,7 @@ public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LName", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LName", DbType="VarChar(10)")]
 	public string LName
 	{
 		get
@@ -539,7 +543,7 @@ public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(50)")]
 	public string Email
 	{
 		get
@@ -559,7 +563,7 @@ public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="VarChar(50)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="VarChar(15)")]
 	public string Phone
 	{
 		get
@@ -579,7 +583,7 @@ public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(50)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(10)")]
 	public string Username
 	{
 		get
@@ -635,6 +639,26 @@ public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 				this._Status = value;
 				this.SendPropertyChanged("Status");
 				this.OnStatusChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+	public string Address
+	{
+		get
+		{
+			return this._Address;
+		}
+		set
+		{
+			if ((this._Address != value))
+			{
+				this.OnAddressChanging(value);
+				this.SendPropertyChanging();
+				this._Address = value;
+				this.SendPropertyChanged("Address");
+				this.OnAddressChanged();
 			}
 		}
 	}
@@ -817,7 +841,7 @@ public partial class Category : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryName", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryName", DbType="VarChar(20)")]
 	public string CategoryName
 	{
 		get
@@ -897,11 +921,7 @@ public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChang
 	
 	private System.Nullable<double> _UnitPrice;
 	
-	private System.Nullable<int> _Quantity;
-	
-	private System.Nullable<System.DateTime> _ShippedDate;
-	
-	private System.Nullable<System.DateTime> _OrderDate;
+	private System.Nullable<short> _Quantity;
 	
 	private EntityRef<User> _User;
 	
@@ -921,12 +941,8 @@ public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChang
     partial void OnProductIDChanged();
     partial void OnUnitPriceChanging(System.Nullable<double> value);
     partial void OnUnitPriceChanged();
-    partial void OnQuantityChanging(System.Nullable<int> value);
+    partial void OnQuantityChanging(System.Nullable<short> value);
     partial void OnQuantityChanged();
-    partial void OnShippedDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnShippedDateChanged();
-    partial void OnOrderDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnOrderDateChanged();
     #endregion
 	
 	public OrderDetail()
@@ -1029,8 +1045,8 @@ public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChang
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int")]
-	public System.Nullable<int> Quantity
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="SmallInt")]
+	public System.Nullable<short> Quantity
 	{
 		get
 		{
@@ -1045,46 +1061,6 @@ public partial class OrderDetail : INotifyPropertyChanging, INotifyPropertyChang
 				this._Quantity = value;
 				this.SendPropertyChanged("Quantity");
 				this.OnQuantityChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShippedDate", DbType="Date")]
-	public System.Nullable<System.DateTime> ShippedDate
-	{
-		get
-		{
-			return this._ShippedDate;
-		}
-		set
-		{
-			if ((this._ShippedDate != value))
-			{
-				this.OnShippedDateChanging(value);
-				this.SendPropertyChanging();
-				this._ShippedDate = value;
-				this.SendPropertyChanged("ShippedDate");
-				this.OnShippedDateChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDate", DbType="Date")]
-	public System.Nullable<System.DateTime> OrderDate
-	{
-		get
-		{
-			return this._OrderDate;
-		}
-		set
-		{
-			if ((this._OrderDate != value))
-			{
-				this.OnOrderDateChanging(value);
-				this.SendPropertyChanging();
-				this._OrderDate = value;
-				this.SendPropertyChanged("OrderDate");
-				this.OnOrderDateChanged();
 			}
 		}
 	}
@@ -1228,6 +1204,8 @@ public partial class Order : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private System.Nullable<bool> _OrderStatus;
 	
+	private System.Nullable<System.DateTime> _ShippedDate;
+	
 	private EntitySet<OrderDetail> _OrderDetails;
 	
 	private EntityRef<User> _User;
@@ -1246,6 +1224,8 @@ public partial class Order : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnAddressChanged();
     partial void OnOrderStatusChanging(System.Nullable<bool> value);
     partial void OnOrderStatusChanged();
+    partial void OnShippedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnShippedDateChanged();
     #endregion
 	
 	public Order()
@@ -1299,7 +1279,7 @@ public partial class Order : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDate", DbType="Date")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDate", DbType="DateTime")]
 	public System.Nullable<System.DateTime> OrderDate
 	{
 		get
@@ -1355,6 +1335,26 @@ public partial class Order : INotifyPropertyChanging, INotifyPropertyChanged
 				this._OrderStatus = value;
 				this.SendPropertyChanged("OrderStatus");
 				this.OnOrderStatusChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShippedDate", DbType="DateTime")]
+	public System.Nullable<System.DateTime> ShippedDate
+	{
+		get
+		{
+			return this._ShippedDate;
+		}
+		set
+		{
+			if ((this._ShippedDate != value))
+			{
+				this.OnShippedDateChanging(value);
+				this.SendPropertyChanging();
+				this._ShippedDate = value;
+				this.SendPropertyChanged("ShippedDate");
+				this.OnShippedDateChanged();
 			}
 		}
 	}
@@ -1451,15 +1451,15 @@ public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private System.Nullable<int> _SupplierID;
 	
-	private System.Nullable<double> _Price;
+	private string _ProductName;
 	
 	private string _Picture;
-	
-	private string _ProductName;
 	
 	private System.Nullable<bool> _ProductStatus;
 	
 	private string _Description;
+	
+	private System.Nullable<int> _Price;
 	
 	private EntitySet<Cart> _Carts;
 	
@@ -1479,16 +1479,16 @@ public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnCategoryIDChanged();
     partial void OnSupplierIDChanging(System.Nullable<int> value);
     partial void OnSupplierIDChanged();
-    partial void OnPriceChanging(System.Nullable<double> value);
-    partial void OnPriceChanged();
-    partial void OnPictureChanging(string value);
-    partial void OnPictureChanged();
     partial void OnProductNameChanging(string value);
     partial void OnProductNameChanged();
+    partial void OnPictureChanging(string value);
+    partial void OnPictureChanged();
     partial void OnProductStatusChanging(System.Nullable<bool> value);
     partial void OnProductStatusChanged();
     partial void OnDescriptionChanging(string value);
     partial void OnDescriptionChanged();
+    partial void OnPriceChanging(System.Nullable<int> value);
+    partial void OnPriceChanged();
     #endregion
 	
 	public Product()
@@ -1568,46 +1568,6 @@ public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Float")]
-	public System.Nullable<double> Price
-	{
-		get
-		{
-			return this._Price;
-		}
-		set
-		{
-			if ((this._Price != value))
-			{
-				this.OnPriceChanging(value);
-				this.SendPropertyChanging();
-				this._Price = value;
-				this.SendPropertyChanged("Price");
-				this.OnPriceChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Picture", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-	public string Picture
-	{
-		get
-		{
-			return this._Picture;
-		}
-		set
-		{
-			if ((this._Picture != value))
-			{
-				this.OnPictureChanging(value);
-				this.SendPropertyChanging();
-				this._Picture = value;
-				this.SendPropertyChanged("Picture");
-				this.OnPictureChanged();
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductName", DbType="VarChar(50)")]
 	public string ProductName
 	{
@@ -1624,6 +1584,26 @@ public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
 				this._ProductName = value;
 				this.SendPropertyChanged("ProductName");
 				this.OnProductNameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Picture", DbType="VarChar(50)")]
+	public string Picture
+	{
+		get
+		{
+			return this._Picture;
+		}
+		set
+		{
+			if ((this._Picture != value))
+			{
+				this.OnPictureChanging(value);
+				this.SendPropertyChanging();
+				this._Picture = value;
+				this.SendPropertyChanged("Picture");
+				this.OnPictureChanged();
 			}
 		}
 	}
@@ -1648,7 +1628,7 @@ public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(500)")]
 	public string Description
 	{
 		get
@@ -1664,6 +1644,26 @@ public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
 				this._Description = value;
 				this.SendPropertyChanged("Description");
 				this.OnDescriptionChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
+	public System.Nullable<int> Price
+	{
+		get
+		{
+			return this._Price;
+		}
+		set
+		{
+			if ((this._Price != value))
+			{
+				this.OnPriceChanging(value);
+				this.SendPropertyChanging();
+				this._Price = value;
+				this.SendPropertyChanged("Price");
+				this.OnPriceChanged();
 			}
 		}
 	}
@@ -1855,7 +1855,7 @@ public partial class Role : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleName", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleName", DbType="VarChar(50)")]
 	public string RoleName
 	{
 		get
@@ -1969,7 +1969,7 @@ public partial class Supplier : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplierName", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplierName", DbType="VarChar(20)")]
 	public string SupplierName
 	{
 		get

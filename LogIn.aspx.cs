@@ -61,7 +61,7 @@ public partial class Log_In_LogIn : System.Web.UI.Page
             // Valid:
 
             Session["dn"] = txtDN.Text;
-            Response.Redirect("~/Index.aspx");
+            Response.Redirect("~/Home");
         }
         #endregion
     }

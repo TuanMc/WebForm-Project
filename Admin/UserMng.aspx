@@ -10,7 +10,9 @@
             <strong>User was blocked!</strong> 
         </asp:Panel>
 
-        <asp:GridView runat="server" ID="grvND" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-list" Width="85%" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
+        <asp:GridView runat="server" ID="grvND" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-list" Width="100%" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical"
+            AllowPaging="true" PageSize="10" OnPageIndexChanging="grvND_PageIndexChanging">
+            <PagerStyle CssClass="pagination-ys" />
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:TemplateField Visible="false">
@@ -19,14 +21,14 @@
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="Username" DataField="Username" />
-                <asp:BoundField HeaderText="Password" DataField="Password" />
-                <asp:TemplateField HeaderText="Role">
+                <asp:TemplateField HeaderText="Role">   
                     <ItemTemplate>
                         <asp:Label ID="lblRole" runat="server" />
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="Email" DataField="Email" />
                 <asp:BoundField HeaderText="Phone" DataField="Phone" />
+                <asp:BoundField HeaderText="Address" DataField="Address" />
                 <asp:TemplateField>
                     <ItemTemplate>
                         <asp:LinkButton runat="server" ID="lbtnEdit" Text="Edit" CommandArgument='<%#Eval("UserID") %>' OnClick="lbtnEdit_Click"></asp:LinkButton>
@@ -40,7 +42,8 @@
             </Columns>
             <FooterStyle BackColor="#CCCC99" />
             <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+            <PagerSettings Mode="Numeric" />
+            <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Center" />
             <RowStyle BackColor="#F7F7DE" />
             <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
             <SortedAscendingCellStyle BackColor="#FBFBF2" />

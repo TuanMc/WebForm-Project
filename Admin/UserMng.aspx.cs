@@ -20,7 +20,7 @@ public partial class Admin_UserMng : System.Web.UI.Page
     {
         using (var k = new Kho())
         {
-            grvND.DataSource = k.DanhSachNDHienThi.OrderBy(x=>x.RoleID);
+            grvND.DataSource = k.DanhSachNDHienThi.OrderBy(x=>x.RoleID).ToList();
             grvND.DataBind();
 
             foreach (GridViewRow item in grvND.Rows)
@@ -51,5 +51,11 @@ public partial class Admin_UserMng : System.Web.UI.Page
         var uid = int.Parse((sender as LinkButton).CommandArgument);
 
         Response.Redirect("~/Admin/ChangeUser.aspx?uid=" + uid);
+    }
+
+    protected void grvND_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        grvND.PageIndex = e.NewPageIndex;
+        LoadUser(); 
     }
 }

@@ -72,7 +72,7 @@ public partial class Interface_Pages_Cart : System.Web.UI.Page
     protected void btnShop_click(object sender, EventArgs e)
     {
         // Tiep tuc mua hang -> quay ve trang chinh:
-        Response.Redirect("Index.aspx");
+        Response.Redirect("~/Home");
     }
 
     protected void btnRemove_ServerClick(object sender, EventArgs e)

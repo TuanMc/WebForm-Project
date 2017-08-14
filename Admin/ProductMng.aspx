@@ -8,13 +8,15 @@
 
         <asp:Panel ID="pnlXoa" runat="server" CssClass="alert alert-danger alert-dismissable fade in" Visible="false">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>Item was deleted!</strong> 
+            <strong>Item was deleted!</strong>
         </asp:Panel>
 
         <asp:LinkButton runat="server" ID="lbtnThemSP" PostBackUrl="~/Admin/ChangeInfo.aspx" CssClass="btn btn-success">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Product</asp:LinkButton>
 
-        <asp:GridView runat="server" ID="grvSP" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-list" Width="85%" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Vertical" ForeColor="Black">
+        <asp:GridView runat="server" ID="grvSP" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-list" Width="85%" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Vertical" ForeColor="Black"
+            AllowPaging="true" PageSize="10" OnPageIndexChanging="grvSP_PageIndexChanging">
+            <PagerStyle CssClass="pagination-ys" />
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="ProductID" HeaderText="ID" />
@@ -43,7 +45,8 @@
             </Columns>
             <FooterStyle BackColor="#CCCC99" />
             <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+            <PagerSettings Mode="Numeric" />
+            <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Center" />
             <RowStyle BackColor="#F7F7DE" />
             <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
             <SortedAscendingCellStyle BackColor="#FBFBF2" />
@@ -52,10 +55,6 @@
             <SortedDescendingHeaderStyle BackColor="#575357" />
         </asp:GridView>
     </fieldset>
-
-    <div id="divKQ">
-    </div>
-
 </asp:Content>
 
 
