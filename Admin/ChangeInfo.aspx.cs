@@ -11,7 +11,7 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         var id = 0;
-        int.TryParse(Request.QueryString["id"], out id);
+        int.TryParse(Request.QueryString["pid"], out id);
 
         if (!IsPostBack)
         {
@@ -23,7 +23,7 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
                     this.LoadSPTheoMa(id);
             }
             else
-                Response.Redirect("AdLogin.aspx");
+                Response.Redirect("~/AdLogin");
         }
     }
 
@@ -119,7 +119,7 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
         {
             #region Sua Product
             var id = 0;
-            int.TryParse(Request.QueryString["id"], out id);
+            int.TryParse(Request.QueryString["pid"], out id);
             if (id != 0)
             {
                 var sp = k.TimSP(id);
@@ -174,6 +174,6 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
 
     protected void lbtnBack_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/Admin/ProductMng.aspx");
+        Response.Redirect("~/ProductMng");
     }
 }

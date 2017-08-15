@@ -18,7 +18,7 @@ public partial class Page_ProductDetail : System.Web.UI.Page
         // Gan gia tri ma tu querystring:
         // Kiem tra dieu kien => Load san pham theo ma duoc gan:
         var ma = 0;
-        int.TryParse(Request.QueryString["ma"], out ma);
+        int.TryParse(Request.QueryString["ma"].ToString(), out ma);
 
         if (ma != 0)
         {
@@ -27,8 +27,14 @@ public partial class Page_ProductDetail : System.Web.UI.Page
                 var sp = k.TimSP(ma);
                 var dm = k.TimDM((int)sp.CategoryID);
                 var ncc = k.TimNCC((int)sp.SupplierID);
+
+                // Breadscrumb:
+                lbtnTenDM.Text = dm.CategoryName;
+                lbtnTenNCC.Text = ncc.SupplierName;
                 lblTenSP.Text = sp.ProductName;
-                lblTenDM.Text = dm.CategoryName;
+
+                // Product Details:
+                lblDM.Text = dm.CategoryName;
                 lblTen.Text = sp.ProductName;
                 lblNCC.Text = ncc.SupplierName;
                 lblGia.Text = sp.Price.ToString();
@@ -64,6 +70,18 @@ public partial class Page_ProductDetail : System.Web.UI.Page
             }
         }
 
-        Response.Redirect("~/Cart.aspx");
+        Response.Redirect("~/Home/Cart");
+    }
+
+    protected void lbtnTenDM_Click(object sender, EventArgs e)
+    {
+        // Chuyen sang trang danh muc theo ten danh muc:
+        Response.Redirect("~/Home/Product/" + lbtnTenDM.Text);
+    }
+
+    protected void lbtnTenNCC_Click(object sender, EventArgs e)
+    {
+        // Chuyen sang trang nha cung cap theo ten nha cung cap:
+        Response.Redirect("~/Home/Supplier/" + lbtnTenNCC.Text);
     }
 }

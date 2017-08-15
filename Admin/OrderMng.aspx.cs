@@ -14,7 +14,7 @@ public partial class Admin_OrderMng : System.Web.UI.Page
             if (Session["user"] != null)
                 this.LoadOrder();
             else
-                Response.Redirect("AdLogin.aspx");
+                Response.Redirect("/AdLogin");
     }
 
     private void LoadOrder()
@@ -43,7 +43,7 @@ public partial class Admin_OrderMng : System.Web.UI.Page
     protected void lbtnDetail_Click(object sender, EventArgs e)
     {
         var ma = int.Parse((sender as LinkButton).CommandArgument);
-        Response.Redirect("~/Admin/OrderDetailMng.aspx?oid=" + ma);
+        Response.Redirect("~/OrderMng/OrderDetailMng?oid=" + ma);
     }
 
     protected void btnShipped_Click(object sender, EventArgs e)

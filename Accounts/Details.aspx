@@ -1,17 +1,17 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Personal_Info.aspx.cs" Inherits="Log_In_Personal_Info" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Details.aspx.cs" Inherits="Accounts_Details" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>New Account</title>
-    <script src="../Style/js/bootstrap.min.js"></script>
-    <link href="../Style/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../Style/StyleSheet.css" rel="stylesheet" />
+    <title>Details</title>
+    <script src="../../../Style/js/bootstrap.min.js"></script>
+    <link href="../../../Style/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../../Style/StyleSheet.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
     <style>
         body {
-            background-image: url('../Image/1.jpg');
+            background-image: url(<%= Page.ResolveUrl("~/Image/1.jpg") %>);
             position: absolute;
             width: 100%;
             height: 100%;
@@ -23,6 +23,13 @@
         <div class="row main" style="margin-top: 15px;">
             <div class="main-login main-center">
                 <form class="form-horizontal" runat="server">
+
+                    <!-- Wrong UID warning -->
+                    <asp:Panel ID="pnlDN" runat="server" CssClass="alert alert-danger alert-dismissable fade in" Visible="false">
+                        <strong>Incorrect user ID!</strong>
+                    </asp:Panel>
+
+                    <!-- Header -->
                     <fieldset>
                         <legend>Personal Infomation</legend>
                     </fieldset>
@@ -68,7 +75,7 @@
                         </div>
                     </div>
 
-                   <!-- Address -->
+                    <!-- Address -->
                     <div class="form-group">
                         <label for="address" class="cols-sm-2 control-label">
                             Address
@@ -82,17 +89,17 @@
                         </div>
                     </div>
 
+                    <!-- Funtional buttons -->
                     <div class="form-group">
                         <asp:Button ID="btnTao" OnClick="btnTao_Click" class="btn btn-primary btn-lg btn-block login-button" runat="server" Text="Register" ValidationGroup="DN" />
                     </div>
 
                     <div class="login-register">
-                        <a href="NewAccount.aspx">Back</a>
+                        <a href="../NewAccount">Back</a>
                     </div>
                 </form>
             </div>
+        </div>
     </div>
-    </div>
-    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
 </body>
 </html>

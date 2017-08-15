@@ -13,7 +13,7 @@ public partial class Admin_UserMng : System.Web.UI.Page
             if (Session["user"] != null)
                 this.LoadUser();
             else
-                Response.Redirect("AdLogin.aspx");
+                Response.Redirect("~/AdLogin");
     }
 
     private void LoadUser()
@@ -50,7 +50,7 @@ public partial class Admin_UserMng : System.Web.UI.Page
     {
         var uid = int.Parse((sender as LinkButton).CommandArgument);
 
-        Response.Redirect("~/Admin/ChangeUser.aspx?uid=" + uid);
+        Response.Redirect("~/UserMng/ChangeUser?uid=" + uid);
     }
 
     protected void grvND_PageIndexChanging(object sender, GridViewPageEventArgs e)

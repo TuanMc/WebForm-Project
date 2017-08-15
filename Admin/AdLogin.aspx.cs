@@ -64,7 +64,7 @@ public partial class Log_In_AdLogin : System.Web.UI.Page
             // Valid:
 
             Session["user"] = txtDN.Text;
-            Response.Redirect("~/Admin/ProductMng.aspx");
+            Response.Redirect("~/ProductMng");
         }
         #endregion
         

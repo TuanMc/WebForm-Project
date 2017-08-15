@@ -23,6 +23,8 @@
         <div class="row main" style="margin-top: 15px;">
             <div class="main-login main-center">
                 <form class="form-horizontal" runat="server">
+
+                    <!-- Header -->
                     <fieldset>
                         <legend>
                             New Account
@@ -89,11 +91,11 @@
 
                     <div class="form-group">
                         <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtMK" ControlToValidate="txtXN" ErrorMessage="Both passwords are not identical" ForeColor="Red" ValidationGroup="DN"></asp:CompareValidator>
-                        <asp:Button ID="btnTao" OnClick="btnTao_Click" class="btn btn-primary btn-lg btn-block login-button" runat="server" Text="Next" ValidationGroup="DN" />
+                        <asp:Button ID="btnTao" OnClick="btnTao_Click" class="btn btn-primary btn-lg btn-block login-button" runat="server" Text="Next" ValidationGroup="DN"/>
                     </div>
 
                     <div class="login-register">
-                        <a href="LogIn.aspx">Back</a>
+                        <a href="../Account">Back</a>
                     </div>
                 </form>
             </div>

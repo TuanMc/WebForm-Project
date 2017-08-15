@@ -6,16 +6,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
     <!-- Breadcrumb -->
     <ol class="breadcrumb">
-        <li><a href="Home">Home</a></li>
-        <li><a href="#">
-            <asp:Label ID="lblTenDM" runat="server"></asp:Label>
-        </a></li>
+        <li><a href="/Home">Home</a></li>
+        <li><asp:LinkButton ID="lbtnTenDM" runat="server" OnClick="lbtnTenDM_Click"></asp:LinkButton></li>
+        <li><asp:LinkButton ID="lbtnTenNCC" runat="server" OnClick="lbtnTenNCC_Click"></asp:LinkButton></li>
         <li><a href="#">
             <asp:Label ID="lblTenSP" runat="server"></asp:Label>
         </a></li>
     </ol>
-    <!-- End Breadcrumb -->
 
+    <!-- Product Details -->
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -30,6 +29,11 @@
                 <div class=" col-md-9 col-lg-9 ">
                     <table class="table table-user-information">
                         <tbody>
+                            <tr>
+                                <td>Type:</td>
+                                <td>
+                                    <asp:Label runat="server" ID="lblDM"></asp:Label></td>
+                            </tr>
                             <tr>
                                 <td>Supplier:</td>
                                 <td>
@@ -58,12 +62,10 @@
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
     </div>
-
 </asp:Content>
 
 

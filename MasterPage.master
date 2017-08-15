@@ -8,7 +8,9 @@
 <html>
 <head runat="server">
     <title>My website</title>
-    <link href="Style/css/bootstrap.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="/Style/js/bootstrap.min.js"></script>
+    <link href="/Style/css/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <style>
         .main {
@@ -29,7 +31,7 @@
     <form id="form1" runat="server">
         <nav class="navbar navbar-default" role="navigation">
 
-            <!-- Brand and toggle get grouped for better mobile display -->
+            <!-- Home -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -38,63 +40,75 @@
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            <a class="navbar-brand" href="Home">Home</a>
-            <!-- Collect the nav links, forms, and other content for toggling -->
+            <a class="navbar-brand" href="/Home">Home</a>
+
+            <!-- DDL Product -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Product<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="Product.aspx?cid=1">Laptop</a></li>
+                            <li><a href="/Home/Product/Laptop">Laptop</a></li>
                             <li class="divider"></li>
-                            <li><a href="Product.aspx?cid=2">Mouse</a></li>
+                            <li><a href="/Home/Product/Mouse">Mouse</a></li>
                             <li class="divider"></li>
-                            <li><a href="Product.aspx?cid=3">Keyboard</a></li>
+                            <li><a href="/Home/Product/Keyboard">Keyboard</a></li>
                         </ul>
                     </li>
                 </ul>
+
+                <!-- DDL Supplier -->
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Suppliers<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="Supplier.aspx?sid=2">Razer</a></li>
+                            <li><a href="/Home/Supplier/MSI">MSI</a></li>
                             <li class="divider"></li>
-                            <li><a href="Supplier.aspx?sid=3">Logitech</a></li>
+                            <li><a href="/Home/Supplier/Razer">Razer</a></li>
                             <li class="divider"></li>
-                            <li><a href="Supplier.aspx?sid=4">Asus</a></li>
+                            <li><a href="/Home/Supplier/Logitech">Logitech</a></li>
                             <li class="divider"></li>
-                            <li><a href="Supplier.aspx?sid=1">MSI</a></li>
+                            <li><a href="/Home/Supplier/Asus">Asus</a></li>
                         </ul>
                     </li>
                 </ul>
+
+                <!-- UserControl Search -->
                 <uc1:WebUserControl runat="server" ID="WebUserControl" />
+
+                <!-- DDL User --> 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown">Hello,
                             <asp:Label ID="lblTenDN" runat="server" /><b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li style="padding-left: 20px"><a href="Cart.aspx"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp; Cart</a></li>
+                            <li style="padding-left: 20px"><a href="/Home/Cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp; Cart</a></li>
                             <li class="divider"></li>
-                            <li style="padding-left: 20px"><a href="Account.aspx"><span class="glyphicon glyphicon-user"></span>&nbsp; Account</a></li>
+                            <li style="padding-left: 20px"><a href="/Home/Account"><span class="glyphicon glyphicon-user"></span>&nbsp; Account</a></li>
                             <li class="divider"></li>
-                            <li style="padding-left: 20px"><a href="Log_in"><span class="glyphicon glyphicon-lock "></span>&nbsp; Login/out</a></li>
+                            <li style="padding-left: 20px"><a href="/Account"><span class="glyphicon glyphicon-lock "></span>&nbsp; Login/out</a></li>
                         </ul>
 
                     </li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
         </nav>
+
         <div id="wrapper">
 
+            <!-- Carousel -->
             <div id="banner">
                 <asp:ContentPlaceHolder runat="server" ID="cphHead">
                 </asp:ContentPlaceHolder>
             </div>
+
+            <!-- Main -->
             <div class="main" style="min-height: 600px">
                 <asp:ContentPlaceHolder runat="server" ID="cphMain">
                 </asp:ContentPlaceHolder>
             </div>
+
+            <!-- Footer -->
             <div>
                 <table class="table table-responsive" style="background-color:lightgrey">
                     <tbody>
@@ -120,10 +134,7 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
     </form>
-    <script src="Scripts/jquery-3.1.1.min.js"></script>
-    <script src="Style/js/bootstrap.min.js"></script>
 </body>
 </html>

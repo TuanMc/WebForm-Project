@@ -11,16 +11,22 @@ public partial class Admin_ProductMng : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+
+            // Kiem tra tai khoan da dang nhap chua:
             if (Session["user"] != null)
                 this.LoadProducts();
+
+            // Tai khoan chua dang nhap -> AdLogin:
             else
-                Response.Redirect("AdLogin.aspx");
+                Response.Redirect("/AdLogin");
         }
         
     }
 
     private void LoadProducts()
     {
+
+        // Dua san pham vao gridview:
         using (var k = new Kho())
         {
             var sp = k.DanhSachSPHienThi;
@@ -51,7 +57,8 @@ public partial class Admin_ProductMng : System.Web.UI.Page
 
     protected void btnXoa_Click(object sender, EventArgs e)
     {
-        
+        // Tim ma tu linkbutton:
+        // Xoa san pham theo ma:
         using (var k = new Kho())
         {
             var ma = int.Parse((sender as LinkButton).CommandArgument);
@@ -59,18 +66,22 @@ public partial class Admin_ProductMng : System.Web.UI.Page
             this.LoadProducts();
         }
 
+        // Hien thong bao khi xoa thanh cong:
         pnlXoa.Visible = true;
-
     }
 
     protected void lbtnEdit_Click(object sender, EventArgs e)
     {
+
+        // Chuyen sang trang thay doi TTSP theo ma:
         var ma = int.Parse((sender as LinkButton).CommandArgument);
-        Response.Redirect("~/Admin/ChangeInfo.aspx?id="+ma);
+        Response.Redirect("~/ProductMng/ChangeInfo?pid="+ma);
     }
 
     protected void grvSP_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
+
+        // Phan trang:
         grvSP.PageIndex = e.NewPageIndex;
         LoadProducts();
     }

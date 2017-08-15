@@ -6,9 +6,23 @@
 
     public void Routing(RouteCollection routes)
     {
+        #region Front_End pages
         routes.MapPageRoute("home", "Home", "~/Index.aspx");
-        routes.MapPageRoute("login", "Log_in", "~/LogIn.aspx");
-        routes.MapPageRoute("NewAccount", "{name}", "~/Log_in/{name}.aspx");
+        routes.MapPageRoute("product", "Home/{name}/{id}", "~/{name}.aspx", true, new RouteValueDictionary { { "id", string.Empty } });
+        #endregion
+
+        #region Account pages
+        routes.MapPageRoute("Login", "Account", "~/Accounts/LogIn.aspx");
+        routes.MapPageRoute("newaccount", "Account/{name}", "~/Accounts/{name}.aspx");
+        routes.MapPageRoute("Details", "Account/NewAccount/{name}", "~/Accounts/{name}.aspx");
+        #endregion
+
+        #region Back_End pages
+        routes.MapPageRoute("adlogin", "AdLogin", "~/Admin/AdLogin.aspx");
+        routes.MapPageRoute("info", "{name}", "~/Admin/{name}.aspx");
+        routes.MapPageRoute("changeinfo", "{name1}/{name2}", "~/Admin/{name2}.aspx", true, new RouteValueDictionary { {"name1",string.Empty } });
+        #endregion
+
     }
 
     void Application_Start(object sender, EventArgs e)

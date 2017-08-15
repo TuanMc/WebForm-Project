@@ -16,7 +16,7 @@ public partial class Admin_OrderDetailMng : System.Web.UI.Page
                 this.LoadOrderDetail();
             }
             else
-                Response.Redirect("AdLogin.aspx");
+                Response.Redirect("~/AdLogin");
 
     }
 

@@ -17,6 +17,6 @@ public partial class User_Control_WebUserControl : System.Web.UI.UserControl
         var tk = txtSearch.Text;
         if (!string.IsNullOrEmpty(tk))
             tk = HttpUtility.UrlEncode(tk); // make sure the search phrase is properly encoded
-        Response.Redirect("Search.aspx?q=" + tk);
+        Response.Redirect("~/Home/Search?q=" + tk);
     }
 }

@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Pages_Index" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="Server">
+
+    <!-- Carousel -->
     <div class="container" style="height: 500px">
         <div id="myCarousel" class="carousel slide " data-ride="carousel">
             <ol class="carousel-indicators">
@@ -36,19 +38,24 @@
         });
     </script>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
+
+    <!-- Repeater -->
     <asp:Repeater ID="rptSP" runat="server">
         <ItemTemplate>
             <asp:HiddenField runat="server" ID="hdfMa" Value='<%#Eval("CategoryID") %>' />
             <br />
+
             <fieldset>
                 <legend><%#Eval("CategoryName") %></legend>
-
+                
+                <!-- DataList Products -->
                 <asp:DataList ID="dtlSP" runat="server" RepeatColumns="4" Width="100%" RepeatDirection="Horizontal">
                     <ItemStyle HorizontalAlign="Center" />
                     <ItemTemplate>
                         <div style="margin-top: 50px; margin-bottom: 50px">
-                            <asp:ImageButton ID="img" ImageUrl='<%#Eval("Picture") %>' PostBackUrl='<%# string.Format("~/ProductDetail.aspx?ma={0}", Eval("ProductID")) %>' runat="server" Height="120px" Width="220px" /><br />
+                            <asp:ImageButton ID="img" ImageUrl='<%#Eval("Picture") %>' PostBackUrl='<%# string.Format("~/Home/ProductDetail?ma={0}", Eval("ProductID")) %>' runat="server" Height="120px" Width="220px" /><br />
                             <br />
                             <asp:LinkButton ForeColor="Red" Font-Bold="true" ID="lbtnTen" runat="server" OnClick="lbtnTenSP_Click" CommandArgument='<%#Eval("ProductID") %>'><%#Eval("ProductName") %></asp:LinkButton><br />
                             <br />

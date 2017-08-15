@@ -3,16 +3,20 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
+
+    <!-- Breadscrumb -->
     <ol class="breadcrumb">
-        <li><a href="Home">Home</a></li>
+        <li><a href="/Home">Home</a></li>
         <li><a href="#">
-            <asp:Label ID="lblTenDM" runat="server"></asp:Label></a></li>
+            <asp:Label ID="lblTenNCC" runat="server"></asp:Label></a></li>
     </ol>
+
+    <!-- DataList Products -->
     <asp:DataList ID="dtlSP" runat="server" RepeatColumns="4" Width="100%" RepeatDirection="Horizontal">
         <ItemStyle HorizontalAlign="Left" />
         <ItemTemplate>
             <div style="margin-top: 50px; margin-bottom: 50px" class="text-center">
-                <asp:ImageButton ID="img" ImageUrl='<%#Eval("Picture") %>' PostBackUrl='<%# string.Format("~/ProductDetail.aspx?ma={0}", Eval("ProductID")) %>' runat="server" Height="120px" Width="220px" /><br />
+                <asp:ImageButton ID="img" ImageUrl='<%#Eval("Picture") %>' PostBackUrl='<%# string.Format("~/Home/ProductDetail?ma={0}", Eval("ProductID")) %>' runat="server" Height="120px" Width="220px" /><br />
                 <br />
                 <asp:LinkButton ForeColor="Red" Font-Bold="true" OnClick="lbtnTenSP_Click" ID="lbtnTenSP" CommandArgument='<%#Eval("ProductID") %>' runat="server"><%#Eval("ProductName") %></asp:LinkButton><br />
                 <br />

@@ -30,11 +30,11 @@ public partial class Search : System.Web.UI.Page
         }
     }
 
-        protected void lbtnTenSP_Click(object sender, EventArgs e)
-        {
+    protected void lbtnTenSP_Click(object sender, EventArgs e)
+    {
 
-            // Chuyen sang trang CTSP theo ma tu LinkButton:
-            var ma = int.Parse((sender as LinkButton).CommandArgument);
-            Response.Redirect("ProductDetail.aspx?ma=" + ma);
-        }
+        // Chuyen sang trang CTSP theo ma tu LinkButton:
+        var ma = int.Parse((sender as LinkButton).CommandArgument);
+        Response.Redirect("~/Home/ProductDetail?ma=" + ma);
     }
+}

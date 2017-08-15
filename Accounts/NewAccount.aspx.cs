@@ -42,8 +42,8 @@ public partial class Log_In_NewAccount : System.Web.UI.Page
 
                 if (kq)
                 {
-                    var ndMoi = k.TimNDTheoTenDN(txtDN.Text);
-                    Response.Redirect("Personal_Info.aspx?newUID=" + ndMoi.UserID);
+                    Session["maUID"] = k.TimNDTheoTenDN(txtDN.Text).UserID;
+                    Response.Redirect("~/Account/NewAccount/Details");
                 }
                 else
                     this.LoadForm();

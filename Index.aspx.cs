@@ -41,14 +41,13 @@ public partial class Pages_Index : System.Web.UI.Page
     {
         // Chuyen qua trang CTSP theo ma duoc gan:
         var ma = int.Parse((sender as LinkButton).CommandArgument);
-        Response.Redirect("ProductDetail.aspx?ma=" + ma);
+        Response.Redirect("~/Home/ProductDetail?ma=" + ma);
     }
-
     protected void btnMua_Click(object sender, EventArgs e)
     {
         // Chuyen qua trang CTSP theo ma duoc gan:
         var ma = int.Parse((sender as Button).CommandArgument);
-        Response.Redirect("ProductDetail.aspx?ma=" + ma);
+        Response.Redirect("~/Home/ProductDetail?ma=" + ma);
     }
 }
 

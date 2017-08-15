@@ -19,10 +19,10 @@ public partial class Admin_ChangeUser : System.Web.UI.Page
                     if (uid != 0)
                         this.LoadTTND(uid);
                     else
-                        Response.Redirect("~/Admin/UserMng.aspx");
+                        Response.Redirect("~/UserMng");
                 }
                 else
-                    Response.Redirect("AdLogin.aspx");
+                    Response.Redirect("AdLogin");
         }
 
     }

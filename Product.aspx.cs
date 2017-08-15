@@ -12,8 +12,7 @@ public partial class Product : System.Web.UI.Page
 
         // Gan gia tri CategoryID vao ma
         //load trang theo ma duoc gan:
-        var ma = 0;
-        int.TryParse(Request.QueryString["cid"].ToString(), out ma);
+        var ma = this.RouteData.Values["id"].ToString();
 
         if (!IsPostBack)
         {
@@ -21,24 +20,23 @@ public partial class Product : System.Web.UI.Page
         }
     }
 
-    private void LoadSP(int ma)
+    private void LoadSP(string ma)
     {
         // Loc dieu khien khi ma == 0:
-        if (ma != 0)
+        if (ma != null)
         {
             using (var k = new Kho())
             {
                 // Tim list san pham theo ma duoc gan:
                 // Gan ten label theo CategoryName:
-                var spTheoMa = k.DanhSachSPHienThi.Where(x => x.CategoryID == ma).ToList();
-                var dm = k.TimDM(ma);
-                lblTenDM.Text = dm.CategoryName;
+                lblTenDM.Text = ma;
+                var id = k.DanhSachDM.FirstOrDefault(x => x.CategoryName.Contains(ma)).CategoryID;
+
+                var spTheoMa = k.DanhSachSPHienThi.Where(x => x.CategoryID == id).ToList();
 
                 //  Gan list vua tim duoc vao datalist:
                 dtlSP.DataSource = spTheoMa.OrderByDescending(x => x.Price);
                 dtlSP.DataBind();
-
-
             }
         }
     }
@@ -47,13 +45,13 @@ public partial class Product : System.Web.UI.Page
     {
         // Chuyen sang trang CTSP theo ma duoc gan:
         var ma = int.Parse((sender as LinkButton).CommandArgument);
-        Response.Redirect("ProductDetail.aspx?ma=" + ma);
+        Response.Redirect("~/Home/ProductDetail?ma=" + ma);
     }
 
     protected void btnMua_Click(object sender, EventArgs e)
     {
         // Chuyen sang trang CTSP theo ma duoc gan:
         var ma = int.Parse((sender as Button).CommandArgument);
-        Response.Redirect("ProductDetail.aspx?ma=" + ma);
+        Response.Redirect("~/Home/ProductDetail?ma=" + ma);
     }
 }

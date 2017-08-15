@@ -11,7 +11,7 @@
             <strong>Item was deleted!</strong>
         </asp:Panel>
 
-        <asp:LinkButton runat="server" ID="lbtnThemSP" PostBackUrl="~/Admin/ChangeInfo.aspx" CssClass="btn btn-success">
+        <asp:LinkButton runat="server" ID="lbtnThemSP" PostBackUrl="~/ProductMng/ChangeInfo" CssClass="btn btn-success">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Product</asp:LinkButton>
 
         <asp:GridView runat="server" ID="grvSP" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-list" Width="85%" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Vertical" ForeColor="Black"

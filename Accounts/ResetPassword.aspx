@@ -24,11 +24,14 @@
     <div class="form-gap" style="padding-top: 70px"></div>
     <div class="container">
         <div class="row">
+
+            <!-- Wrong Username warning -->
             <asp:Panel ID="pnlSai" runat="server" CssClass="alert alert-danger alert-dismissable fade in" Visible="false">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>Wrong username!</strong>
             </asp:Panel>
 
+            <!-- Send email success -->
             <asp:Panel ID="pnlDung" runat="server" CssClass="alert alert-success alert-dismissable fade in" Visible="false">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>Please check your email to get your password!</strong>
@@ -44,17 +47,21 @@
                             <div class="panel-body">
                                 <form id="register" role="form" autocomplete="off" class="form" method="post" runat="server">
                                     <div class="form-group">
+
+                                        <!-- Input Username -->
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-user color-blue"></i></span>
                                             <asp:TextBox ID="txtUser" placeholder="Username" CssClass="form-control" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
+
+                                    <!-- Send button -->
                                     <div class="form-group">
                                         <asp:Button ID="btnReset" CssClass="btn btn-lg btn-primary btn-block" Text="Reset Password" runat="server" OnClick="btnReset_Click" />
                                     </div>
 
                                     <div class="form-group">
-                                        <a href="LogIn.aspx">Back</a>
+                                        <a href="../Account">Back</a>
                                     </div>
                                 </form>
 
