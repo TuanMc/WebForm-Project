@@ -23,11 +23,12 @@
                         <div class="front signin_form">
                             <p>Login Your Account</p>
                             <form class="login-form" runat="server">
-                                
-                                <!-- Email -->
+
+                                <!-- Username -->
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtDN" ErrorMessage="Input username" ForeColor="Red" ValidationGroup="DN"></asp:RequiredFieldValidator>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <asp:TextBox runat="server" CssClass="form-control" placeholder="Type your email" ID="txtDN" />
+                                        <asp:TextBox runat="server" CssClass="form-control" placeholder="Type your username" ID="txtDN" />
                                         <span class="input-group-addon">
                                             <i class="glyphicon glyphicon-user"></i>
                                         </span>
@@ -35,6 +36,7 @@
                                 </div>
 
                                 <!-- Password -->
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtMK" ErrorMessage="Input password" ForeColor="Red" ValidationGroup="DN"></asp:RequiredFieldValidator>
                                 <div class="form-group">
                                     <div class="input-group">
                                         <asp:TextBox type="password" ID="txtMK" CssClass="form-control" placeholder="Type your password" runat="server" />
@@ -44,9 +46,10 @@
                                     </div>
                                 </div>
 
+
                                 <!-- Wrong username/password -->
                                 <div class="form-group">
-                                    <div class="label-danger" style="text-align:center;">
+                                    <div class="label-danger" style="text-align: center;">
                                         <asp:Label ID="lblTB" runat="server" />
                                     </div>
                                 </div>
@@ -58,7 +61,7 @@
 
                                 <!-- Functional buttons -->
                                 <div class="form-group sign-btn">
-                                    <asp:Button CssClass="btn" runat="server" Text="Log in" ID="btnDN" OnClick="btnDN_Click" />
+                                    <asp:Button CssClass="btn" runat="server" Text="Log in" ID="btnDN" OnClick="btnDN_Click" ValidationGroup="DN" />
                                     <p><a href="/Account/ResetPassword" class="forgot">Can't access your account?</a></p>
                                     <p>
                                         <strong>New to TimeInfo?</strong><br />

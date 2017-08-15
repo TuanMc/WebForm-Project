@@ -15,8 +15,6 @@
     <form id="form1" runat="server">
         <nav class="navbar navbar-inverse sidebar" role="navigation" style="position: fixed">
             <div class="container-fluid">
-
-                <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span>
@@ -44,7 +42,7 @@
                             </ul>
                         </li>
 
-                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <!-- Links collection -->
                         <li><a href="/ProductMng">Products<span style="font-size: 16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-gift"></span></a></li>
                         <li><a href="/OrderMng">Messages<span style="font-size: 16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li>
                         <li><a href="/OrderDetailMng">Order Detail<span style="font-size: 16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-pencil"></span></a></li>

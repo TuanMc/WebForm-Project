@@ -12,7 +12,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if (Session["dn"] == null)
             lblTenDN.Text = "Visitor";
         else
+        { 
             lblTenDN.Text = Session["dn"].ToString();
+        }
     }
     
 }

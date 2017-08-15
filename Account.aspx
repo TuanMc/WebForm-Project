@@ -1,23 +1,22 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Account.aspx.cs" Inherits="Pages_Account" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="Server">
+   
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <span style="font-size: 25px">Change Profile </span>
+    </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
-    <!-- Breadcrumb -->
-    <ol class="breadcrumb">
-        <li><a href="Home">Home</a></li>
-        <li><a href="#">User Account</a></li>
-    </ol>
-    <!-- End Breadcrumb -->
 
     <!-- Login warning -->
-    <asp:Panel ID="pnlDN" runat="server" CSSClass="alert alert-danger alert-dismissable fade in" Visible="false">
+    <asp:Panel ID="pnlDN" runat="server" CssClass="alert alert-danger alert-dismissable fade in" Visible="false">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <strong>Danger!</strong> You must log-in to continue this performance.
     </asp:Panel>
 
     <!-- Update complete -->
-    <asp:Panel ID="pnlUpdate" runat="server" CSSClass="alert alert-success alert-dismissable fade in" Visible="false">
+    <asp:Panel ID="pnlUpdate" runat="server" CssClass="alert alert-success alert-dismissable fade in" Visible="false">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <strong>Your information is successfully updated!</strong>
     </asp:Panel>
@@ -89,7 +88,8 @@
 
             <!-- Phone -->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="textinput">Phone
+                <label class="col-md-4 control-label" for="textinput">
+                    Phone
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPhone" ErrorMessage="*" Font-Bold="True" ForeColor="Red" ValidationGroup="Sua"></asp:RequiredFieldValidator>
                 </label>
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtPhone" ErrorMessage="Incorrect format (ie: 555 444 6789)" ForeColor="Red" ValidationExpression="\(?\d+\)?[-.\s]?\d+[-.\s]?\d+" ValidationGroup="Sua"></asp:RegularExpressionValidator>
@@ -100,7 +100,8 @@
 
             <!-- Address -->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="textinput">Address
+                <label class="col-md-4 control-label" for="textinput">
+                    Address
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtAddr" ErrorMessage="*" Font-Bold="True" ForeColor="Red" ValidationGroup="Sua"></asp:RequiredFieldValidator>
                 </label>
                 <div class="col-md-4">

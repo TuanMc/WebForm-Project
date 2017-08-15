@@ -10,6 +10,7 @@ public partial class Admin_OrderDetailMng : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
+        // Kiem tra dang nhap:
         if (!IsPostBack)
             if (Session["user"] != null)
             {
@@ -22,19 +23,24 @@ public partial class Admin_OrderDetailMng : System.Web.UI.Page
 
     private void LoadOrderDetail()
     {
+
+        // Kiem tra ma chi tiet hoa don:
         int ma = 0;
         int.TryParse(Request.QueryString["oid"], out ma);
 
         using (var k = new Kho())
         {
+            // Xuat toan bo CTHD:
             var order = k.DanhSachCTHD;
 
+            // Xuat CTHD theo ma:
             if (ma != 0)
                 order = k.TimCTHD(ma);
 
             grvCTHD.DataSource = order;
             grvCTHD.DataBind();
 
+            // Tim va gan thong tin cho cac field:
             foreach (GridViewRow item in grvCTHD.Rows)
             {
                 var lblSP = item.FindControl("lblSP") as Label;
@@ -54,6 +60,8 @@ public partial class Admin_OrderDetailMng : System.Web.UI.Page
 
     protected void grvCTHD_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
+
+        // Phan trang:
         grvCTHD.PageIndex = e.NewPageIndex;
         LoadOrderDetail();
     }

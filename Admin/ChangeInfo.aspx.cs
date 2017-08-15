@@ -7,12 +7,13 @@ using System.Web.UI.WebControls;
 
 public partial class Admin_ChangeInfo : System.Web.UI.Page
 {
-
     protected void Page_Load(object sender, EventArgs e)
     {
         var id = 0;
         int.TryParse(Request.QueryString["pid"], out id);
 
+        // Kiem tra dang nhap:
+        // Phan loai chuc nang (them moi/ sua):
         if (!IsPostBack)
         {
             if (Session["user"] != null)
@@ -27,6 +28,7 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
         }
     }
 
+    // Sua thong tin san pham:
     private void LoadSPTheoMa(int id)
     {
         using (var k = new Kho())
@@ -65,6 +67,7 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
         }
     }
 
+    // Them Moi:
     private void LoadSP()
     {
         #region Empty String
@@ -167,7 +170,6 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
             }
             #endregion  
 
-            
             this.LoadSP();
         }
     }

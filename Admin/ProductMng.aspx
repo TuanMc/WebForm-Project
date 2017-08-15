@@ -4,16 +4,21 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
     <fieldset>
+
+        <!-- Header -->
         <legend>Products</legend>
 
+        <!-- Delete success -->
         <asp:Panel ID="pnlXoa" runat="server" CssClass="alert alert-danger alert-dismissable fade in" Visible="false">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <strong>Item was deleted!</strong>
         </asp:Panel>
 
+        <!-- Add new product -->
         <asp:LinkButton runat="server" ID="lbtnThemSP" PostBackUrl="~/ProductMng/ChangeInfo" CssClass="btn btn-success">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Product</asp:LinkButton>
 
+        <!-- GridView Products -->
         <asp:GridView runat="server" ID="grvSP" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-list" Width="85%" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Vertical" ForeColor="Black"
             AllowPaging="true" PageSize="10" OnPageIndexChanging="grvSP_PageIndexChanging">
             <PagerStyle CssClass="pagination-ys" />

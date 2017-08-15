@@ -19,11 +19,14 @@
                 <div class="col-xs-4 col-md-offset-8">
                     <div class="login" id="card">
                         <div class="front signin_form">
+
+                            <!-- Header -->
                             <p>Login Your Account</p>
                             <form class="login-form" runat="server">
+
+                                <!-- Username -->
                                 <div class="form-group">
                                     <div class="input-group">
-
                                         <asp:TextBox CssClass="form-control" placeholder="Type your username" runat="server" ID="txtDN">
                                         </asp:TextBox>
                                         <span class="input-group-addon">
@@ -31,6 +34,8 @@
                                         </span>
                                     </div>
                                 </div>
+
+                                <!-- Password -->
                                 <div class="form-group">
                                     <div class="input-group">
                                         <asp:TextBox type="password" class="form-control" runat="server" placeholder="Type your password" ID="txtMK">
@@ -40,14 +45,20 @@
                                         </span>
                                     </div>
                                 </div>
+
+                                <!-- Wrong input -->
                                 <div class="form-group">
-                                    <div class="label-danger" style="text-align:center;">
+                                    <div class="label-danger" style="text-align: center;">
                                         <asp:Label ID="lblTB" runat="server" />
                                     </div>
                                 </div>
+
+                                <!-- Remember me -->
                                 <div class="checkbox-inline">
                                     <asp:CheckBox Text="Remember me next time" ID="cbDN" runat="server" />
                                 </div>
+
+                                <!-- Sig-in button -->
                                 <div class="form-group sign-btn">
                                     <asp:Button Text="Login" ID="btnDN" runat="server" CssClass="btn" OnClick="btnDN_Click" />
                                 </div>

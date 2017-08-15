@@ -50,6 +50,7 @@ public partial class Log_In_LogIn : System.Web.UI.Page
         using (var k = new Kho())
         {
             #region Kiem Tra Validation
+
             var nd = k.TimNDTheoTenDN(txtDN.Text);
             if (nd == default(User) || nd.Password.ToMD5() != txtMK.Text.ToMD5() || nd.Status == false)
             {

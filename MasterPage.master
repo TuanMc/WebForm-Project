@@ -76,7 +76,7 @@
                 <!-- UserControl Search -->
                 <uc1:WebUserControl runat="server" ID="WebUserControl" />
 
-                <!-- DDL User --> 
+                <!-- DDL User -->
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown">Hello,
@@ -84,11 +84,10 @@
                         <ul class="dropdown-menu">
                             <li style="padding-left: 20px"><a href="/Home/Cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp; Cart</a></li>
                             <li class="divider"></li>
-                            <li style="padding-left: 20px"><a href="/Home/Account"><span class="glyphicon glyphicon-user"></span>&nbsp; Account</a></li>
+                            <li style="padding-left: 20px"><a href="/Home/Account"><span class="glyphicon glyphicon-user"></span>&nbsp; Profile</a></li>
                             <li class="divider"></li>
                             <li style="padding-left: 20px"><a href="/Account"><span class="glyphicon glyphicon-lock "></span>&nbsp; Login/out</a></li>
                         </ul>
-
                     </li>
                 </ul>
             </div>
@@ -110,10 +109,10 @@
 
             <!-- Footer -->
             <div>
-                <table class="table table-responsive" style="background-color:lightgrey">
+                <table class="table table-responsive" style="background-color: lightgrey">
                     <tbody>
                         <tr>
-                            <td style="padding-left:150px">
+                            <td style="padding-left: 150px">
                                 <h2>Snail mail</h2>
                                 <address>
                                     <strong>Hythe Window Cleaning</strong><br>

@@ -3,13 +3,18 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
     <fieldset>
+
+
+        <!-- Header -->
         <legend>User's Information</legend>
        
+        <!-- Block success -->
         <asp:Panel ID="pnlXoa" runat="server" CssClass="alert alert-danger alert-dismissable fade in" Visible="false">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <strong>User was blocked!</strong> 
         </asp:Panel>
 
+        <!-- GridView Accounts -->
         <asp:GridView runat="server" ID="grvND" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-list" Width="100%" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical"
             AllowPaging="true" PageSize="10" OnPageIndexChanging="grvND_PageIndexChanging">
             <PagerStyle CssClass="pagination-ys" />

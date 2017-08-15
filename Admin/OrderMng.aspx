@@ -3,8 +3,11 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
     <fieldset>
+
+        <!-- Header -->
         <legend>Orders</legend>
        
+        <!-- GridView Orders -->
         <asp:GridView runat="server" ID="grvHD" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-list" Width="85%" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Vertical" ForeColor="Black"
             AllowPaging="true" PageSize="10" OnPageIndexChanging="grvHD_PageIndexChanging">
             <PagerStyle CssClass="pagination-ys" />
@@ -30,7 +33,6 @@
                         <asp:LinkButton ID="lbtnDetail" runat="server" Text="Detail" OnClick="lbtnDetail_Click" CommandArgument='<%#Eval("OrderID") %>'></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
-
             </Columns>
             <FooterStyle BackColor="#CCCC99" />
             <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />

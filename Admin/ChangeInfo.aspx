@@ -4,20 +4,22 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
     <div class="form-horizontal">
         <fieldset>
-            <!-- Form Name -->
+            <!-- Header -->
             <legend>Product's Infomation</legend>
 
+            <!-- Warning -->
             <asp:Panel ID="pnlTB" runat="server" CssClass="alert alert-danger alert-dismissable fade in" Visible="false">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>Item already exist!</strong> 
             </asp:Panel>
 
+            <!-- Success -->
             <asp:Panel ID="pnlUpdate" runat="server" CssClass="alert alert-success alert-dismissable fade in" Visible="false">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>The information is successfully updated!</strong>
             </asp:Panel>
 
-
+            <!-- Back button -->
             <asp:LinkButton runat="server" ID="lbtnBack" CssClass="btn btn-default" OnClick="lbtnBack_Click">
                 <span class="glyphicon glyphicon-backward"></span> Go Back</asp:LinkButton><br />
 
@@ -40,7 +42,7 @@
                 </div>
             </div>
 
-            <!-- Select Basic -->
+            <!-- DDL Supplier -->
             <div class="form-group">
                 <label class="col-md-4 control-label">Supplier's name: </label>
                 <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="ddlSupplier" ForeColor="Red" runat="server" ValidationGroup="Upload" InitialValue="0" />
@@ -49,6 +51,7 @@
                 </div>
             </div>
 
+            <!-- DDL Category -->
             <div class="form-group">
                 <label class="col-md-4 control-label">Category's type: </label>
                 <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="ddlCategory" ForeColor="Red" runat="server" ValidationGroup="Upload" InitialValue="0" />
@@ -57,6 +60,7 @@
                 </div>
             </div>
 
+            <!-- Description -->
             <div class="form-group">
                 <label class="col-md-4 control-label">Description</label>
                 <asp:RequiredFieldValidator ErrorMessage="*" ControlToValidate="txtDescription" ForeColor="Red" runat="server" ValidationGroup="Upload" />
@@ -65,6 +69,7 @@
                 </div>
             </div>
 
+            <!-- Upload -->
             <div class="form-group">
                 <label class="col-md-4 control-label">Uploads: </label>
                 <div class="col-md-4">
@@ -74,7 +79,7 @@
                 </div>
             </div>
 
-            <!-- Button -->
+            <!-- Submit Button -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="signup"></label>
                 <div class="col-md-4">

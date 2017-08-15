@@ -9,6 +9,7 @@ public partial class Admin_UserMng : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        // Kiem tra dang nhap:
         if (!IsPostBack)
             if (Session["user"] != null)
                 this.LoadUser();
@@ -20,6 +21,8 @@ public partial class Admin_UserMng : System.Web.UI.Page
     {
         using (var k = new Kho())
         {
+
+            // Hien thong tin account theo thu tu role:
             grvND.DataSource = k.DanhSachNDHienThi.OrderBy(x=>x.RoleID).ToList();
             grvND.DataBind();
 
@@ -37,6 +40,8 @@ public partial class Admin_UserMng : System.Web.UI.Page
 
     protected void lbtnBlock_Click(object sender, EventArgs e)
     {
+
+        // Block account:
         using (var k = new Kho())
         {
             var ma = int.Parse((sender as LinkButton).CommandArgument);
@@ -48,8 +53,8 @@ public partial class Admin_UserMng : System.Web.UI.Page
 
     protected void lbtnEdit_Click(object sender, EventArgs e)
     {
+        // Chuyen sang trang chi tiet tai khoan theo ma:
         var uid = int.Parse((sender as LinkButton).CommandArgument);
-
         Response.Redirect("~/UserMng/ChangeUser?uid=" + uid);
     }
 

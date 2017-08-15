@@ -26,7 +26,6 @@ public partial class Log_In_AdLogin : System.Web.UI.Page
 
     protected void btnDN_Click(object sender, EventArgs e)
     {
-
         #region Check Remeber:
         // Check Remember Me: 
 
@@ -67,6 +66,5 @@ public partial class Log_In_AdLogin : System.Web.UI.Page
             Response.Redirect("~/ProductMng");
         }
         #endregion
-        
     }
 }

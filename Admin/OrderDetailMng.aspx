@@ -3,11 +3,15 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="Server">
     <fieldset>
+
+        <!-- Header -->
         <legend>Order Details</legend>
+
+        <!-- Back button -->
         <asp:LinkButton runat="server" ID="lbtnBack" CssClass="btn btn-default" PostBackUrl="~/Admin/OrderMng.aspx">
                 <span class="glyphicon glyphicon-backward"></span> Go Back</asp:LinkButton>
-        <br />
-        <br />
+        
+        <!-- Gridview Order Details -->
         <asp:GridView runat="server" ID="grvCTHD" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-list" Width="85%" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Vertical" ForeColor="Black"
             AllowPaging="true" PageSize="10" OnPageIndexChanging="grvCTHD_PageIndexChanging">
             <PagerStyle CssClass="pagination-ys" />

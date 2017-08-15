@@ -7,9 +7,10 @@ using System.Web.UI.WebControls;
 
 public partial class Admin_OrderMng : System.Web.UI.Page
 {
-
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        // Kiem tra dang nhap:
         if (!IsPostBack)
             if (Session["user"] != null)
                 this.LoadOrder();
@@ -19,6 +20,8 @@ public partial class Admin_OrderMng : System.Web.UI.Page
 
     private void LoadOrder()
     {
+
+        // Load thong tin hoa don:
         using (var k = new Kho())
         {
             var list = k.DanhSachHD;
@@ -42,12 +45,16 @@ public partial class Admin_OrderMng : System.Web.UI.Page
 
     protected void lbtnDetail_Click(object sender, EventArgs e)
     {
+
+        // Chuyen sang trang chi tiet hoa don theo ma:
         var ma = int.Parse((sender as LinkButton).CommandArgument);
         Response.Redirect("~/OrderMng/OrderDetailMng?oid=" + ma);
     }
 
     protected void btnShipped_Click(object sender, EventArgs e)
     {
+
+        // Xac nhan da ship san pham:
         using (var k = new Kho())
         {
             var ma = int.Parse((sender as Button).CommandArgument);
@@ -58,10 +65,9 @@ public partial class Admin_OrderMng : System.Web.UI.Page
 
     }
 
-
-
     protected void grvHD_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
+        // Phan trang:
         grvHD.PageIndex = e.NewPageIndex;
         LoadOrder();
     }

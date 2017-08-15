@@ -9,6 +9,8 @@ public partial class Admin_ChangeUser : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        // Kiem tra dang nhap:
+        // Load thong tin account theo ma duoc truyen:
         var uid = 0;
         int.TryParse(Request.QueryString["uid"], out uid);
         if (!IsPostBack)
@@ -29,6 +31,8 @@ public partial class Admin_ChangeUser : System.Web.UI.Page
 
     private void LoadTTND(int uid)
     {
+
+        // Load thong tin account:
         using (var k = new Kho())
         {
             #region Binding TextBox
@@ -53,12 +57,13 @@ public partial class Admin_ChangeUser : System.Web.UI.Page
             ddlRole.SelectedValue = nd.RoleID.ToString();
 
             #endregion
-
         }
     }
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
+
+        // Sua thong tin account:
         #region Sua User
         using (var k = new Kho())
         {
@@ -79,6 +84,7 @@ public partial class Admin_ChangeUser : System.Web.UI.Page
                     Address = txtAddr.Text,
                 });
 
+                // Hien thong bao khi thanh cong:
                 pnlUpdate.Visible = true;
                 this.LoadTTND(uid);
             }
