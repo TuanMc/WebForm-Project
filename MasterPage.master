@@ -88,8 +88,6 @@
                             <asp:Label ID="lblSL" runat="server" CssClass="badge" Visible="false"/>
                             </a></li>
                             <li class="divider"></li>
-                            <li style="padding-left: 20px"><a href="/Home/Cart"><span class="glyphicon glyphicon-time"></span>&nbsp; History</a></li>
-                            <li class="divider"></li>
                             <li style="padding-left: 20px"><a href="/Home/Account"><span class="glyphicon glyphicon-user"></span>&nbsp; Profile</a></li>
                             <li class="divider"></li>
                             <li style="padding-left: 20px"><a href="/Account"><span class="glyphicon glyphicon-lock "></span>&nbsp; Login/out</a></li>
