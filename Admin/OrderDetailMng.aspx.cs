@@ -37,7 +37,7 @@ public partial class Admin_OrderDetailMng : System.Web.UI.Page
             if (ma != 0)
                 order = k.TimCTHD(ma);
 
-            grvCTHD.DataSource = order;
+            grvCTHD.DataSource = order.OrderByDescending(x=>x.OrderID).ToList();
             grvCTHD.DataBind();
 
             // Tim va gan thong tin cho cac field:

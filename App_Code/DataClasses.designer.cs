@@ -1200,8 +1200,6 @@ public partial class Order : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private System.Nullable<System.DateTime> _OrderDate;
 	
-	private string _Address;
-	
 	private System.Nullable<bool> _OrderStatus;
 	
 	private System.Nullable<System.DateTime> _ShippedDate;
@@ -1220,8 +1218,6 @@ public partial class Order : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnUserIDChanged();
     partial void OnOrderDateChanging(System.Nullable<System.DateTime> value);
     partial void OnOrderDateChanged();
-    partial void OnAddressChanging(string value);
-    partial void OnAddressChanged();
     partial void OnOrderStatusChanging(System.Nullable<bool> value);
     partial void OnOrderStatusChanged();
     partial void OnShippedDateChanging(System.Nullable<System.DateTime> value);
@@ -1295,26 +1291,6 @@ public partial class Order : INotifyPropertyChanging, INotifyPropertyChanged
 				this._OrderDate = value;
 				this.SendPropertyChanged("OrderDate");
 				this.OnOrderDateChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-	public string Address
-	{
-		get
-		{
-			return this._Address;
-		}
-		set
-		{
-			if ((this._Address != value))
-			{
-				this.OnAddressChanging(value);
-				this.SendPropertyChanging();
-				this._Address = value;
-				this.SendPropertyChanged("Address");
-				this.OnAddressChanged();
 			}
 		}
 	}

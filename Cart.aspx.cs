@@ -82,7 +82,7 @@ public partial class Interface_Pages_Cart : System.Web.UI.Page
         using (var g = new Gio())
         {
             g.XoaMH(ma);
-            this.LoadMH();
+            Response.Redirect("~/Home/Cart");
         }
     }
 
@@ -125,25 +125,31 @@ public partial class Interface_Pages_Cart : System.Web.UI.Page
         {
             using (var g = new Gio())
             {
-                using (var k = new Kho())
+                // Kiem tra gio hang co rong khong:
+                if (g.DanhSachMH.Count() == 0)
+                    pnlGio.Visible = true;
+                else
                 {
-                    var nd = k.TimNDTheoTenDN(Session["dn"].ToString());
-                    var order = new Order()
+                    using (var k = new Kho())
                     {
-                        UserID = nd.UserID,
-                        OrderDate = DateTime.Now,
-                        OrderStatus = true,
-                    };
+                        var nd = k.TimNDTheoTenDN(Session["dn"].ToString());
+                        var order = new Order()
+                        {
+                            UserID = nd.UserID,
+                            OrderDate = DateTime.Now,
+                            OrderStatus = true,
+                        };
 
-                    // Them hoa don va chi tiet hoa don vao database:
-                    k.themHD(order);
-                    k.ThemCTHD(g.DanhSachMH, order);
+                        // Them hoa don va chi tiet hoa don vao database:
+                        k.themHD(order);
+                        k.ThemCTHD(g.DanhSachMH, order);
+                    }
+
+                    // Refresh gio khi giao dich hoan thanh -> Hien thong bao khi mua hang thanh cong -> Load lai trang gio:
+                    g.XoaGio();
+                    pnlMua.Visible = true;
+                    Response.Redirect("~/Home/Cart");
                 }
-
-                // Refresh gio khi giao dich hoan thanh -> Hien thong bao khi mua hang thanh cong -> Load lai trang gio:
-                g.XoaGio();
-                pnlMua.Visible = true;
-                this.LoadMH();
             }
         }
     }

@@ -62,7 +62,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Suppliers<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/Home/Supplier/MSI">MSI</a></li>
+                            <li class="active"><a href="/Home/Supplier/MSI">MSI</a></li>
                             <li class="divider"></li>
                             <li><a href="/Home/Supplier/Razer">Razer</a></li>
                             <li class="divider"></li>
@@ -77,12 +77,18 @@
                 <uc1:WebUserControl runat="server" ID="WebUserControl" />
 
                 <!-- DDL User -->
+
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown">Hello,
-                            <asp:Label ID="lblTenDN" runat="server" /><b class="caret"></b></a>
+                            <asp:Label ID="lblTenDN" runat="server" />
+                            <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li style="padding-left: 20px"><a href="/Home/Cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp; Cart</a></li>
+                            <li style="padding-left: 20px"><a href="/Home/Cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp; Cart &nbsp;
+                            <asp:Label ID="lblSL" runat="server" CssClass="badge" Visible="false"/>
+                            </a></li>
+                            <li class="divider"></li>
+                            <li style="padding-left: 20px"><a href="/Home/Cart"><span class="glyphicon glyphicon-time"></span>&nbsp; History</a></li>
                             <li class="divider"></li>
                             <li style="padding-left: 20px"><a href="/Home/Account"><span class="glyphicon glyphicon-user"></span>&nbsp; Profile</a></li>
                             <li class="divider"></li>

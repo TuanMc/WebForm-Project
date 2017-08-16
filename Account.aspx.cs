@@ -13,7 +13,10 @@ public partial class Pages_Account : System.Web.UI.Page
         // Kiem tra bien Session["dn"] va hien thong bao khi co loi:
         // Load trang neu thoa dieu kien:
         if (Session["dn"] == null)
+        { 
             pnlDN.Visible = true;
+            pnlTT.Visible = false;
+        }
         else
         {
             if (!IsPostBack)

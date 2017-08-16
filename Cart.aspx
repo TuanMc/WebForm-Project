@@ -10,6 +10,12 @@
         <strong>Danger!</strong> You must log-in to continue this performance.
     </asp:Panel>
     
+    <!-- Warning No item in cart -->
+    <asp:Panel ID="pnlGio" runat="server" CSSClass="alert alert-danger alert-dismissable fade in" Visible="false">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>No item in cart!</strong> 
+    </asp:Panel>
+
     <!-- Buy success -->
     <asp:Panel ID="pnlMua" runat="server" CSSClass="alert alert-success alert-dismissable fade in" Visible="false">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

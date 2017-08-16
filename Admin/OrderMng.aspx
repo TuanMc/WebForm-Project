@@ -24,7 +24,8 @@
                 <asp:BoundField DataField="ShippedDate" HeaderText="Shipped Date" />
                 <asp:TemplateField HeaderText="Shipped">
                     <ItemTemplate>
-                        <asp:Button ID="btnShipped" runat="server" Text="Shipped" OnClick="btnShipped_Click" CommandArgument='<%#Eval("OrderID") %>'></asp:Button>
+                        <asp:Label Text="Shipped" ID="lblShip" Visible="false" runat="server" />
+                        <asp:Button ID="btnShipped" runat="server" Text="Pending" OnClick="btnShipped_Click" CommandArgument='<%#Eval("OrderID") %>'></asp:Button>
                     </ItemTemplate>
                 </asp:TemplateField>
 

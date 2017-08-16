@@ -25,7 +25,7 @@ public partial class Admin_OrderMng : System.Web.UI.Page
         using (var k = new Kho())
         {
             var list = k.DanhSachHD;
-            grvHD.DataSource = list;
+            grvHD.DataSource = list.OrderByDescending(x=>x.OrderID).ToList();
             grvHD.DataBind();
 
 
@@ -33,9 +33,11 @@ public partial class Admin_OrderMng : System.Web.UI.Page
             {
                 var hdfMa = item.FindControl("hdfMa") as HiddenField;
                 var btn = item.FindControl("btnShipped") as Button;
+                var lblShip = item.FindControl("lblShip") as Label;
                 var hd = k.TimHD(int.Parse(hdfMa.Value));
                 if (hd.OrderStatus == false)
                 {
+                    lblShip.Visible = true;
                     btn.Visible = false;
                     btn.Enabled = false;
                 }
@@ -60,7 +62,7 @@ public partial class Admin_OrderMng : System.Web.UI.Page
             var ma = int.Parse((sender as Button).CommandArgument);
 
             k.GiaoHD(ma);
-            this.LoadOrder();
+            Response.Redirect("/OrderMng");
         }
 
     }
