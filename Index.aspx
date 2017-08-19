@@ -55,7 +55,7 @@
                     <ItemStyle HorizontalAlign="Center" />
                     <ItemTemplate>
                         <div style="margin-top: 50px; margin-bottom: 50px">
-                            <asp:ImageButton ID="img" ImageUrl='<%#Eval("Picture") %>' PostBackUrl='<%# string.Format("~/Home/ProductDetail?ma={0}", Eval("ProductID")) %>' runat="server" Height="120px" Width="220px" /><br />
+                            <asp:ImageButton ID="img" ImageUrl='<%#Eval("Picture") %>' OnClick="img_Click" CommandArgument='<%#Eval("ProductID") %>' runat="server" Height="120px" Width="220px" /><br />
                             <br />
                             <asp:LinkButton ForeColor="Red" Font-Bold="true" ID="lbtnTen" runat="server" OnClick="lbtnTenSP_Click" CommandArgument='<%#Eval("ProductID") %>'><%#Eval("ProductName") %></asp:LinkButton><br />
                             <br />

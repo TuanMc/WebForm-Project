@@ -54,4 +54,11 @@ public partial class Product : System.Web.UI.Page
         var ma = int.Parse((sender as Button).CommandArgument);
         Response.Redirect("~/Home/ProductDetail?ma=" + ma);
     }
+
+    protected void img_Click(object sender, ImageClickEventArgs e)
+    {
+        // Chuyen qua trang CTSP theo ma duoc gan:
+        var ma = int.Parse((sender as ImageButton).CommandArgument);
+        Response.Redirect("~/Home/ProductDetail?ma=" + ma);
+    }
 }

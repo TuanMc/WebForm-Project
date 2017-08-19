@@ -15,7 +15,7 @@
             </asp:Panel>
             
             <!-- Back Button -->
-            <asp:LinkButton runat="server" ID="lbtnBack" CssClass="btn btn-default" PostBackUrl="UserMng.aspx">
+            <asp:LinkButton runat="server" ID="lbtnBack" CssClass="btn btn-default" OnClick="lbtnBack_Click">
                 <span class="glyphicon glyphicon-backward"></span> Go Back</asp:LinkButton>
             
             <!-- User Name -->

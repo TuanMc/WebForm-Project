@@ -13,6 +13,12 @@
                 <strong>Item already exist!</strong> 
             </asp:Panel>
 
+            <!-- Warning -->
+            <asp:Panel ID="pnlImg" runat="server" CssClass="alert alert-danger alert-dismissable fade in" Visible="false">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>No Image!</strong> 
+            </asp:Panel>
+
             <!-- Success -->
             <asp:Panel ID="pnlUpdate" runat="server" CssClass="alert alert-success alert-dismissable fade in" Visible="false">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

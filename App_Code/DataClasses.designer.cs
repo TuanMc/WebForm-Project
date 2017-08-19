@@ -56,7 +56,7 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
   #endregion
 	
 	public DataClassesDataContext() : 
-			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ShopCongNgheConnectionString1"].ConnectionString, mappingSource)
+			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ShopCongNgheConnectionString2"].ConnectionString, mappingSource)
 	{
 		OnCreated();
 	}

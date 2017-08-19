@@ -91,4 +91,9 @@ public partial class Admin_ChangeUser : System.Web.UI.Page
         }
         #endregion
     }
+
+    protected void lbtnBack_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/UserMng");
+    }
 }

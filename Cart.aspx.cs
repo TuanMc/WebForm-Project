@@ -9,9 +9,20 @@ public partial class Interface_Pages_Cart : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        if (Request.QueryString["o"] != null)
         {
-            this.LoadMH();
+            var ma = 0;
+            int.TryParse(Request.QueryString["o"].ToString(), out ma);
+
+            if (ma != 0)
+                pnlMua.Visible = true;
+        }
+        else
+        {
+            if (!IsPostBack)
+            {
+                this.LoadMH();
+            }
         }
     }
 
@@ -143,12 +154,11 @@ public partial class Interface_Pages_Cart : System.Web.UI.Page
                         // Them hoa don va chi tiet hoa don vao database:
                         k.themHD(order);
                         k.ThemCTHD(g.DanhSachMH, order);
-                    }
 
-                    // Refresh gio khi giao dich hoan thanh -> Hien thong bao khi mua hang thanh cong -> Load lai trang gio:
-                    g.XoaGio();
-                    pnlMua.Visible = true;
-                    Response.Redirect("~/Home/Cart");
+                        // Refresh gio khi giao dich hoan thanh -> Hien thong bao khi mua hang thanh cong -> Load lai trang gio:
+                        g.XoaGio();
+                        Response.Redirect("~/Home/Cart?o=" + order.OrderID);
+                    }
                 }
             }
         }

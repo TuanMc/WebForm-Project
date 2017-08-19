@@ -15,7 +15,7 @@
         </asp:Panel>
 
         <!-- Add new product -->
-        <asp:LinkButton runat="server" ID="lbtnThemSP" PostBackUrl="~/ProductMng/ChangeInfo" CssClass="btn btn-success">
+        <asp:LinkButton runat="server" ID="lbtnThemSP" OnClick="lbtnThemSP_Click" CssClass="btn btn-success">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Product</asp:LinkButton>
 
         <!-- GridView Products -->

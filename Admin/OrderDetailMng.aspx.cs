@@ -14,6 +14,8 @@ public partial class Admin_OrderDetailMng : System.Web.UI.Page
         if (!IsPostBack)
             if (Session["user"] != null)
             {
+                if (Request.QueryString["oid"] == null)
+                    lbtnBack.Visible = false;
                 this.LoadOrderDetail();
             }
             else
@@ -64,5 +66,10 @@ public partial class Admin_OrderDetailMng : System.Web.UI.Page
         // Phan trang:
         grvCTHD.PageIndex = e.NewPageIndex;
         LoadOrderDetail();
+    }
+
+    protected void lbtnBack_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/OrderMng");
     }
 }

@@ -8,7 +8,7 @@
         <legend>Order Details</legend>
 
         <!-- Back button -->
-        <asp:LinkButton runat="server" ID="lbtnBack" CssClass="btn btn-default" PostBackUrl="~/Admin/OrderMng.aspx">
+        <asp:LinkButton runat="server" ID="lbtnBack" CssClass="btn btn-default" OnClick="lbtnBack_Click">
                 <span class="glyphicon glyphicon-backward"></span> Go Back</asp:LinkButton>
         
         <!-- Gridview Order Details -->

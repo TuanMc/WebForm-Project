@@ -49,7 +49,7 @@
 
                             <!-- Image -->
                             <asp:image cssclass="media-object" runat="server" id="imgMH" style="width: 150px; height: 80px;" />
-                            <div class="media-body">
+                            <div class="media-body" style="padding: 15px;">
 
                                 <!-- Name -->
                                 <h4 class="media-heading">

@@ -48,7 +48,7 @@
                             <li><a href="/OrderMng">Messages
                                 <asp:Label ID="lblSL" runat="server" CssClass="badge" Visible="false" /><span style="font-size: 16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li>
                             <li><a href="/OrderDetailMng">Order Detail<span style="font-size: 16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-pencil"></span></a></li>
-                            <li><a href="/ChangeInfo">Uploads<span style="font-size: 16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-upload"></span></a></li>
+                            <li><a href="/Admin/ChangeInfo.aspx">Uploads<span style="font-size: 16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-upload"></span></a></li>
                             <li><a href="/UserMng">Customers<span style="font-size: 16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
                         </ul>
                     </nav>

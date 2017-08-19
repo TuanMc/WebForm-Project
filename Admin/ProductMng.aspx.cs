@@ -75,7 +75,7 @@ public partial class Admin_ProductMng : System.Web.UI.Page
 
         // Chuyen sang trang thay doi TTSP theo ma:
         var ma = int.Parse((sender as LinkButton).CommandArgument);
-        Response.Redirect("~/ProductMng/ChangeInfo?pid="+ma);
+        Response.Redirect("~/Admin/ChangeInfo.aspx?pid="+ma);
     }
 
     protected void grvSP_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -84,5 +84,10 @@ public partial class Admin_ProductMng : System.Web.UI.Page
         // Phan trang:
         grvSP.PageIndex = e.NewPageIndex;
         LoadProducts();
+    }
+
+    protected void lbtnThemSP_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Admin/ChangeInfo.aspx");
     }
 }

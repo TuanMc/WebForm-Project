@@ -117,7 +117,7 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-       
+
         using (var k = new Kho())
         {
             #region Sua Product
@@ -127,6 +127,14 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
             {
                 var sp = k.TimSP(id);
                 var path = sp.Picture;
+
+                if (fulImg.HasFile == true)
+                {
+                    var str = fulImg.FileName;
+                    fulImg.PostedFile.SaveAs(Server.MapPath(".") + "/Uploads/" + str);
+                    path = "~/Admin/Uploads/" + str.ToString();
+                }
+                 
                 k.SuaSP(new Product()
                 {
                     ProductID = id,
@@ -138,15 +146,22 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
                     Picture = path
                 });
 
-                pnlUpdate.Visible = true;
-            }
+            pnlUpdate.Visible = true;
+        }
             #endregion
-            
+
             #region Them Product
             else
             {
+            if (fulImg.HasFile == true)
+            {
+                pnlImg.Visible = true;
+            }
+
+            else
+            {
                 string str = fulImg.FileName;
-                fulImg.PostedFile.SaveAs(Server.MapPath(".") + "//Uploads//" + str);
+                fulImg.PostedFile.SaveAs(Server.MapPath(".") + "/Uploads/" + str);
                 string path = "~/Admin/Uploads/" + str.ToString();
 
                 var sp = k.TimSPTheoTen(txtName.Text);
@@ -168,14 +183,15 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
                     pnlUpdate.Visible = true;
                 }
             }
-            #endregion  
-
-            this.LoadSP();
         }
-    }
+        #endregion
 
-    protected void lbtnBack_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("~/ProductMng");
+        this.LoadSP();
     }
+}
+
+protected void lbtnBack_Click(object sender, EventArgs e)
+{
+    Response.Redirect("~/ProductMng");
+}
 }
