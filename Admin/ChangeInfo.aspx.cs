@@ -117,6 +117,11 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
+        // check showing panel
+        if (pnlImg.Visible == true) pnlImg.Visible = false;
+        if (pnlTB.Visible == true) pnlTB.Visible = false;
+        if (pnlUpdate.Visible == true) pnlUpdate.Visible = false;
+
 
         using (var k = new Kho())
         {
@@ -131,7 +136,7 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
                 if (fulImg.HasFile == true)
                 {
                     var str = fulImg.FileName;
-                    fulImg.PostedFile.SaveAs(Server.MapPath(".") + "/Uploads/" + str);
+                    fulImg.PostedFile.SaveAs(Server.MapPath(".") + "//Uploads//" + str);
                     path = "~/Admin/Uploads/" + str.ToString();
                 }
                  
@@ -153,7 +158,7 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
             #region Them Product
             else
             {
-            if (fulImg.HasFile == true)
+            if (fulImg.HasFile != true)
             {
                 pnlImg.Visible = true;
             }
@@ -161,7 +166,7 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
             else
             {
                 string str = fulImg.FileName;
-                fulImg.PostedFile.SaveAs(Server.MapPath(".") + "/Uploads/" + str);
+                fulImg.PostedFile.SaveAs(Server.MapPath(".") + "//Uploads//" + str);
                 string path = "~/Admin/Uploads/" + str.ToString();
 
                 var sp = k.TimSPTheoTen(txtName.Text);
@@ -184,9 +189,9 @@ public partial class Admin_ChangeInfo : System.Web.UI.Page
                 }
             }
         }
-        #endregion
+            #endregion
 
-        this.LoadSP();
+            this.LoadSP();
     }
 }
 
